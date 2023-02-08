@@ -1,7 +1,7 @@
 .Form_section {
     float: left;
     /* padding: 1rem; */
-    width: 70%;
+    width: 76%;
     background-color: #f1f1f1;
     /* height: 310px;  */
     height: 81.5vh;
@@ -9,17 +9,19 @@
     overflow-y:scroll;
 
   }
-.halflabel{
+/* .halflabel{
     width: 80%;
     display: inline-block;
     margin-left: 1rem;
     margin-right: 1.5rem;
     padding-top: 0.7rem;
 
-}
+} */
 label{
+    margin-left: 5rem;
     display: flex;
     justify-content: left;
+    
 }
 ul{
     list-style-type: none;
@@ -33,9 +35,13 @@ ul li > * {
 input[type="text"] {
     padding: .7rem;
     border-radius: .7rem;
-    margin-top: .7rem;
+    margin-top: .4rem;
+    margin-bottom: 1rem;
 }
 
+input{
+    width: 80%;
+}
 
 .button_submit {
     color: white;
