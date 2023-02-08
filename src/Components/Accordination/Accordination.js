@@ -16,7 +16,7 @@ export const Accordination = () => {
     ]
     const [selected,setSelected]=useState(0)
     const toggle=(i)=>{
-        if(selected==i){
+        if(selected===i){
             return setSelected(null)
         }
         setSelected(i)
@@ -29,7 +29,7 @@ export const Accordination = () => {
             <div className="item">
                 <div className="title" onClick={()=>toggle(i)}>
                     <h2>{item.Field}</h2>
-                    <span>{selected===i ? '-':'+'}</span>
+                    <span className='icons'>{selected===i ? '-':'+'}</span>
                 </div>
                 <div className={selected===i ? "content show":"content"}>
                     {item.Field_Name1}

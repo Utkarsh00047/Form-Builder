@@ -1,6 +1,6 @@
 nav {
     float: left;
-    width: 15%;
+    width: 20%;
     height: 79vh;
     /* height: calc(100% - 55rem - 15rem); */
     /* max-height: 100%;
@@ -8,20 +8,29 @@ nav {
     background: #f7f7f7;
     padding-right: 2rem;
     margin: .65rem;
+    padding-top: 1rem;
   }
   nav ul {
     list-style-type: none;
     /* padding: 0; */
   }
   nav li{
-    padding: .6rem .3rem .6rem .3rem;
+    padding: 1rem .3rem 1rem .3rem;
     text-align: center;
     color: white!important;
     background-color: #014283;
     margin-top: .3rem;
-    border-radius: .3rem;
-    margin-left: 2.3rem;
+    border-radius: .5rem;
+    /* margin-left: 2.3rem; */
+    width: 14.5vw;
   }
   nav{
     overflow-y:scroll;
+  }
+  .icons{
+    display: flex;
+    justify-content: center;
+  }
+  .options li{
+    padding: 1rem .3rem 1rem .3rem;
   }

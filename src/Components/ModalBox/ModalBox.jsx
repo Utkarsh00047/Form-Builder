@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import css from "./ModalBox.css";
+import React from "react";
+import css from "../ModalBox/ModalBox.css";
 
 const ModalBox = () => {
   return (
     <div className={css.formdiv}>
       <form>
-        <label for="readOnly">Checkbox for readOnly</label>
         <input type="checkbox" name="readOnly" value="readOnly" />
-        <label for="required">Checkbox for required</label>
+        <label for="readOnly">readOnly</label>
+
         <input type="checkbox" name="required" value="required" />
+        <label for="required">required</label>
         <label for="label_name">Label Name:</label>
         <input type="text" name="label_name" />
         <label for="placeholder">Placeholder:</label>

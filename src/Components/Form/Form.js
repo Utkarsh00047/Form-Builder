@@ -11,6 +11,7 @@ export const Form = () => {
   return (
     <>
         <form className="Form_section">
+            <h1>Form</h1>
             <ul>
                 <li className="halflabel">
                     <label>Employee Name</label>

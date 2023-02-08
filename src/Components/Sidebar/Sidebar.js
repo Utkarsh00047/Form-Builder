@@ -33,13 +33,15 @@ const toggle=(i)=>{
             <>
                  <div className="title" onClick={()=>toggle(i)}>
                     <ul>{item.Field}</ul>
-                      <span>{selected===i ? '-':'+'}</span>
+                      <span className="icons">{selected===i ? '-':'+'}</span>
                  </div>
                  <div className={selected===i ? "content show":"content"}>
+                  <ul className='options'>
                     <li>{item.Field_Name1}</li>
                     <li>{item.Field_Name2}</li>
                     <li>{item.Field_Name3}</li>
                     <li>{item.Field_Name4}</li>
+                  </ul>
                  </div>
 
              </>
