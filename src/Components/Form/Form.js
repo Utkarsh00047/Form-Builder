@@ -1,7 +1,13 @@
-import './Form.css'
+import './Form.css';
+import { useState } from 'react';
 import React from 'react'
+import ModalBox from '../ModalBox/ModalBox';
 
 export const Form = () => {
+    const [openModalBox, setOpenModalBox] = useState(false);
+    const setModalBox = () => {
+    setOpenModalBox(!openModalBox);
+  };
   return (
     <>
         <form className="Form_section">
@@ -28,7 +34,9 @@ export const Form = () => {
             </div>
              
 
-        </form>
+          </form>
+          <button onClick={setModalBox}>Modal Box</button>
+          {openModalBox && <ModalBox />}
     </>
   )
 }

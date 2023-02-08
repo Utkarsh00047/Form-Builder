@@ -20,7 +20,7 @@ export const Sidebar = () => {
 ]
 const [selected,setSelected]=useState(0)
 const toggle=(i)=>{
-    if(selected==i){
+    if(selected===i){
         return setSelected(null)
     }
     setSelected(i)
