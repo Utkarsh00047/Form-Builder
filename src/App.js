@@ -11,7 +11,7 @@ function App() {
       <Header/>
       <Sidebar/>
       <Form/>
-      <Accordination/>
+      {/* <Accordination/> */}
     </div>
   );
 }

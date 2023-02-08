@@ -1,24 +1,29 @@
 .Form_section {
     float: left;
-    padding: 1rem;
+    /* padding: 1rem; */
     width: 70%;
     background-color: #f1f1f1;
     /* height: 310px;  */
-    height: 72.5vh;
+    height: 81.5vh;
     margin-top: .7rem;
     overflow-y:scroll;
 
   }
 .halflabel{
-    width: 40%;
+    width: 80%;
     display: inline-block;
     margin-left: 1rem;
     margin-right: 1.5rem;
-    padding-top: 1rem;
+    padding-top: 0.7rem;
 
+}
+label{
+    display: flex;
+    justify-content: left;
 }
 ul{
     list-style-type: none;
+    margin-right: 3.7rem;
     /* box-shadow: .7x .7px .7px .7px #888888; */
 
 }
