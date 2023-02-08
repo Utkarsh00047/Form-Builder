@@ -1,7 +1,8 @@
 header {
     background-color: #666;
-    padding: 10px;
-    text-align: center;
-    font-size: 20px;
+    padding: .4rem .5rem .4rem .5rem;
+    text-align: left;
+    font-size: .7rem;
     color: white;
+    /* max-height: 20px; */
   }

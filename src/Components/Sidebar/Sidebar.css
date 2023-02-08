@@ -1,11 +1,27 @@
 nav {
     float: left;
-    width: 30%;
-    height: 300px;
-    background: #ccc;
-    padding: 20px;
+    width: 15%;
+    height: 79vh;
+    /* height: calc(100% - 55rem - 15rem); */
+    /* max-height: 100%;
+    height: auto; */
+    background: #f7f7f7;
+    padding-right: 2rem;
+    margin: .65rem;
   }
   nav ul {
     list-style-type: none;
-    padding: 0;
+    /* padding: 0; */
+  }
+  nav li{
+    padding: .6rem .3rem .6rem .3rem;
+    text-align: center;
+    color: white!important;
+    background-color: #014283;
+    margin-top: .3rem;
+    border-radius: .3rem;
+    margin-left: 2.3rem;
+  }
+  nav{
+    overflow-y:scroll;
   }

@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <>
       <header>
-        <h2>Header</h2>
+        <h2>Form Builder</h2>
       </header>
   </>
   )
