@@ -17,29 +17,21 @@
     padding-top: 0.7rem;
 
 } */
-label{
-    margin-left: 5rem;
+.heads{
+    margin-left: 5.5rem;
     display: flex;
     justify-content: left;
     
 }
-ul{
-    list-style-type: none;
-    margin-right: 3.7rem;
-    /* box-shadow: .7x .7px .7px .7px #888888; */
 
-}
-ul li > * {
-    width: 100%;
-}
-input[type="text"] {
+.input_feild[type="text"] {
     padding: .7rem;
     border-radius: .7rem;
     margin-top: .4rem;
     margin-bottom: 1rem;
 }
 
-input{
+.input_feild{
     width: 80%;
 }
 
