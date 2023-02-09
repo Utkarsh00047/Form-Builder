@@ -1,14 +1,13 @@
 .Form_section {
-    float: left;
-    /* padding: 1rem; */
-    width: 76%;
-    background-color: #f1f1f1;
-    /* height: 310px;  */
-    height: 81.5vh;
-    margin-top: .7rem;
-    overflow-y:scroll;
-
-  }
+	float: left;
+	/* padding: 1rem; */
+	width: 76%;
+	background-color: #f1f1f1;
+	/* height: 310px;  */
+	height: 81.5vh;
+	margin-top: 0.7rem;
+	overflow-y: scroll;
+}
 /* .halflabel{
     width: 80%;
     display: inline-block;
@@ -24,24 +23,21 @@
     
 }
 
-.input_feild[type="text"] {
+.input_feild {
     padding: .7rem;
     border-radius: .7rem;
     margin-top: .4rem;
     margin-bottom: 1rem;
-}
-
-.input_feild{
     width: 80%;
 }
 
 .button_submit {
-    color: white;
-    /* padding: 10px; */
-    border-radius: 1.3rem;
-    background: #014283;
-    padding: .7rem 1.4rem .7rem 1.4rem;
+	color: white;
+	/* padding: 10px; */
+	border-radius: 1.3rem;
+	background: #014283;
+	padding: 0.7rem 1.4rem 0.7rem 1.4rem;
 }
-.form_padding{
-    padding-top: .7rem;
+.form_padding {
+	padding-top: 0.7rem;
 }

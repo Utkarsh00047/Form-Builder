@@ -1,52 +1,78 @@
-import React from 'react'
-import './Sidebar.css'
+import React from "react";
+import "./Sidebar.css";
 import { useState } from "react";
 export const Sidebar = () => {
-  const data=[
-    {
-        Field : 'Basic',
-        Field_Name1: 'text Field',
-        Field_Name2: 'Radio Button',
-        Field_Name3: 'Password',
-        Field_Name4: 'File Upload',
-    },
-    {
-        Field : 'Basic2',
-        Field_Name1: 'text Field',
-        Field_Name2: 'Radio Button',
-        Field_Name3: 'Password',
-        Field_Name4: 'File Upload',
-    }
-]
-const [selected,setSelected]=useState(0)
-const toggle=(i)=>{
-    if(selected===i){
-        return setSelected(null)
-    }
-    setSelected(i)
-}
+	const data = [
+		{
+			Field: "Basic",
+			Field_Name1: "Text Field",
+			Field_Name2: "Radio Button",
+			Field_Name3: "Password",
+			Field_Name4: "File Upload",
+		},
+		{
+			Field: "Basic2",
+			Field_Name1: "Text Field",
+			Field_Name2: "Radio Button",
+			Field_Name3: "Password",
+			Field_Name4: "File Upload",
+		},
+	];
+	const [selected, setSelected] = useState(0);
 
-  return (
-    <>
-        <nav>
-        {data.map((item,i)=>(
-            <>
-                 <div className="title" onClick={()=>toggle(i)}>
-                    <ul>{item.Field}</ul>
-                      <span className="icons">{selected===i ? '-':'+'}</span>
-                 </div>
-                 <div className={selected===i ? "content show":"content"}>
-                  <ul className='options'>
-                    <li>{item.Field_Name1}</li>
-                    <li>{item.Field_Name2}</li>
-                    <li>{item.Field_Name3}</li>
-                    <li>{item.Field_Name4}</li>
-                  </ul>
-                 </div>
+	const toggle = (i) => {
+	
+		setSelected(i);
+	};
 
-             </>
-        ))}
-            {/* <ul>
+	const handleDrag = (e) => {
+		e.dataTransfer.setData("text", e.target.textContent);
+	};
+
+	return (
+		<>
+			<nav>
+				{data.map((item, i) => (
+					<>
+						<div className="title" key={i} onClick={() => toggle(i)}>
+							<ul>{item.Field}</ul>
+							<span className="icons">{selected === i? "-" : "+"}</span>
+						</div>
+						<div
+							className={
+								selected === i ? "content show" : "content"
+							}
+						>
+							<ul className="options">
+								<li
+									draggable={true}
+									onDragStart={(e) => handleDrag(e)}
+								>
+									{item.Field_Name1}
+								</li>
+								<li
+									draggable={true}
+									onDragStart={(e) => handleDrag(e)}
+								>
+									{item.Field_Name2}
+								</li>
+								<li
+									draggable={true}
+									onDragStart={(e) => handleDrag(e)}
+								>
+									{item.Field_Name3}
+								</li>
+								<li
+									draggable={true}
+									onDragStart={(e) => handleDrag(e)}
+								>
+									{item.Field_Name4}
+								</li>
+							</ul>
+						</div>
+					</>
+				))}
+				{/* <ul>
               <li>Text Field</li>
               <li>Text Area</li>
               <li>Number</li>
@@ -59,7 +85,7 @@ const toggle=(i)=>{
               <li>Radio Button</li>
               <li>Radio Button</li>
             </ul> */}
-        </nav>
-    </>
-  )
-}
+			</nav>
+		</>
+	);
+};
