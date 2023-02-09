@@ -1,7 +1,7 @@
 .Form_section {
     float: left;
     /* padding: 1rem; */
-    width: 76%;
+    width: 70%;
     background-color: #f1f1f1;
     /* height: 310px;  */
     height: 81.5vh;
@@ -17,12 +17,12 @@
     padding-top: 0.7rem;
 
 } */
-label{
+/* label{
     margin-left: 5rem;
     display: flex;
     justify-content: left;
-    
-}
+} */
+
 ul{
     list-style-type: none;
     margin-right: 3.7rem;
@@ -32,16 +32,16 @@ ul{
 ul li > * {
     width: 100%;
 }
-input[type="text"] {
+/* input[type="text"] {
     padding: .7rem;
     border-radius: .7rem;
     margin-top: .4rem;
     margin-bottom: 1rem;
-}
-
+} */
+/* 
 input{
     width: 80%;
-}
+} */
 
 .button_submit {
     color: white;

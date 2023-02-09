@@ -19,7 +19,7 @@ export const Form = () => {
               
                     <label for="pname">Project Name</label>
                     <input type="text" id="pname"/>
-              
+        
                     <label for="Ecode">Employee Code</label>
                     <input type="text" id="Ecode" />
               

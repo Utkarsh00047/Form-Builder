@@ -1,25 +1,51 @@
 import React from "react";
-import css from "../ModalBox/ModalBox.css";
+import "./ModalBox.css";
 
 const ModalBox = () => {
   return (
-    <div className={css.formdiv}>
+    <div class="formdiv">
+      <h3 class="headers">Configurations </h3>
       <form>
-        <input type="checkbox" name="readOnly" value="readOnly" />
-        <label for="readOnly">readOnly</label>
-
-        <input type="checkbox" name="required" value="required" />
-        <label for="required">required</label>
-        <label for="label_name">Label Name:</label>
-        <input type="text" name="label_name" />
-        <label for="placeholder">Placeholder:</label>
-        <input type="text" name="placeholder" />
-
-        <div className={css.save_button}>
-          <button type="submit">Save</button>
+        <div class="modal_content">
+          <div class="checkbox">
+            <input
+              class="input_type"
+              type="checkbox"
+              name="readOnly"
+              value="readOnly"
+            />
+            <label class="label_field" for="readOnly">
+              ReadOnly
+            </label>
+            <input
+              class="input_type"
+              type="checkbox"
+              name="required"
+              value="required"
+            />
+            <label class="label_field" for="required">
+              Required
+            </label>
+          </div>
+          <div class="textbox_content">
+            <label class="label_text_field" for="label_name">
+              Label Name:
+            </label>
+            <input class="" type="text" name="label_name" />
+            <label class="label_text_field" for="placeholder">
+              Placeholder:
+            </label>
+            <input class="" type="text" name="placeholder" />
+          </div>
         </div>
-        <div className={css.close_button}>
-          <button type="submit">Close</button>
+        <div class="button">
+          {/* <span class="close">&times;</span> */}
+          <div class="button_spacing">
+            <button type="submit">Close</button>
+          </div>
+          <div class="button_spacing">
+            <button type="submit">Save</button>
+          </div>
         </div>
       </form>
     </div>
