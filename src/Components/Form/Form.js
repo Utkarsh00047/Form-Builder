@@ -1,8 +1,14 @@
 import "./Form.css";
 import React, { useState } from "react";
 import TextField from "../TextField/TextField";
+import ModalBox from '../ModalBox/ModalBox';
 
 export const Form = () => {
+    const [openModalBox, setOpenModalBox] = useState(false);
+    const setModalBox = () => {
+    setOpenModalBox(!openModalBox);
+  };
+  
 	const [inputFields, setInputFields] = useState([]);
 	const allowDragEvent = (e) => {
 		e.preventDefault();
@@ -59,6 +65,8 @@ export const Form = () => {
 					</a>
 				</div> */}
 			</form>
+            <button onClick={setModalBox}>Modal Box</button>
+          {openModalBox && <ModalBox />}
 		</>
 	);
 };

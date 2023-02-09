@@ -1,0 +1,136 @@
+.formdiv{
+    background-color: rgb(175, 195, 214);
+    height: 30rem;
+    width: 80vw;
+    position:absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.button {
+    display: flex;
+    /* margin-right: 0px; */
+    /* margin-top: 1rem; */
+    /* justify-content: space-evenly; */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal_content{
+    /* margin-top: 40px; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox{
+    display: flex;
+    /* width: 20%; */
+    justify-content: center;
+    /* margin-left: 8rem; */
+    margin-bottom: 2rem;
+}
+ 
+.label_field{
+    font-size: 20px;
+    /* margin-top: 2rem; */
+    margin-right: 10rem;
+} 
+
+
+.input_type{
+    margin-right: 20px;
+    margin-left: 8rem;
+    /* margin-bottom: 60px; */
+    font-size: 40px;
+}
+
+
+
+.label_text_field{
+    margin-right: 20px;
+    /* margin-left: 20px; */
+    font-size: 20px;
+ 
+}
+
+.headers {
+    margin-bottom: 90px;
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    /* margin-left: 20px; */
+    justify-content: center;
+    display: flex;
+    margin-top: 40px;
+}
+
+.textbox_content{
+    display: flex;
+    justify-content: center;
+}
+
+.button button {
+    color: #f4f4f7;
+    background-color: rgb(88, 84, 86);
+    font-size: 20px;
+    border: 2px;
+    border-color: brown;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 30px;
+    width: 90px;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button_spacing{
+    margin:10px;
+}
+
+.button-1 {
+    background-color: #EA4C89;
+    
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+    background-color: #F082AC;
+}
+
+.text_input{
+    border-radius: 0.5rem;
+    border: none;
+    height: 30px;
+    width: 15rem;
+    margin-right: 30px;
+}
