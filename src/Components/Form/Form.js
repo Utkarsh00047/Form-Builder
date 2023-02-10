@@ -44,6 +44,7 @@ export const Form = () => {
 	return (
 		<>
 			<form
+			id="formPage"
 				className="Form_section"
 				onDragOver={(e) => allowDragEvent(e)}
 				onDrop={(e) => handleDrop(e)}
