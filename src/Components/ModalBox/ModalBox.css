@@ -46,11 +46,16 @@
 
 
 .input_type{
-    margin-right: 20px;
+    margin-right:11px;
+    margin-top: 0.33rem;
     margin-left: 8rem;
     /* margin-bottom: 60px; */
     font-size: 40px;
 }
+.input_type[type="checkbox"]{
+    width: 20px; 
+    height: 20px; 
+  }
 
 
 
