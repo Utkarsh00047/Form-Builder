@@ -1,7 +1,7 @@
 .Form_section {
 	float: left;
 	/* padding: 1rem; */
-	width: 76%;
+	width: 70%;
 	background-color: #f1f1f1;
 	/* height: 310px;  */
 	height: 81.5vh;
@@ -29,7 +29,7 @@
     margin-top: .4rem;
     margin-bottom: 1rem;
     width: 80%;
-} */
+}
 
 .button_submit {
 	color: white;

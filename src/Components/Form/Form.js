@@ -1,13 +1,12 @@
 import "./Form.css";
 import React, { useState } from "react";
 import TextField from "../TextField/TextField";
-import ModalBox from '../ModalBox/ModalBox';
 
 export const Form = () => {
-    const [openModalBox, setOpenModalBox] = useState(false);
-    const setModalBox = () => {
-    setOpenModalBox(!openModalBox);
-  };
+  //   const [openModalBox, setOpenModalBox] = useState(false);
+  //   const setModalBox = () => {
+  //   setOpenModalBox(!openModalBox);
+  // };
   
 	const [inputFields, setInputFields] = useState([]);
 	const allowDragEvent = (e) => {
@@ -29,7 +28,7 @@ export const Form = () => {
 	const switchInput = (inputType) => {
 		switch (inputType) {
 			case "Text Field":
-				return <TextField type={"text"} />;
+        return <TextField type={"text"} />;
 
 			case "Password":
 				return <TextField type={"password"} />;
@@ -65,8 +64,7 @@ export const Form = () => {
 					</a>
 				</div> */}
 			</form>
-            <button onClick={setModalBox}>Modal Box</button>
-          {openModalBox && <ModalBox />}
+          {/* {openModalBox && <ModalBox />} */}
 		</>
 	);
 };
