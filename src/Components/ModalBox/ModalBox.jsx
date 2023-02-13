@@ -14,15 +14,15 @@ const ModalBox = (props) => {
     });
   };
 
-  const settingConfigurationState = (configurationType, value) => {
-    props.setConfigurationState((prev) => {
-      return {
-        ...prev,
-        [configurationType]: value,
-      };
-    });
-  };
-
+  // const settingConfigurationState = (configurationType, value) => {
+  //   props.setConfigurationState((prev) => {
+  //     return {
+  //       ...prev,
+  //       [configurationType]: value,
+  //     };
+  //   });
+  // };
+  console.log(saveUpdate.defaultValue);
   return (
     <div class="formdiv">
       <div class="headers">
@@ -37,10 +37,10 @@ const ModalBox = (props) => {
       </div>
 
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          props.setConfigurationState();
-        }}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   props.setConfigurationState();
+      // }}
       >
         <div class="modal_content">
           <div class="checkbox">
@@ -50,7 +50,7 @@ const ModalBox = (props) => {
             <input
               readonly={saveUpdate.isReadOnly}
               onChange={(e) =>
-                settingConfigurationState("isReadOnly", e.target.checked)
+                settingSaveUpdateData("isReadOnly", e.target.checked)
               }
               class="input_type"
               type="checkbox"
@@ -64,7 +64,7 @@ const ModalBox = (props) => {
             <input
               required={saveUpdate.isRequired}
               onChange={(e) =>
-                settingConfigurationState("isRequired", e.target.checked)
+                settingSaveUpdateData("isRequired", e.target.checked)
               }
               class="input_type"
               type="checkbox"
@@ -76,11 +76,10 @@ const ModalBox = (props) => {
             <label class="label_text_field" for="label_name">
               Label Name:
             </label>
+
             <input
-              defaultValue={saveUpdate.defaultValue}
-              onChange={(e) =>
-                settingConfigurationState("label", e.target.value)
-              }
+              value={saveUpdate.label}
+              onChange={(e) => settingSaveUpdateData("label", e.target.value)}
               class="text_input"
               type="text"
               name="label_name"
@@ -89,9 +88,9 @@ const ModalBox = (props) => {
               Placeholder:
             </label>
             <input
-              placeholder={saveUpdate.placeholder}
+              value={saveUpdate.placeholder}
               onChange={(e) =>
-                settingConfigurationState("placeholder", e.target.value)
+                settingSaveUpdateData("placeholder", e.target.value)
               }
               class="text_input"
               type="text"
@@ -100,32 +99,22 @@ const ModalBox = (props) => {
           </div>
         </div>
         <div class="button">
-          {/* <span class="close">&times;</span> */}
           <div class="button_spacing">
             <button
               onClick={(e) => {
-                e.preventDefault();
-                props.setConfigurationState();
+                props.setConfigurationState(saveUpdate);
+                props.setModalBox();
               }}
-              type="submit"
+              type="button"
             >
-              {/* <button
-              onclick={(e) => {
-                e.preventDefault();
-                // setConfigurationState();
-              }}
-              type="submit"
-            > */}
               Save
             </button>
           </div>
           <div class="button_spacing">
             <button
-              onclick={(e) => {
-                e.preventDefault();
+              onClick={(e) => {
+                props.setModalBox();
               }}
-              // setConfigurationState();
-              // type="submit"
             >
               Cancel
             </button>

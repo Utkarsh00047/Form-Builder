@@ -62,8 +62,9 @@
 }
 
 .remove_btn {
-    background-color: rgb(45, 16, 80);
-    color: white;
+    background-color: rgb(187, 201, 241);
+    /* margin-right: 10px; */
+    
     border: none;
     width: 2.5rem;
     font-size: 1rem;
@@ -73,6 +74,7 @@
 }
 
 .remove_btn img {
+    color: black;
     width: 25px;
     height: 25px;
 }
@@ -83,13 +85,15 @@
     font-size: 25px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
+    align-items: center;
+    justify-content: center;
     display: flex;
     height: 80px;
     width: 100%;
 }
 
 .headers p{
-    margin-left: 60px;
+    /* margin-left: 60px; */
     align-items: center;
     justify-content: center;
 }
