@@ -41,13 +41,14 @@ export const Form = () => {
 		}
 	};
 	return (
-		<>
+		<div className="highlight">
 			<form
+			id="formPage"
 				className="Form_section"
 				onDragOver={(e) => allowDragEvent(e)}
 				onDrop={(e) => handleDrop(e)}
 			>
-				<h1>Form</h1>
+				<h1>Drag & Drop a form control </h1>
 
 				{inputFields.map((elem) => elem)}
 				{/* <label for="fname">Employee Name</label>
@@ -68,6 +69,6 @@ export const Form = () => {
 				</div> */}
 			</form>
           {/* {openModalBox && <ModalBox />} */}
-		</>
+		</div>
 	);
 };
