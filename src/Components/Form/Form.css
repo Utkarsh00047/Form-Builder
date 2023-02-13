@@ -9,7 +9,8 @@
 	overflow-y: scroll;
 }
 .container_highlight{
-	background-color: #b9b2b2;
+	border-style: solid;
+	border-color: #657685;
 }
 /* .halflabel{
     width: 80%;
