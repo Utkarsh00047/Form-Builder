@@ -48,7 +48,7 @@ export const Form = () => {
 				onDragOver={(e) => allowDragEvent(e)}
 				onDrop={(e) => handleDrop(e)}
 			>
-				<h1>Form</h1>
+				<h1>Drag & Drop a form control </h1>
 
 				{inputFields.map((elem) => elem)}
 				{/* <label for="fname">Employee Name</label>
