@@ -61,7 +61,11 @@ const [showTextField,setshowTextField]=useState(true);
 			
       </div>
       {openModalBox && (
-        <ModalBox setConfigurationState={setConfigurationState} />
+        <ModalBox
+          setModalBox={setModalBox}
+          configurationState={configurationState}
+          setConfigurationState={setConfigurationState}
+        />
       )}
 			{/* <div className="delicon"> */}
 		
