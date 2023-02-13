@@ -41,7 +41,7 @@ export const Form = () => {
 		}
 	};
 	return (
-		<>
+		<div className="highlight">
 			<form
 			id="formPage"
 				className="Form_section"
@@ -69,6 +69,6 @@ export const Form = () => {
 				</div> */}
 			</form>
           {/* {openModalBox && <ModalBox />} */}
-		</>
+		</div>
 	);
 };

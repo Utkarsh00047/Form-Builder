@@ -8,6 +8,9 @@
 	margin-top: 0.7rem;
 	overflow-y: scroll;
 }
+.container_highlight{
+	background-color: #767070;
+}
 /* .halflabel{
     width: 80%;
     display: inline-block;

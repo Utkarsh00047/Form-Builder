@@ -39,7 +39,15 @@ export const Sidebar = () => {
 
   const handleDrag = (e) => {
     e.dataTransfer.setData("text", e.target.textContent);
+    const highlight= document.getElementById('formPage');
+    highlight.classList.add("container_highlight");
   };
+
+  const handleDragEnd = () => {
+    const highlight= document.getElementById('formPage');
+    highlight.classList.remove("container_highlight");
+  }
+
 
   return (
     <>
@@ -52,7 +60,8 @@ export const Sidebar = () => {
             </div>
             <div className={selected === i ? "content show" : "content"}>
               <ul className="options">
-                <li draggable={true} onDragStart={(e) => handleDrag(e)}>
+                <li draggable={true} onDragStart={(e) => handleDrag(e)}
+                onDragEnd={() => handleDragEnd()}>
                   <img src={drag} alt="" />
                   {item.Field_Name1}
                 </li>
@@ -70,6 +79,7 @@ export const Sidebar = () => {
                 </li>
                 <li draggable={true} onDragStart={(e) => handleDrag(e)}>
                   <img src={drag} alt="" />
+                  
                   {item.Field_Name5}
                 </li>
                 <li draggable={true} onDragStart={(e) => handleDrag(e)}>
