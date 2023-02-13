@@ -69,49 +69,57 @@ export const Sidebar = () => {
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag}alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name2}
 								</li>
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag} alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name3}
 								</li>
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag}alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name4}
 								</li>
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag} alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name5}
 								</li>
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag} alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name6}
 								</li>
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag} alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name7}
 								</li>
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag} alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name8}
 								</li>
 								<li
 									draggable={true}
 									onDragStart={(e) => handleDrag(e)}
-								>	<img src={drag} alt=""/>
+								>
+									<img src={drag} alt="" />
 									{item.Field_Name9}
 								</li>
 								{/* <li

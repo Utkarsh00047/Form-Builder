@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ModalBox.css";
+import x from "../../assests/x.png";
 
-const ModalBox = ({ setConfigurationState }) => {
-  const settingConfigurationState = (configurationType, value) => {
-    setConfigurationState((prev) => {
+const ModalBox = (props) => {
+  const [saveUpdate, setSaveUpdate] = useState(props.configurationState);
+
+  const settingSaveUpdateData = (configurationType, value) => {
+    setSaveUpdate((prev) => {
       return {
         ...prev,
         [configurationType]: value,
@@ -11,16 +14,33 @@ const ModalBox = ({ setConfigurationState }) => {
     });
   };
 
+  // const settingConfigurationState = (configurationType, value) => {
+  //   props.setConfigurationState((prev) => {
+  //     return {
+  //       ...prev,
+  //       [configurationType]: value,
+  //     };
+  //   });
+  // };
+  console.log(saveUpdate.defaultValue);
   return (
     <div class="formdiv">
       <div class="headers">
         <p>Configurations </p>
+        <button
+          type="button"
+          className="remove_btn"
+          onClick={props.setModalBox}
+        >
+          <img alt="" src={x} />
+        </button>
       </div>
+
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setConfigurationState();
-        }}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   props.setConfigurationState();
+      // }}
       >
         <div class="modal_content">
           <div class="checkbox">
@@ -28,8 +48,9 @@ const ModalBox = ({ setConfigurationState }) => {
               ReadOnly
             </label>
             <input
+              readonly={saveUpdate.isReadOnly}
               onChange={(e) =>
-                settingConfigurationState("isReadOnly", e.target.checked)
+                settingSaveUpdateData("isReadOnly", e.target.checked)
               }
               class="input_type"
               type="checkbox"
@@ -41,8 +62,9 @@ const ModalBox = ({ setConfigurationState }) => {
               Required
             </label>
             <input
+              required={saveUpdate.isRequired}
               onChange={(e) =>
-                settingConfigurationState("isRequired", e.target.checked)
+                settingSaveUpdateData("isRequired", e.target.checked)
               }
               class="input_type"
               type="checkbox"
@@ -54,10 +76,10 @@ const ModalBox = ({ setConfigurationState }) => {
             <label class="label_text_field" for="label_name">
               Label Name:
             </label>
+
             <input
-              onChange={(e) =>
-                settingConfigurationState("label", e.target.value)
-              }
+              value={saveUpdate.label}
+              onChange={(e) => settingSaveUpdateData("label", e.target.value)}
               class="text_input"
               type="text"
               name="label_name"
@@ -66,8 +88,9 @@ const ModalBox = ({ setConfigurationState }) => {
               Placeholder:
             </label>
             <input
+              value={saveUpdate.placeholder}
               onChange={(e) =>
-                settingConfigurationState("placeholder", e.target.value)
+                settingSaveUpdateData("placeholder", e.target.value)
               }
               class="text_input"
               type="text"
@@ -76,17 +99,22 @@ const ModalBox = ({ setConfigurationState }) => {
           </div>
         </div>
         <div class="button">
-          {/* <span class="close">&times;</span> */}
           <div class="button_spacing">
-            <button type="submit">Save</button>
+            <button
+              onClick={(e) => {
+                props.setConfigurationState(saveUpdate);
+                props.setModalBox();
+              }}
+              type="button"
+            >
+              Save
+            </button>
           </div>
           <div class="button_spacing">
             <button
-              onclick={(e) => {
-                e.preventDefault();
-                setConfigurationState();
+              onClick={(e) => {
+                props.setModalBox();
               }}
-              type="submit"
             >
               Cancel
             </button>
