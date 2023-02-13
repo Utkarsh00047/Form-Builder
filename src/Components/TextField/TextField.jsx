@@ -40,7 +40,11 @@ const TextField = ({ type }) => {
         />
       </div>
       {openModalBox && (
-        <ModalBox setConfigurationState={setConfigurationState} />
+        <ModalBox
+          setModalBox={setModalBox}
+          configurationState={configurationState}
+          setConfigurationState={setConfigurationState}
+        />
       )}
     </>
   );

@@ -30,6 +30,9 @@ export const Form = () => {
 			case "Text Field":
         return <TextField type={"text"} />;
 
+			case "Text Area":
+				return<TextField type={"text"}/>;
+						
 			case "Password":
 				return <TextField type={"password"} />;
 
