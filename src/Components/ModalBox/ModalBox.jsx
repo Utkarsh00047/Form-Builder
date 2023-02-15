@@ -39,7 +39,39 @@ const ModalBox = (props) => {
       <form>
         <div class="modal_content">
           <div class="checkbox">
-            <label class="label_field" for="readOnly">
+            {props.type === "text" ? (
+              <>
+                <label class="label_field" for="readOnly">
+                  ReadOnly
+                </label>
+                <input
+                  readonly={saveUpdate.isReadOnly}
+                  onChange={(e) =>
+                    settingSaveUpdateData("isReadOnly", e.target.checked)
+                  }
+                  class="input_type"
+                  type="checkbox"
+                  id="readOnly"
+                  value="readOnly"
+                />
+                <label class="label_field" for="required">
+                  Required
+                </label>
+                <input
+                  required={saveUpdate.isRequired}
+                  onChange={(e) =>
+                    settingSaveUpdateData("isRequired", e.target.checked)
+                  }
+                  class="input_type"
+                  type="checkbox"
+                  id="required"
+                  value="required"
+                />{" "}
+              </>
+            ) : (
+              ""
+            )}
+            {/* <label class="label_field" for="readOnly">
               ReadOnly
             </label>
             <input
@@ -65,7 +97,7 @@ const ModalBox = (props) => {
               type="checkbox"
               id="required"
               value="required"
-            />
+            /> */}
           </div>
           <div class="textbox_content">
             <div class="label_name">
