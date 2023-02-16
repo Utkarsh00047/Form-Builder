@@ -2,7 +2,7 @@
 	/* float: left; */
 	/* padding: 1rem; */
 	width: 89%;
-	background-color: #4424d6;
+	background-color: #f1f1f1;
     padding-top: 1rem;
 	/* height: 310px;  */
     margin-left: 3.7rem;
@@ -23,11 +23,11 @@
     display: flex;
 }
 .DropElement{
+    width: 50%;
+}
+.DropElem2{
     width: 100%;
 }
-/* .DropElem2{
-    width: 50%;
-} */
 .delicon{
     display: flex;
     height: 16px;
