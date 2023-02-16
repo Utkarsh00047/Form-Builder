@@ -9,7 +9,7 @@
 	overflow-y: scroll;
 }
 .container_highlight{
-	border-style: solid;
+	border-style:dashed ;
 	border-color: #657685;
 }
 /* .halflabel{
@@ -21,7 +21,8 @@
 
 } */
 .heads {
-	margin-left: 5.5rem;
+	/* margin-left:auto; */
+	margin-left: 10%;
 	display: flex;
 	justify-content: left;
 }

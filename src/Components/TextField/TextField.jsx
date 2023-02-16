@@ -2,7 +2,6 @@ import React, { useState} from "react";
 import edit from "../../assests/edit.png";
 import "./TextField.css";
 import ModalBox from "../ModalBox/ModalBox";
-import "./TextField.css"
 import del from "../../assets/delete.png"
 
 const TextField = ({type}) => {
@@ -34,7 +33,7 @@ const [showTextField,setshowTextField]=useState(true);
 //   useEffect(()=>{
 // 	localStorage.setItem("showTextField",JSON.stringify (showTextField));
 //   },[showTextField]);
-	// 
+	
   return (
 	showTextField ?(
     <>
@@ -50,12 +49,12 @@ const [showTextField,setshowTextField]=useState(true);
         required={configurationState.isRequired}
         className="input_field"
       />
-      <div className="configuration_button">
+      <div className="configuration_buttons">
         <img
           alt=""
           onClick={setModalBox}
           src={edit}
-          className="configuration_button"
+          className="config_icon"
         />
 			<img src={del} alt="" className="delicon" id="del" onClick={handleDelete}/>
 			

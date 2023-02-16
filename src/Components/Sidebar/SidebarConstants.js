@@ -20,5 +20,6 @@ export const controls = {
 		"Day",
 		"Time",
 		"Survey",
+		"Layout"
 	],
 };
