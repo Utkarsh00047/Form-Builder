@@ -1,0 +1,2 @@
+export const INSERT_CONFIG = "INSERT_CONFIG";
+export const DELETE_CONFIG = "DELETE_CONFIG";

@@ -42,9 +42,10 @@ export const Sidebar = () => {
 							}
 						>
 							<ul className="options">
-								{controls[item].map((control) => {
+								{controls[item].map((control, index) => {
 									return (
 										<li
+											key={index}
 											draggable={true}
 											onDragStart={(e) => handleDrag(e)}
 											onDragEnd={() => handleDragEnd()}

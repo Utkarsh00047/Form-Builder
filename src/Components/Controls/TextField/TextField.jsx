@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import edit from "../../../assests/edit.png";
 import "./TextField.css";
 import ModalBox from "../../ModalBox/ModalBox";
 import "./TextField.css";
 import del from "../../../assets/delete.png";
 
-const TextField = ({ type }) => {
+const TextField = ({ type, insertConfig }) => {
 	const [showTextField, setshowTextField] = useState(true);
 	const [openModalBox, setOpenModalBox] = useState(false);
 	const setModalBox = () => {
@@ -24,6 +24,11 @@ const TextField = ({ type }) => {
 			setshowTextField(false);
 		}
 	};
+
+	useEffect(() => {
+		insertConfig(configurationState);
+	}, []);
+
 	//   useEffect(()=>{
 	// 	const storedShowTextField =localStorage.getItem("showTextField");
 	// 	if (storedShowTextField){
