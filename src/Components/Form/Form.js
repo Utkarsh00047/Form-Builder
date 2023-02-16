@@ -1,12 +1,8 @@
 import "./Form.css";
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import TextField from "../TextField/TextField";
 
 export const Form = () => {
-  //   const [openModalBox, setOpenModalBox] = useState(false);
-  //   const setModalBox = () => {
-  //   setOpenModalBox(!openModalBox);
-  // };
   
 	const [inputFields, setInputFields] = useState([]);
 	const allowDragEvent = (e) => {
@@ -17,12 +13,6 @@ export const Form = () => {
 		const inputType = e.dataTransfer.getData("text");
 		const inputTag = switchInput(inputType);
 		console.log(inputTag);
-		// const form = document.getElementsByClassName("Form_section")[0];
-		// const inputField = document.createElement("input");
-		// inputField.type = inputType === "text Field" && "text";
-		// form.appendChild(inputField);
-		// form.appendChild(<TextField />);
-		// ReactDOM.render(<TextField />, form);
 		setInputFields((prev) => [...prev, inputTag]);
 	};
 	const switchInput = (inputType) => {
@@ -39,7 +29,8 @@ export const Form = () => {
 			default:
 				break;
 		}
-	};
+	};  	
+
 	return (
 		<div className="highlight">
 			<form
@@ -51,24 +42,7 @@ export const Form = () => {
 				<h2>Drag & Drop a form control </h2>
 
 				{inputFields.map((elem) => elem)}
-				{/* <label for="fname">Employee Name</label>
-				<input type="text" id="fname" />
-
-				<label for="pname">Project Name</label>
-				<input type="text" id="pname" />
-
-				<label for="Ecode">Employee Code</label>
-				<input type="text" id="Ecode" />
-
-				<label for="Rmanager">Reporting Manager</label>
-				<input type="text" id="Rmanager" />
-				<div className="form_padding">
-					<a href="#" className="button_submit">
-						Submit
-					</a>
-				</div> */}
 			</form>
-          {/* {openModalBox && <ModalBox />} */}
 		</div>
 	);
 };
