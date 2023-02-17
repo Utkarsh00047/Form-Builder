@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from "react";
-import edit from "../../assests/edit.png";
+import React, { useEffect, useState } from "react";
+import edit from "../../../assests/edit.png";
 import "./TextField.css";
-import ModalBox from "../ModalBox/ModalBox";
+import ModalBox from "../../ModalBox/ModalBox";
 import "./TextField.css";
-import del from "../../assets/delete.png";
+import del from "../../../assets/delete.png";
+import { v4 as uuidv4 } from "uuid";
 
-// function getFormValues() {
-//     const storedValues = localStorage.getItem("formdata");
-//     if (storedValues) return;
-//     JSON.stringify(storedValues);
-// }
-
-const TextField = ({ type }) => {
+const TextField = ({ type, insertConfig, updateConfig }) => {
     const [showTextField, setshowTextField] = useState(true);
     const [openModalBox, setOpenModalBox] = useState(false);
     const setModalBox = () => {
         setOpenModalBox(!openModalBox);
     };
     const [configurationState, setConfigurationState] = useState({
+        id: uuidv4(),
         label: `Enter ${type}`,
         type: type,
         placeholder: "",
@@ -30,41 +26,26 @@ const TextField = ({ type }) => {
             setshowTextField(false);
         }
     };
-    const handleChange = (event) => {
-        let value = event.target.value;
-        let formdata = event.target.formdata;
-
-        setConfigurationState((prevalue) => {
-            return {
-                ...prevalue,
-                [formdata]: value,
-            };
-        });
-    };
-    // useEffect(() => {
-    //     const storedShowTextField = localStorage.getItem("showTextField");
-    //     if (storedShowTextField) {
-    //         setshowTextField(JSON.parse(storedShowTextField));
-    //     }
-    // }, []);
 
     useEffect(() => {
-        const storedValues = localStorage.getItem("formdata");
-        if (storedValues !== null)
-            setConfigurationState(JSON.parse(storedValues));
+        insertConfig(configurationState);
     }, []);
 
-    // const showValues = () => {
-    //     const storedValues = localStorage.getItem("formdata");
-    //     if (storedValues) {
-    //         JSON.parse(storedValues);
-    //     }
-    // };
-
     useEffect(() => {
-        localStorage.setItem("formdata", JSON.stringify(configurationState));
+        updateConfig(configurationState);
     }, [configurationState]);
 
+    //   useEffect(()=>{
+    // 	const storedShowTextField =localStorage.getItem("showTextField");
+    // 	if (storedShowTextField){
+    // 		setshowTextField(JSON.parse(storedShowTextField));
+    // 	}
+    //   },[]);
+
+    //   useEffect(()=>{
+    // 	localStorage.setItem("showTextField",JSON.stringify (showTextField));
+    //   },[showTextField]);
+    //
     return showTextField ? (
         <>
             <label htmlFor="textField" className="heads">
@@ -77,7 +58,6 @@ const TextField = ({ type }) => {
                 placeholder={configurationState.placeholder}
                 readonly={configurationState.isReadOnly}
                 required={configurationState.isRequired}
-                onChange={handleChange}
                 className="input_field"
             />
             <div className="configuration_button">

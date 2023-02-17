@@ -6,7 +6,7 @@ export const controls = {
 		"Number",
 		"Password",
 		"Checkbox",
-		"Select Box",
+		"Dropdown",
 		"Radio",
 		"Button",
 	],

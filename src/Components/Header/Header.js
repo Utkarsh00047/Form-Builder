@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
-import Preveiw from '../Preveiw/Preveiw';
+//import Preview from '../Preveiw/Preview';
+import PreviewContainer from '../Preview/PreviewContainer';
 import './Header.css';
 
 export const Header = () => {
 
-  const [openPreveiw, setOpenPreveiw] = useState(false);
-  const setPreveiw = () => {
-    setOpenPreveiw(!openPreveiw);
+  const [openPreview, setOpenPreview] = useState(false);
+  const setPreview = () => {
+    setOpenPreview(!openPreview);
   };
 
   return (
@@ -23,12 +24,12 @@ export const Header = () => {
       </div>
       <div className='head3'>
           <header>
-        <h2 onClick={setPreveiw}>Preveiw</h2>
+        <h2 onClick={setPreview}>Preview</h2>
       </header>
       </div>
-      {openPreveiw && (
-        <Preveiw
-        setPreveiw={setPreveiw}
+      {openPreview && (
+        <PreviewContainer
+        setPreview={setPreview}
       />)}
   </div>
   )

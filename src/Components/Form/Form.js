@@ -1,30 +1,52 @@
 import "./Form.css";
-import React, { useState ,useEffect } from "react";
-import TextField from "../TextField/TextField";
+import React, { useState } from "react";
+// import TextField from "../Controls/TextField/TextField";
+import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
+import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
+import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
 
 export const Form = () => {
-  
 	const [inputFields, setInputFields] = useState([]);
 	const allowDragEvent = (e) => {
 		e.preventDefault();
 	};
 	const handleDrop = (e) => {
 		e.preventDefault();
-		const inputType = e.dataTransfer.getData("text");
-		const inputTag = switchInput(inputType);
-		console.log(inputTag);
-		setInputFields((prev) => [...prev, inputTag]);
+		// const inputType = e.dataTransfer.getData("text");
+		// const inputTag = switchInput(inputType);
+		setInputFields((prev) => [
+			...prev,
+			switchInput(e.dataTransfer.getData("text")),
+		]);
 	};
 	const switchInput = (inputType) => {
 		switch (inputType) {
 			case "Text Field":
-        return <TextField type={"text"} />;
+				return <TextFieldContainer type={"text"} />;
 
 			case "Text Area":
-				return<TextField type={"text"}/>;
-						
+				return <TextAreaComponent />;
+
+			case "Number":
+				return <TextFieldContainer type={"number"} />;
+
 			case "Password":
-				return <TextField type={"password"} />;
+				return <TextFieldContainer type={"password"} />;
+
+			case "Button":
+				return <ButtonComponent />;
+
+			case "Email":
+				return <TextFieldContainer type={"email"} />;
+
+			case "URL":
+				return <TextFieldContainer type={"url"} />;
+
+			case "Phone Number":
+				return <TextFieldContainer type={"tel"} />;
+
+			case "Date/Time":
+				return <TextFieldContainer type={"datetime-local"} />;
 
 			default:
 				break;
@@ -34,7 +56,7 @@ export const Form = () => {
 	return (
 		<div className="highlight">
 			<form
-			id="formPage"
+				id="formPage"
 				className="Form_section"
 				onDragOver={(e) => allowDragEvent(e)}
 				onDrop={(e) => handleDrop(e)}
