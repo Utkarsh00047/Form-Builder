@@ -12,18 +12,26 @@ export const Sidebar = () => {
 
   const handleDrag = (e) => {
     e.dataTransfer.setData("text", e.target.textContent);
+
     const highlight = document.getElementById("formPage");
     highlight.classList.add("container_highlight");
-	const gridhighlight =document.getElementById("GridSection");
-	gridhighlight.classList.add("Droppable_highlight");
-
+	
+	// const gridhighlight =document.getElementById("GridSection");
+	const gridhighlight = document.getElementsByClassName("DroppableSection");
+	for (var i = 0, len = gridhighlight.length ; i < len; i++) {
+		gridhighlight[i].classList.add("Droppable_highlight");
+	}
   };
 
   const handleDragEnd = () => {
     const highlight = document.getElementById("formPage");
     highlight.classList.remove("container_highlight");
-	const gridhighlight =document.getElementById("GridSection");
-	gridhighlight.classList.remove("Droppable_highlight");
+
+	const gridhighlight =document.getElementsByClassName("DroppableSection");
+	for (var i = 0, len = gridhighlight.length ; i < len; i++) {
+		gridhighlight[i].classList.remove("Droppable_highlight");
+	}
+	
   };
 
   return (

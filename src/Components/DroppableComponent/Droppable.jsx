@@ -60,7 +60,7 @@ export const Droppable = (props) => {
     showTextField ?(
     <div className="Drop">
     <div
-    id="GridSection"
+      id="GridSection"
       className="DroppableSection"
       onDragOver={(e) => allowDragEvent(e)}
       onDrop={(e) => handleDrop(e)}
