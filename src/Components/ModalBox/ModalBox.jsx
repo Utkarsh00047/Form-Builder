@@ -1,9 +1,54 @@
 import React, { useState } from "react";
 import "./ModalBox.css";
 import x from "../../assests/x.png";
+import { setModalBox } from "../Controls/commonControlFunctions";
 
 const ModalBox = (props) => {
   const [saveUpdate, setSaveUpdate] = useState(props.configurationState);
+  const inputArr = [
+    {
+      type: "text",
+      id: 1,
+      value: "",
+    },
+  ];
+  console.log(saveUpdate);
+  const [arr, setArr] = useState(inputArr);
+
+  const addInput = (e) => {
+    setArr((s) => {
+      e.preventDefault();
+      return [
+        ...s,
+        {
+          type: "",
+          id: e.target.id,
+          value: "",
+        },
+      ];
+    });
+  };
+
+  // const handleChange = (e) => {
+  //   // e.preventDefault();
+  //   const index = e.target.id;
+  //   console.log(index);
+  //   setArr((newArray) => {
+  //     newArray[index].value += e.target.value;
+  //     console.log(newArray);
+  //     return newArray;
+  //   });
+  // };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const index = e.target.id;
+    setArr((s) => {
+      const newArr = s.slice();
+      newArr[index].value = e.target.value;
+      return newArr;
+    });
+  };
 
   const settingSaveUpdateData = (configurationType, value) => {
     setSaveUpdate((prev) => {
@@ -14,14 +59,6 @@ const ModalBox = (props) => {
     });
   };
 
-  // const settingConfigurationState = (configurationType, value) => {
-  //   props.setConfigurationState((prev) => {
-  //     return {
-  //       ...prev,
-  //       [configurationType]: value,
-  //     };
-  //   });
-  // };
   console.log(saveUpdate.defaultValue);
   return (
     <div class="formdiv">
@@ -30,7 +67,7 @@ const ModalBox = (props) => {
         <button
           type="button"
           className="remove_btn"
-          onClick={props.setModalBox}
+          onClick={() => setModalBox(props.setOpenModalBox)}
         >
           <img alt="" src={x} />
         </button>
@@ -98,6 +135,39 @@ const ModalBox = (props) => {
               id="required"
               value="required"
             /> */}
+            <div>
+              {arr.map((item, i) => {
+                console.log(item.value);
+                console.log(item);
+                return (
+                  <>
+                    <input
+                      onChange={(e) => {
+                        handleChange(e);
+                        settingSaveUpdateData("listOfDropdown", arr);
+                      }}
+                      value={item.value}
+                      id={i}
+                      type={item.type}
+                      size="40"
+                    />
+                    {/* <input
+                      // onChange={(e) => handleChange(e)}
+                      onChange={(e) => handleChange(e)}
+                      // onChange={(e) => {
+                      //   handleChange(e);
+                      //   settingSaveUpdateData("listOfDropdown", e.target.value);
+                      // }}
+                      value={item.value}
+                      id={i}
+                      type={item.type}
+                      size="40"
+                    /> */}
+                    <button onClick={(e) => addInput(e)}>+</button>
+                  </>
+                );
+              })}
+            </div>
           </div>
           <div class="textbox_content">
             <div class="label_name">
@@ -111,6 +181,13 @@ const ModalBox = (props) => {
                 class="text_input"
                 type="text"
                 name="label_name"
+              />
+              <input
+                value={saveUpdate.rows}
+                onChange={(e) => settingSaveUpdateData("rows", e.target.value)}
+                class="row_text_input"
+                type="number"
+                name="row_text_input"
               />
             </div>
             <div class="placeholder_name">
@@ -135,7 +212,7 @@ const ModalBox = (props) => {
               <button
                 onClick={(e) => {
                   props.setConfigurationState(saveUpdate);
-                  props.setModalBox();
+                  setModalBox(props.setOpenModalBox);
                 }}
                 type="button"
               >
@@ -145,7 +222,7 @@ const ModalBox = (props) => {
             <div class="button_spacing">
               <button
                 onClick={(e) => {
-                  props.setModalBox();
+                  setModalBox(props.setOpenModalBox);
                 }}
               >
                 Cancel

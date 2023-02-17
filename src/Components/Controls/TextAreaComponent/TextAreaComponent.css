@@ -1,0 +1,21 @@
+.help_text{
+    display: inline-flex;
+    height: 15px;
+    width: 15px;
+    /* margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 8px; */
+}
+
+.textArea{
+    display: flex;
+}
+
+.label_textArea{
+   display: inline;
+    margin-left: 0%;
+}
+
+.textArea_heading{
+    display: inline;
+}

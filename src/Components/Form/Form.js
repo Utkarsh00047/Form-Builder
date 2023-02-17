@@ -1,40 +1,54 @@
 import "./Form.css";
 import React, { useState } from "react";
-import TextField from "../TextField/TextField";
+import TextField from "../Controls/TextField/TextField";
+import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
+import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
+import DropdownComponent from "../Controls/DropdownComponent/DropdownComponent";
 
 export const Form = () => {
-  //   const [openModalBox, setOpenModalBox] = useState(false);
-  //   const setModalBox = () => {
-  //   setOpenModalBox(!openModalBox);
-  // };
-  
 	const [inputFields, setInputFields] = useState([]);
 	const allowDragEvent = (e) => {
 		e.preventDefault();
 	};
 	const handleDrop = (e) => {
 		e.preventDefault();
-		const inputType = e.dataTransfer.getData("text");
-		const inputTag = switchInput(inputType);
-		console.log(inputTag);
-		// const form = document.getElementsByClassName("Form_section")[0];
-		// const inputField = document.createElement("input");
-		// inputField.type = inputType === "text Field" && "text";
-		// form.appendChild(inputField);
-		// form.appendChild(<TextField />);
-		// ReactDOM.render(<TextField />, form);
-		setInputFields((prev) => [...prev, inputTag]);
+		// const inputType = e.dataTransfer.getData("text");
+		// const inputTag = switchInput(inputType);
+		setInputFields((prev) => [
+			...prev,
+			switchInput(e.dataTransfer.getData("text")),
+		]);
 	};
 	const switchInput = (inputType) => {
 		switch (inputType) {
 			case "Text Field":
-        return <TextField type={"text"} />;
+				return <TextField type={"text"} />;
 
 			case "Text Area":
-				return<TextField type={"text"}/>;
-						
+				return <TextAreaComponent />;
+
+			case "Number":
+				return <TextField type={"number"} />;
+
 			case "Password":
 				return <TextField type={"password"} />;
+
+			case "Button":
+				return <ButtonComponent />;
+
+			case "Email":
+				return <TextField type={"email"} />;
+
+			case "URL":
+				return <TextField type={"url"} />;
+
+			case "Phone Number":
+				return <TextField type={"tel"} />;
+
+			case "Date/Time":
+				return <TextField type={"datetime-local"} />;
+			case "Dropdown":
+				return <DropdownComponent type={"dropdown"} />
 
 			default:
 				break;
@@ -43,7 +57,7 @@ export const Form = () => {
 	return (
 		<div className="highlight">
 			<form
-			id="formPage"
+				id="formPage"
 				className="Form_section"
 				onDragOver={(e) => allowDragEvent(e)}
 				onDrop={(e) => handleDrop(e)}
@@ -51,24 +65,7 @@ export const Form = () => {
 				<h2>Drag & Drop a form control </h2>
 
 				{inputFields.map((elem) => elem)}
-				{/* <label for="fname">Employee Name</label>
-				<input type="text" id="fname" />
-
-				<label for="pname">Project Name</label>
-				<input type="text" id="pname" />
-
-				<label for="Ecode">Employee Code</label>
-				<input type="text" id="Ecode" />
-
-				<label for="Rmanager">Reporting Manager</label>
-				<input type="text" id="Rmanager" />
-				<div className="form_padding">
-					<a href="#" className="button_submit">
-						Submit
-					</a>
-				</div> */}
 			</form>
-          {/* {openModalBox && <ModalBox />} */}
 		</div>
 	);
 };

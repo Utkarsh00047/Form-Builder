@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import edit from "../../assests/edit.png";
+import edit from "../../../assests/edit.png";
 import "./TextField.css";
-import ModalBox from "../ModalBox/ModalBox";
-import del from "../../assets/delete.png";
+import ModalBox from "../../ModalBox/ModalBox";
+import "./TextField.css";
+import del from "../../../assets/delete.png";
+import { setModalBox } from "../commonControlFunctions";
+import { handleDelete } from "../commonControlFunctions";
 
 const TextField = ({ type }) => {
   const [showTextField, setshowTextField] = useState(true);
   const [openModalBox, setOpenModalBox] = useState(false);
-  const setModalBox = () => {
-    setOpenModalBox(!openModalBox);
-  };
+  //   const setModalBox = () => {
+  //   	setOpenModalBox(!openModalBox);
+  //   };
   const [configurationState, setConfigurationState] = useState({
     label: `Enter ${type}`,
     type: type,
@@ -18,11 +21,11 @@ const TextField = ({ type }) => {
     isReadOnly: false,
     defaultValue: "",
   });
-  const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this Field?")) {
-      setshowTextField(false);
-    }
-  };
+  //   const handleDelete = () => {
+  //     if (window.confirm("Are you sure you want to delete this Field?")) {
+  //       setshowTextField(false);
+  //     }
+  //   };
   //   useEffect(()=>{
   // 	const storedShowTextField =localStorage.getItem("showTextField");
   // 	if (storedShowTextField){
@@ -51,7 +54,7 @@ const TextField = ({ type }) => {
       <div className="configuration_button">
         <img
           alt=""
-          onClick={setModalBox}
+          onClick={() => setModalBox(setOpenModalBox)}
           src={edit}
           className="configuration_button"
         />
@@ -60,13 +63,12 @@ const TextField = ({ type }) => {
           alt=""
           className="delicon"
           id="del"
-          onClick={handleDelete}
+          onClick={() => handleDelete(setshowTextField)}
         />
       </div>
       {openModalBox && (
         <ModalBox
-          type={type}
-          setModalBox={setModalBox}
+          setOpenModalBox={setOpenModalBox}
           configurationState={configurationState}
           setConfigurationState={setConfigurationState}
         />
