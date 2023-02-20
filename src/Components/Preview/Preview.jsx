@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
 import "./Preview.css";
@@ -6,17 +7,54 @@ import "./Preview.css";
 const Preveiw = (props) => {
     const store = useStore();
 
-    // store.subscribe(() => {
-    //     console.log(store.getState());
-    // });
     console.log(store.getState());
 
     const config = store.getState();
-    console.log(config.configList[0].type);
+    //console.log(config.configList[0].type);
 
-    //    const configReducer = useSelector((state) => state.configReducer);
+    const switchPreview = () => {
+        console.log("fdgdfg");
+        config.configList.map((prev, i) => {
+            console.log(config.configList[i]);
+            switch (config.configList[i].type) {
+                case "text":
+                    return (
+                        <>
+                            <label>{config.configList[i].label}</label>
+                            <input
+                                placeholder={config.configList[i].placeholder}
+                            />
+                        </>
+                    );
+                default:
+                    break;
+            }
+        });
+    };
+    //for (var i; i <= config.configList.length; i++)
+    //     {
+    //         console.log(config.configList[i].type);
+    //         switch (config.configList[i].type) {
+    //             case "text":
+    //                 return (
+    //                     <>
+    //                         <label>{config.configList[i].label}</label>
+    //                         <input
+    //                             placeholder={config.configList[i].placeholder}
+    //                         />
+    //                     </>
+    //                 );
+    //             default:
+    //                 break;
+    //         }
+    //     }
+    // };
 
-    //     console.log(configReducer);
+    useEffect(() => {
+        switchPreview();
+    }, [config]);
+
+    console.log(switchPreview());
 
     return (
         <div className="preveiwbox">
@@ -31,7 +69,29 @@ const Preveiw = (props) => {
                 </button>
             </div>
 
-            <form></form>
+            <form>
+                {config.configList.map((prev, i) => {
+                    console.log(config.configList[i]);
+                    switch (config.configList[i].type) {
+                        case "text":
+                            return (
+                                <>
+                                    <label>{config.configList[i].label}</label>
+                                    <input
+                                        placeholder={
+                                            config.configList[i].placeholder
+                                        }
+                                        readOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                    />
+                                </>
+                            );
+                        default:
+                            break;
+                    }
+                })}
+            </form>
         </div>
     );
 };

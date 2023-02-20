@@ -25,7 +25,7 @@ export const Form = () => {
 				return <TextFieldContainer type={"text"} />;
 
 			case "Text Area":
-				return <TextAreaComponent />;
+				return <TextAreaComponent type={"textarea"} />;
 
 			case "Number":
 				return <TextFieldContainer type={"number"} />;
