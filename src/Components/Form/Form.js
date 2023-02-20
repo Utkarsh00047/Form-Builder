@@ -20,6 +20,7 @@ export const Form = () => {
   }setIsToggle(false);
 };
 
+
   const switchInput = (inputType) => {
     switch (inputType) {
       case "Text Field":

@@ -5,7 +5,7 @@ import ModalBox from "../ModalBox/ModalBox";
 import del from "../../assets/delete.png"
 
 const TextField = ({type}) => {
-const [showTextField,setshowTextField]=useState(true);
+// const [showTextField,setshowTextField]=useState(true);
   const [openModalBox, setOpenModalBox] = useState(false);
   const setModalBox = () => {
     setOpenModalBox(!openModalBox);
@@ -20,22 +20,16 @@ const [showTextField,setshowTextField]=useState(true);
   });
   const handleDelete=()=>{
 	if (window.confirm('Are you sure you want to delete this Field?')){
-	setshowTextField(false);
+    for(var i=0;i<configurationState.length;i++){
+      configurationState.slice(i);
+    }
+    console.log(configurationState.length());
+	// setshowTextField(false);
 	}
   }
-//   useEffect(()=>{
-// 	const storedShowTextField =localStorage.getItem("showTextField");
-// 	if (storedShowTextField){
-// 		setshowTextField(JSON.parse(storedShowTextField));
-// 	}
-//   },[]);
-
-//   useEffect(()=>{
-// 	localStorage.setItem("showTextField",JSON.stringify (showTextField));
-//   },[showTextField]);
 	
   return (
-	showTextField ?(
+	// showTextField ?(
     <>
       <label htmlFor="textField" className="heads">
         {configurationState.label}
@@ -69,7 +63,8 @@ const [showTextField,setshowTextField]=useState(true);
 			{/* <div className="delicon"> */}
 		
 			{/* </div> */}
-    </>):null
+    </>
+    // ):null
   );
 };
 
