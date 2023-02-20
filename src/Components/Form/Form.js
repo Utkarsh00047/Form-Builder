@@ -1,7 +1,10 @@
 import "./Form.css";
 import React, { useState } from "react";
-import TextField from "../TextField/TextField";
+// import TextField from "../Controls/TextField/TextField";
 import { Droppable } from "../DroppableComponent/Droppable";
+import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
+import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
+import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
 
 export const Form = () => {
   const [inputFields, setInputFields] = useState([]);
@@ -24,13 +27,31 @@ export const Form = () => {
   const switchInput = (inputType) => {
     switch (inputType) {
       case "Text Field":
-        return <TextField type={"text"} />;
+        return <TextFieldContainer type={"text"} />;
 
-      case "Text Area":
-        return <TextField type={"text"} />;
+			case "Text Area":
+				return <TextAreaComponent />;
 
-      case "Password":
-        return <TextField type={"password"} />;
+			case "Number":
+				return <TextFieldContainer type={"number"} />;
+
+			case "Password":
+				return <TextFieldContainer type={"password"} />;
+
+			case "Button":
+				return <ButtonComponent />;
+
+			case "Email":
+				return <TextFieldContainer type={"email"} />;
+
+			case "URL":
+				return <TextFieldContainer type={"url"} />;
+
+			case "Phone Number":
+				return <TextFieldContainer type={"tel"} />;
+
+			case "Date/Time":
+				return <TextFieldContainer type={"datetime-local"} />;
 
 		case "Layout":
 			return <Droppable
@@ -60,25 +81,8 @@ export const Form = () => {
       >
         <h2>Drag & Drop a form control </h2>
 
-        {inputFields.map((elem) => elem)}
-        {/* <label for="fname">Employee Name</label>
-				<input type="text" id="fname" />
-
-				<label for="pname">Project Name</label>
-				<input type="text" id="pname" />
-
-				<label for="Ecode">Employee Code</label>
-				<input type="text" id="Ecode" />
-
-				<label for="Rmanager">Reporting Manager</label>
-				<input type="text" id="Rmanager" />
-				<div className="form_padding">
-					<a href="#" className="button_submit">
-						Submit
-					</a>
-				</div> */}
-      </form>
-      {/* {openModalBox && <ModalBox />} */}
-    </div>
-  );
+				{inputFields.map((elem) => elem)}
+			</form>
+		</div>
+	);
 };

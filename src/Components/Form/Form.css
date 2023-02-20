@@ -9,7 +9,7 @@
 	overflow-y: scroll;
 }
 .container_highlight{
-	border-style:dashed ;
+	border-style: dotted;
 	border-color: #657685;
 }
 /* .halflabel{

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import TextField from "../TextField/TextField";
+// import TextField from "../Controls/TextField/TextField";
 import "./Droppable.css";
 import del from "../../assets/delete.png"
+import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
+import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
+import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
 
 export const Droppable = (props) => {
   const [inputFields, setInputFields] = useState([]);
@@ -37,13 +40,31 @@ export const Droppable = (props) => {
   const SwitchInput = (inputType) => {
     switch (inputType) {
       case "Text Field":
-        return <TextField type={"text"} />;
+        return <TextFieldContainer type={"text"} />;
 
-      case "Text Area":
-        return <TextField type={"text"} />;
+			case "Text Area":
+				return <TextAreaComponent />;
 
-      case "Password":
-        return <TextField type={"password"} />;
+			case "Number":
+				return <TextFieldContainer type={"number"} />;
+
+			case "Password":
+				return <TextFieldContainer type={"password"} />;
+
+			case "Button":
+				return <ButtonComponent />;
+
+			case "Email":
+				return <TextFieldContainer type={"email"} />;
+
+			case "URL":
+				return <TextFieldContainer type={"url"} />;
+
+			case "Phone Number":
+				return <TextFieldContainer type={"tel"} />;
+
+			case "Date/Time":
+				return <TextFieldContainer type={"datetime-local"} />;
        
         // case "Layout":
         //     return(

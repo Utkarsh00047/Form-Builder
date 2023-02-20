@@ -34,35 +34,45 @@ export const Sidebar = () => {
 	
   };
 
-  return (
-    <>
-      <nav>
-        {controlTypes.map((item, i) => (
-          <>
-            <div className="title" key={i} onClick={() => toggle(i)}>
-              <div className="headings">{item}</div>
-              <span className="icons">{selected === i ? "-" : "+"}</span>
-            </div>
-            <div className={selected === i ? "content show" : "content"}>
-              <ul className="options">
-                {controls[item].map((control, j) => {
-                  return (
-                    <li
-                      key={j}
-                      draggable={true}
-                      onDragStart={(e) => handleDrag(e)}
-                      onDragEnd={() => handleDragEnd()}
-                    >
-                      <img src={drag} alt="" />
-                      {control}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </>
-        ))}
-      </nav>
-    </>
-  );
+	return (
+		<>
+			<nav>
+				{controlTypes.map((item, i) => (
+					<>
+						<div
+							className="title"
+							key={i}
+							onClick={() => toggle(i)}
+						>
+							<div className="headings">{item}</div>
+							<span className="icons">
+								{selected === i ? "-" : "+"}
+							</span>
+						</div>
+						<div
+							className={
+								selected === i ? "content show" : "content"
+							}
+						>
+							<ul className="options">
+								{controls[item].map((control, index) => {
+									return (
+										<li
+											key={index}
+											draggable={true}
+											onDragStart={(e) => handleDrag(e)}
+											onDragEnd={() => handleDragEnd()}
+										>
+											<img src={drag} alt="" />
+											{control}
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+					</>
+				))}
+			</nav>
+		</>
+	);
 };

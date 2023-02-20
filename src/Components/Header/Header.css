@@ -12,7 +12,13 @@ header {
   width: 277px;
 }
 .head2{
-  width: 1040px;
+  width: 965px;
+}
+.head3{
+  cursor: pointer;
+}
+.head3:hover{
+  color: #aba5a5;
 }
  .tophead{
 
