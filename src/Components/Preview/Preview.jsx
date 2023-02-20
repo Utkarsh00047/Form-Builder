@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
 import "./Preview.css";
+import { useState } from "react";
 
 const Preveiw = (props) => {
     const store = useStore();
@@ -22,6 +23,15 @@ const Preveiw = (props) => {
                         <>
                             <label>{config.configList[i].label}</label>
                             <input
+                                placeholder={config.configList[i].placeholder}
+                            />
+                        </>
+                    );
+                case "textarea":
+                    return (
+                        <>
+                            <label>{config.configList[i].label}</label>
+                            <textarea
                                 placeholder={config.configList[i].placeholder}
                             />
                         </>
@@ -50,11 +60,9 @@ const Preveiw = (props) => {
     //     }
     // };
 
-    useEffect(() => {
-        switchPreview();
-    }, [config]);
-
-    console.log(switchPreview());
+    // useEffect(() => {
+    //     switchPreview();
+    // }, [config]);
 
     return (
         <div className="preveiwbox">
@@ -83,6 +91,17 @@ const Preveiw = (props) => {
                                         }
                                         readOnly={
                                             config.configList[i].isReadOnly
+                                        }
+                                    />
+                                </>
+                            );
+                        case "textarea":
+                            return (
+                                <>
+                                    <label>{config.configList[i].label}</label>
+                                    <textarea
+                                        placeholder={
+                                            config.configList[i].placeholder
                                         }
                                     />
                                 </>

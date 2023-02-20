@@ -4,52 +4,29 @@ import { handleDelete } from "../commonControlFunctions";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
-import question from "../../../assests/question.png";
-import "./TextAreaComponent.css";
 
-const TextAreaComponent = ({ type }) => {
+const DropdownComponent = ({ type }) => {
   const [showTextField, setshowTextField] = useState(true);
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
-    helptext: "",
-    label: `Enter text`,
+    label: `Select :`,
     type: type,
-    placeholder: "",
-    isRequired: false,
-    isReadOnly: false,
-    defaultValue: "",
-    rows: 3,
+    listOfDropdown: [],
+    defaultValue: "---Select---",
   });
 
+  console.log(configurationState.type.type);
+  console.log(configurationState.listOfDropdown);
   console.log(configurationState.type);
   return showTextField ? (
-    <>
-      <div className="textArea_heading">
-        <label htmlFor="textArea" className="label_textArea">
-          {configurationState.label}
-        </label>
-        {configurationState.helptext && (
-          <div className="tooltip">
-            <img
-              onMouseEnter={configurationState.helptext}
-              src={question}
-              alt=""
-              className="help_text"
-              id="helpText"
-              // onClick={() => handleDelete(setshowTextField)}
-            />
-            <span className="tooltiptext">{configurationState.helptext}</span>
-          </div>
-        )}
-        <textarea
-          className="textArea"
-          id="textArea"
-          name="textArea"
-          rows={configurationState.rows}
-          cols={50}
-        />
-      </div>
-
+    <form action="">
+      <label>{configurationState.label}</label>
+      <select>
+        {configurationState.listOfDropdown.map((opt) => {
+          console.log(opt);
+          return <option value="">{opt.value}</option>;
+        })}
+      </select>
       <div className="configuration_button">
         <img
           alt=""
@@ -70,10 +47,11 @@ const TextAreaComponent = ({ type }) => {
           setOpenModalBox={setOpenModalBox}
           configurationState={configurationState}
           setConfigurationState={setConfigurationState}
+          type={type}
         />
       )}
-    </>
+    </form>
   ) : null;
 };
 
-export default TextAreaComponent;
+export default DropdownComponent;

@@ -1,9 +1,13 @@
 import "./Form.css";
 import React, { useState } from "react";
-// import TextField from "../Controls/TextField/TextField";
-import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
-import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
+import ButtonComponent from "../Controls/ButtonComponent/ButtonComponent";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
+import DropdownComponent from "../Controls/DropdownComponent/DropdownComponent";
+import RadioButton from "../Controls/RadioButton/RadioButton";
+import SectionHeader from "../Controls/SectionHeader/SectionHeader";
+import CheckBoxComponent from "../Controls/CheckBoxComponent/CheckBoxComponent";
+import AttachmentComponent from "../Controls/AttachmentComponent/AttachmentComponent";
+import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
 
 export const Form = () => {
 	const [inputFields, setInputFields] = useState([]);
@@ -25,7 +29,7 @@ export const Form = () => {
 				return <TextFieldContainer type={"text"} />;
 
 			case "Text Area":
-				return <TextAreaComponent type={"textarea"} />;
+				return <TextAreaContainer type={"textarea"} />;
 
 			case "Number":
 				return <TextFieldContainer type={"number"} />;
@@ -34,7 +38,7 @@ export const Form = () => {
 				return <TextFieldContainer type={"password"} />;
 
 			case "Button":
-				return <ButtonComponent />;
+				return <ButtonComponent type={"button"} />;
 
 			case "Email":
 				return <TextFieldContainer type={"email"} />;
@@ -44,9 +48,18 @@ export const Form = () => {
 
 			case "Phone Number":
 				return <TextFieldContainer type={"tel"} />;
-
 			case "Date/Time":
 				return <TextFieldContainer type={"datetime-local"} />;
+			case "Dropdown":
+				return <DropdownComponent type={"dropdown"} />;
+			case "Radio" :
+				return <RadioButton type={"radio"} />;
+			case "Section Header":
+				return <SectionHeader type={"sectionHeaderText"} />
+			case "Checkbox":
+				return <CheckBoxComponent type={"checkbox"} />
+			case "Attachment":
+				return <AttachmentComponent type={"file"} />
 
 			default:
 				break;
