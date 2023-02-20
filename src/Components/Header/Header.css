@@ -14,6 +14,12 @@ header {
 .head2{
   width: 1040px;
 }
+.head3{
+  cursor: pointer;
+}
+.head3:hover{
+  color: #aba5a5;
+}
  .tophead{
 
   display: flex;

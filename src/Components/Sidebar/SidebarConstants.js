@@ -9,7 +9,6 @@ export const controls = {
 		"Password",
 		"Checkbox",
 		"Email",
-		"Select Box",
 		"Section Header",
 		"Radio",
 		"Dropdown",

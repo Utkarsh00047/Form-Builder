@@ -29,17 +29,6 @@ const ModalBox = (props) => {
     });
   };
 
-  // const handleChange = (e) => {
-  //   // e.preventDefault();
-  //   const index = e.target.id;
-  //   console.log(index);
-  //   setArr((newArray) => {
-  //     newArray[index].value += e.target.value;
-  //     console.log(newArray);
-  //     return newArray;
-  //   });
-  // };
-
   const handleChange = (e) => {
     e.preventDefault();
     const index = e.target.id;
@@ -60,9 +49,10 @@ const ModalBox = (props) => {
   };
 
   console.log(saveUpdate.defaultValue);
+  console.log(arr);
   return (
-    <div class="formdiv">
-      <div class="headers">
+    <div className="formdiv">
+      <div className="headers">
         <p>Configurations </p>
         <button
           type="button"
@@ -74,11 +64,23 @@ const ModalBox = (props) => {
       </div>
 
       <form>
-        <div class="modal_content">
-          <div class="checkbox">
+        <div className="modal_content">
+          <div className="checkbox">
+            <div className="label_name">
+              <label className="label_text_field" for="label_name">
+                Label Name:
+              </label>
+              <input
+                value={saveUpdate.label}
+                onChange={(e) => settingSaveUpdateData("label", e.target.value)}
+                className="text_input"
+                type="text"
+                name="label_name"
+              />
+            </div>
             {props.type === "text" ? (
               <>
-                <label class="label_field" for="readOnly">
+                <label className="label_field" for="readOnly">
                   ReadOnly
                 </label>
                 <input
@@ -86,12 +88,12 @@ const ModalBox = (props) => {
                   onChange={(e) =>
                     settingSaveUpdateData("isReadOnly", e.target.checked)
                   }
-                  class="input_type"
+                  className="input_type"
                   type="checkbox"
                   id="readOnly"
                   value="readOnly"
                 />
-                <label class="label_field" for="required">
+                <label className="label_field" for="required">
                   Required
                 </label>
                 <input
@@ -99,12 +101,117 @@ const ModalBox = (props) => {
                   onChange={(e) =>
                     settingSaveUpdateData("isRequired", e.target.checked)
                   }
-                  class="input_type"
+                  className="input_type"
                   type="checkbox"
                   id="required"
                   value="required"
-                />{" "}
+                />
               </>
+            ) : (
+              ""
+            )}
+
+            {props.type === "dropdown" ||
+            props.type === "radio" ||
+            props.type === "checkbox" ? (
+              <div>
+                <label htmlFor="">Values for options:</label>
+                {arr.map((item, i) => {
+                  console.log(item.value);
+                  console.log(item);
+                  return (
+                    <>
+                      <div>
+                        <input
+                          onChange={(e) => {
+                            handleChange(e);
+                            settingSaveUpdateData("listOfDropdown", arr);
+                          }}
+                          value={item.value}
+                          id={i}
+                          type={item.type}
+                          size="40"
+                        />
+                        <button onClick={(e) => addInput(e)}>+</button>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            ) : (
+              ""
+            )}
+            {props.type === "textarea" ? (
+              <div>
+                <label className="">Rows:</label>
+                <input
+                  value={saveUpdate.rows}
+                  onChange={(e) =>
+                    settingSaveUpdateData("rows", e.target.value)
+                  }
+                  className="row_text_input"
+                  type="number"
+                  name="row_text_input"
+                />
+              </div>
+            ) : (
+              ""
+            )}
+            {props.type === "sectionHeaderText" ? (
+              <>
+                <label className="label_field" for="required">
+                  Heading:
+                </label>
+                <input
+                  value={saveUpdate.heading}
+                  onChange={(e) =>
+                    settingSaveUpdateData("heading", e.target.value)
+                  }
+                />
+                <label className="label_field" for="required">
+                  Subtext:
+                </label>
+                <input
+                  value={saveUpdate.paragraph}
+                  onChange={(e) =>
+                    settingSaveUpdateData("paragraph", e.target.value)
+                  }
+                />
+              </>
+            ) : (
+              ""
+            )}
+            {props.type === "textarea" ? (
+              <>
+                <label className="label_field" for="required">
+                  Help Text
+                </label>
+                <input
+                  value={saveUpdate.helptext}
+                  onChange={(e) =>
+                    settingSaveUpdateData("helptext", e.target.value)
+                  }
+                />
+              </>
+            ) : (
+              ""
+            )}
+
+            {props.type === "text" || props.type === "textarea" ? (
+              <div className="placeholder_name">
+                <label className="label_text_field" for="placeholder">
+                  Placeholder:
+                </label>
+                <input
+                  value={saveUpdate.placeholder}
+                  onChange={(e) =>
+                    settingSaveUpdateData("placeholder", e.target.value)
+                  }
+                  className="text_input"
+                  type="text"
+                  name="placeholder"
+                />
+              </div>
             ) : (
               ""
             )}
@@ -135,63 +242,54 @@ const ModalBox = (props) => {
               id="required"
               value="required"
             /> */}
-            <div>
+            {/* <div>
               {arr.map((item, i) => {
                 console.log(item.value);
                 console.log(item);
                 return (
                   <>
-                    <input
-                      onChange={(e) => {
-                        handleChange(e);
-                        settingSaveUpdateData("listOfDropdown", arr);
-                      }}
-                      value={item.value}
-                      id={i}
-                      type={item.type}
-                      size="40"
-                    />
-                    {/* <input
-                      // onChange={(e) => handleChange(e)}
-                      onChange={(e) => handleChange(e)}
-                      // onChange={(e) => {
-                      //   handleChange(e);
-                      //   settingSaveUpdateData("listOfDropdown", e.target.value);
-                      // }}
-                      value={item.value}
-                      id={i}
-                      type={item.type}
-                      size="40"
-                    /> */}
-                    <button onClick={(e) => addInput(e)}>+</button>
+                    <div>
+                      <label htmlFor="">Values for options:</label>
+                      <input
+                        onChange={(e) => {
+                          handleChange(e);
+                          settingSaveUpdateData("listOfDropdown", arr);
+                        }}
+                        value={item.value}
+                        id={i}
+                        type={item.type}
+                        size="40"
+                      />
+                      <button onClick={(e) => addInput(e)}>+</button>
+                    </div>
                   </>
                 );
               })}
-            </div>
+            </div> */}
           </div>
-          <div class="textbox_content">
-            <div class="label_name">
-              <label class="label_text_field" for="label_name">
+          {/* <label className="label_field" for="required">
+            Help Text
+          </label>
+          <input
+            value={saveUpdate.helptext}
+            onChange={(e) => settingSaveUpdateData("helptext", e.target.value)}
+          /> */}
+          <div className="textbox_content">
+            {/* <div className="label_name">
+              <label className="label_text_field" for="label_name">
                 Label Name:
               </label>
 
               <input
                 value={saveUpdate.label}
                 onChange={(e) => settingSaveUpdateData("label", e.target.value)}
-                class="text_input"
+                className="text_input"
                 type="text"
                 name="label_name"
               />
-              <input
-                value={saveUpdate.rows}
-                onChange={(e) => settingSaveUpdateData("rows", e.target.value)}
-                class="row_text_input"
-                type="number"
-                name="row_text_input"
-              />
-            </div>
-            <div class="placeholder_name">
-              <label class="label_text_field" for="placeholder">
+            </div> */}
+            {/* <div className="placeholder_name">
+              <label className="label_text_field" for="placeholder">
                 Placeholder:
               </label>
               <input
@@ -199,16 +297,16 @@ const ModalBox = (props) => {
                 onChange={(e) =>
                   settingSaveUpdateData("placeholder", e.target.value)
                 }
-                class="text_input"
+                className="text_input"
                 type="text"
                 name="placeholder"
               />
-            </div>
+            </div> */}
           </div>
         </div>
-        <div class="button_footer">
-          <div class="button">
-            <div class="button_spacing">
+        <div className="button_footer">
+          <div className="button">
+            <div className="button_spacing">
               <button
                 onClick={(e) => {
                   props.setConfigurationState(saveUpdate);
@@ -219,7 +317,7 @@ const ModalBox = (props) => {
                 Save
               </button>
             </div>
-            <div class="button_spacing">
+            <div className="button_spacing">
               <button
                 onClick={(e) => {
                   setModalBox(props.setOpenModalBox);

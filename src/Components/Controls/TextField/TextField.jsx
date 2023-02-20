@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import edit from "../../../assests/edit.png";
 import "./TextField.css";
 import ModalBox from "../../ModalBox/ModalBox";
 import "./TextField.css";
 import del from "../../../assets/delete.png";
+import { v4 as uuidv4 } from "uuid";
 import { setModalBox } from "../commonControlFunctions";
 import { handleDelete } from "../commonControlFunctions";
+import question from "../../../assests/question.png";
 
-const TextField = ({ type }) => {
+const TextField = ({ type, insertConfig, updateConfig }) => {
   const [showTextField, setshowTextField] = useState(true);
   const [openModalBox, setOpenModalBox] = useState(false);
   //   const setModalBox = () => {
   //   	setOpenModalBox(!openModalBox);
   //   };
   const [configurationState, setConfigurationState] = useState({
+    id: uuidv4(),
     label: `Enter ${type}`,
     type: type,
     placeholder: "",
@@ -21,6 +24,15 @@ const TextField = ({ type }) => {
     isReadOnly: false,
     defaultValue: "",
   });
+  console.log(configurationState.type);
+
+  useEffect(() => {
+    insertConfig(configurationState);
+  }, []);
+
+  useEffect(() => {
+    updateConfig(configurationState);
+  }, [configurationState]);
   //   const handleDelete = () => {
   //     if (window.confirm("Are you sure you want to delete this Field?")) {
   //       setshowTextField(false);
@@ -42,6 +54,19 @@ const TextField = ({ type }) => {
       <label htmlFor="textField" className="heads">
         {configurationState.label}
       </label>
+      {configurationState.helptext && (
+        <div className="tooltip">
+          <img
+            onMouseEnter={configurationState.helptext}
+            src={question}
+            alt=""
+            className="help_text"
+            id="helpText"
+            // onClick={() => handleDelete(setshowTextField)}
+          />
+          <span className="tooltiptext">{configurationState.helptext}</span>
+        </div>
+      )}
       <input
         defaultValue={configurationState.defaultValue}
         id={"textField"}
@@ -71,6 +96,7 @@ const TextField = ({ type }) => {
           setOpenModalBox={setOpenModalBox}
           configurationState={configurationState}
           setConfigurationState={setConfigurationState}
+          type={type}
         />
       )}
       {/* <div className="delicon"> */}

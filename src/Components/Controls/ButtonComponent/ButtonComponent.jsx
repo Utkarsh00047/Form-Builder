@@ -1,32 +1,22 @@
 import React, { useState } from "react";
-import { setModalBox } from "../commonControlFunctions";
-import { handleDelete } from "../commonControlFunctions";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
+import { setModalBox } from "../commonControlFunctions";
+import { handleDelete } from "../commonControlFunctions";
 import ModalBox from "../../ModalBox/ModalBox";
 
-const DropdownComponent = ({ type }) => {
-  const [showTextField, setshowTextField] = useState(true);
+const ButtonComponent = (type) => {
   const [openModalBox, setOpenModalBox] = useState(false);
+  const [showTextField, setshowTextField] = useState(true);
   const [configurationState, setConfigurationState] = useState({
-    label: `Select :`,
-    type: type,
-    listOfDropdown: [],
-    defaultValue: "---Select---",
+    label: `Button`,
+    type: type ? type : "",
   });
 
-  console.log(configurationState.type.type);
-  console.log(configurationState.listOfDropdown);
   console.log(configurationState.type);
   return showTextField ? (
-    <form action="">
-      <label>{configurationState.label}</label>
-      <select>
-        {configurationState.listOfDropdown.map((opt) => {
-          console.log(opt);
-          return <option value="">{opt.value}</option>;
-        })}
-      </select>
+    <div>
+      <button type={configurationState.type}>{configurationState.label}</button>
       <div className="configuration_button">
         <img
           alt=""
@@ -50,8 +40,10 @@ const DropdownComponent = ({ type }) => {
           type={type}
         />
       )}
-    </form>
-  ) : null;
+    </div>
+  ) : (
+    ""
+  );
 };
 
-export default DropdownComponent;
+export default ButtonComponent;

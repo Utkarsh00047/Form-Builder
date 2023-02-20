@@ -1,32 +1,36 @@
-import React, { useState } from "react";
-import { setModalBox } from "../commonControlFunctions";
-import { handleDelete } from "../commonControlFunctions";
+import React from "react";
+import { useState } from "react";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
+import { setModalBox } from "../commonControlFunctions";
+import { handleDelete } from "../commonControlFunctions";
 
-const DropdownComponent = ({ type }) => {
+function CheckBoxComponent({ type }) {
   const [showTextField, setshowTextField] = useState(true);
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
     label: `Select :`,
     type: type,
     listOfDropdown: [],
-    defaultValue: "---Select---",
   });
-
-  console.log(configurationState.type.type);
-  console.log(configurationState.listOfDropdown);
   console.log(configurationState.type);
   return showTextField ? (
-    <form action="">
+    <form action="/action_page.php">
       <label>{configurationState.label}</label>
-      <select>
+      <div>
         {configurationState.listOfDropdown.map((opt) => {
           console.log(opt);
-          return <option value="">{opt.value}</option>;
+          return (
+            <label>
+              <input type="checkbox" value={opt.value}></input>
+              {opt.value}
+            </label>
+            //{opt.value}
+          );
+          //return <input value="">{opt.value}</input>;
         })}
-      </select>
+      </div>
       <div className="configuration_button">
         <img
           alt=""
@@ -52,6 +56,6 @@ const DropdownComponent = ({ type }) => {
       )}
     </form>
   ) : null;
-};
+}
 
-export default DropdownComponent;
+export default CheckBoxComponent;

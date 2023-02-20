@@ -1,9 +1,14 @@
 import "./Form.css";
 import React, { useState } from "react";
-import TextField from "../Controls/TextField/TextField";
+// import TextField from "../Controls/TextField/TextField";
 import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
-import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
+import ButtonComponent from "../Controls/ButtonComponent/ButtonComponent";
+import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
 import DropdownComponent from "../Controls/DropdownComponent/DropdownComponent";
+import RadioButton from "../Controls/RadioButton/RadioButton";
+import SectionHeader from "../Controls/SectionHeader/SectionHeader";
+import CheckBoxComponent from "../Controls/CheckBoxComponent/CheckBoxComponent";
+import AttachmentComponent from "../Controls/AttachmentComponent/AttachmentComponent";
 
 export const Form = () => {
 	const [inputFields, setInputFields] = useState([]);
@@ -22,38 +27,46 @@ export const Form = () => {
 	const switchInput = (inputType) => {
 		switch (inputType) {
 			case "Text Field":
-				return <TextField type={"text"} />;
+				return <TextFieldContainer type={"text"} />;
 
 			case "Text Area":
-				return <TextAreaComponent />;
+				return <TextAreaComponent type="textarea"/>;
 
 			case "Number":
-				return <TextField type={"number"} />;
+				return <TextFieldContainer type={"number"} />;
 
 			case "Password":
-				return <TextField type={"password"} />;
+				return <TextFieldContainer type={"password"} />;
 
 			case "Button":
-				return <ButtonComponent />;
+				return <ButtonComponent type={"button"} />;
 
 			case "Email":
-				return <TextField type={"email"} />;
+				return <TextFieldContainer type={"email"} />;
 
 			case "URL":
-				return <TextField type={"url"} />;
+				return <TextFieldContainer type={"url"} />;
 
 			case "Phone Number":
-				return <TextField type={"tel"} />;
-
+				return <TextFieldContainer type={"tel"} />;
 			case "Date/Time":
-				return <TextField type={"datetime-local"} />;
+				return <TextFieldContainer type={"datetime-local"} />;
 			case "Dropdown":
-				return <DropdownComponent type={"dropdown"} />
+				return <DropdownComponent type={"dropdown"} />;
+			case "Radio" :
+				return <RadioButton type={"radio"} />;
+			case "Section Header":
+				return <SectionHeader type={"sectionHeaderText"} />
+			case "Checkbox":
+				return <CheckBoxComponent type={"checkbox"} />
+			case "Attachment":
+				return <AttachmentComponent type={"file"} />
 
 			default:
 				break;
 		}
-	};
+	};  	
+
 	return (
 		<div className="highlight">
 			<form

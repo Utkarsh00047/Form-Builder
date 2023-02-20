@@ -1,32 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import edit from "../../../assests/edit.png";
+import ModalBox from "../../ModalBox/ModalBox";
+import del from "../../../assets/delete.png";
+import { v4 as uuidv4 } from "uuid";
 import { setModalBox } from "../commonControlFunctions";
 import { handleDelete } from "../commonControlFunctions";
-import edit from "../../../assests/edit.png";
-import del from "../../../assets/delete.png";
-import ModalBox from "../../ModalBox/ModalBox";
+import "./AttachmentComponent.css";
 
-const DropdownComponent = ({ type }) => {
+const AttachmentComponent = ({ type }) => {
   const [showTextField, setshowTextField] = useState(true);
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
-    label: `Select :`,
+    id: uuidv4(),
+    label: `Enter ${type} : `,
     type: type,
-    listOfDropdown: [],
-    defaultValue: "---Select---",
+    isRequired: false,
   });
-
-  console.log(configurationState.type.type);
-  console.log(configurationState.listOfDropdown);
   console.log(configurationState.type);
+
   return showTextField ? (
-    <form action="">
-      <label>{configurationState.label}</label>
-      <select>
-        {configurationState.listOfDropdown.map((opt) => {
-          console.log(opt);
-          return <option value="">{opt.value}</option>;
-        })}
-      </select>
+    <div className="attachmentForFile">
+      <label className="">{configurationState.label}</label>
+      <input
+        id={"textField"}
+        type={configurationState.type}
+        required={configurationState.isRequired}
+      />
       <div className="configuration_button">
         <img
           alt=""
@@ -50,8 +49,8 @@ const DropdownComponent = ({ type }) => {
           type={type}
         />
       )}
-    </form>
+    </div>
   ) : null;
 };
 
-export default DropdownComponent;
+export default AttachmentComponent;
