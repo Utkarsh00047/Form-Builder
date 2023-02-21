@@ -1,16 +1,35 @@
 import React, { useState } from "react";
-// import TextField from "../Controls/TextField/TextField";
 import "./Droppable.css";
 import del from "../../assets/delete.png"
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
-import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
-import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
+import ButtonComponent from "../Controls/ButtonComponent/ButtonComponent";
+import { deleteConfig } from "../Controls/CommonFunctions";
+import DropdownComponent from "../Controls/DropdownComponent/DropdownComponent";
+import RadioButton from "../Controls/RadioButton/RadioButton";
+import SectionHeader from "../Controls/SectionHeader/SectionHeader";
+import CheckBoxComponent from "../Controls/CheckBoxComponent/CheckBoxComponent";
+import AttachmentComponent from "../Controls/AttachmentComponent/AttachmentComponent";
+import { v4 as uuidv4 } from "uuid";
+import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
+;
 
-export const Droppable = (props) => {
-  const [inputFields, setInputFields] = useState([]);
-  const [showTextField,setshowTextField]=useState(true);
+export const Droppable = ({type,uid,setInputFields,setIsToggle,Toggle}) => {
+
+  const [layoutInput, setLayoutInput] = useState([]);
+   const [configurationState, setConfigurationState] = useState({
+    id: uid,
+    helptext: "",
+    label: `Enter text`,
+    type: type,
+    placeholder: "",
+    isRequired: false,
+    isReadOnly: false,
+    defaultValue: "",
+    rows: 3,
+  });
+
   const allowDragEvent = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
   };
   const handleDrop = (e) => {
     e.preventDefault();
@@ -21,64 +40,69 @@ export const Droppable = (props) => {
     const highlight = document.getElementById("GridSection");
     highlight.classList.add("Droppable_highlight");
 
-    setInputFields((prev) => [...prev, inputTag]);
-    console.log(inputFields);
+    setLayoutInput((prev) => [...prev, inputTag]);
+    console.log(layoutInput);
   };
 
   const handleDragEnter = ()=>{
-    props.setIsToggle(true);
+    setIsToggle(true);
   };
 
   const handleDragLeave=()=>{
-    props.setIsToggle(!props.Toggle);
+    setIsToggle(!Toggle);
   };
-  const handleDelete=()=>{
-	if (window.confirm('Are you sure you want to delete this Field?')){
-	setshowTextField(false);
-	}
-  }
+
   const SwitchInput = (inputType) => {
     switch (inputType) {
       case "Text Field":
-        return <TextFieldContainer type={"text"} />;
+        return <TextFieldContainer type={"text"}  uid={uuidv4()} setInputFields={setLayoutInput} />;
 
 			case "Text Area":
-				return <TextAreaComponent />;
+				return <TextAreaContainer type={"textarea"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
 
 			case "Number":
-				return <TextFieldContainer type={"number"} />;
+				return <TextFieldContainer type={"number"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
 
 			case "Password":
-				return <TextFieldContainer type={"password"} />;
+				return <TextFieldContainer type={"password"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
 
 			case "Button":
-				return <ButtonComponent />;
+				return <ButtonComponent type={"button"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
 
 			case "Email":
-				return <TextFieldContainer type={"email"} />;
+				return <TextFieldContainer type={"email"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
 
 			case "URL":
-				return <TextFieldContainer type={"url"} />;
+				return <TextFieldContainer type={"url"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
 
 			case "Phone Number":
-				return <TextFieldContainer type={"tel"} />;
+				return <TextFieldContainer type={"tel"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
 
-			case "Date/Time":
-				return <TextFieldContainer type={"datetime-local"} />;
+      case "Date/Time":
+				return <TextFieldContainer type={"datetime-local"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+
+      case "Dropdown":
+				return <DropdownComponent type={"dropdown"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+
+      case "Radio" :
+				return <RadioButton type={"radio"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+
+      case "Section Header":
+				return <SectionHeader type={"sectionHeaderText"} uid={uuidv4()} setInputFields={setLayoutInput}/>
+
+      case "Checkbox":
+				return <CheckBoxComponent type={"checkbox"} uid={uuidv4()} setInputFields={setLayoutInput}/>
+
+      case "Attachment":
+				return <AttachmentComponent type={"file"} uid={uuidv4()} setInputFields={setLayoutInput}/>
        
-        // case "Layout":
-        //     return(
-        //         <button className="layout-button">
-        //             Layout
-        //         </button>
-        //     );
-
       default:
         break;
     }
   };
+  
   return (
-    showTextField ?(
+   
     <div className="Drop">
     <div
       id="GridSection"
@@ -91,24 +115,17 @@ export const Droppable = (props) => {
       {/* <h2>columns</h2> */}
       {/* {inputFields.map((elem) => elem)} */}
       <div className="DropArea" >
-      {inputFields.map((inputField,i) => 
+      {layoutInput.map((layoutInput,i) => 
         <div className="DropElement" key={i}>
-            {inputField}
+            {layoutInput}
         </div>
        
         )}
-        {/* <div className="DropElem2"
-          onDragOver={(e) => allowDragEvent(e)}
-          onDrop={(e) => handleDrop(e)}>
-            {inputFields.map((elem) => elem)}
-        </div> */}
          
       </div>
     </div>
-    <img src={del} alt="" className="delicon" id="del" onClick={handleDelete}/>
+    <img src={del} alt="" className="delicon" id="del" onClick={() => deleteConfig(setInputFields, configurationState)}/>
     </div>
-):null
-
   );
 };
 

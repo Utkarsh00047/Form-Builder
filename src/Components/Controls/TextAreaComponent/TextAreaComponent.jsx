@@ -1,20 +1,81 @@
 import React, { useState } from "react";
+import { setModalBox } from "../commonControlFunctions";
+import { handleDelete } from "../commonControlFunctions";
+import edit from "../../../assests/edit.png";
+import del from "../../../assets/delete.png";
+import ModalBox from "../../ModalBox/ModalBox";
+import question from "../../../assests/question.png";
+import "./TextAreaComponent.css";
+import { deleteConfig } from "../CommonFunctions";
 
-const TextAreaComponent = () => {
-	const [configurationState, setConfigurationState] = useState({
-		label: `Enter text`,
-		type: "textarea",
-		placeholder: "",
-		isRequired: false,
-		isReadOnly: false,
-		defaultValue: "",
-	});
-	return (
-		<>
-			<label htmlFor="textArea">{configurationState.label}</label>
-			<textarea id="textArea" name="textArea" rows={4} cols={50} />
-		</>
-	);
+const TextAreaComponent = ({ type , uid,
+  setInputFields}) => {
+  const [openModalBox, setOpenModalBox] = useState(false);
+  const [configurationState, setConfigurationState] = useState({
+    id: uid,
+    helptext: "",
+    label: `Enter text`,
+    type: type,
+    placeholder: "",
+    isRequired: false,
+    isReadOnly: false,
+    defaultValue: "",
+    rows: 3,
+  });
+
+  console.log(configurationState.type);
+  return (
+    <>
+      <div className="textArea_heading">
+        <label htmlFor="textArea" className="label_textArea">
+          {configurationState.label}
+        </label>
+        {configurationState.helptext && (
+          <div className="tooltip">
+            <img
+              onMouseEnter={configurationState.helptext}
+              src={question}
+              alt=""
+              className="help_text"
+              id="helpText"
+              // onClick={() => handleDelete(setshowTextField)}
+            />
+            <span className="tooltiptext">{configurationState.helptext}</span>
+          </div>
+        )}
+        <textarea
+          className="textArea"
+          id="textArea"
+          name="textArea"
+          rows={configurationState.rows}
+          cols={50}
+        />
+      </div>
+
+      <div className="configuration_button">
+        <img
+          alt=""
+          onClick={() => setModalBox(setOpenModalBox)}
+          src={edit}
+          className="editicon"
+        />
+        <img
+          src={del}
+          alt=""
+          className="delicon"
+          id="del"
+          onClick={() =>deleteConfig(setInputFields, configurationState)}
+        />
+      </div>
+      {openModalBox && (
+        <ModalBox
+          setOpenModalBox={setOpenModalBox}
+          configurationState={configurationState}
+          setConfigurationState={setConfigurationState}
+        />
+      )}
+    </>
+  )
 };
 
 export default TextAreaComponent;

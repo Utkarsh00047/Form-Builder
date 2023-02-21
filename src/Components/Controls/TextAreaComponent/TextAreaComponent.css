@@ -1,0 +1,37 @@
+.help_text{
+    display: inline-flex;
+    height: 15px;
+    width: 15px;
+    /* margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 8px; */
+}
+
+.textArea{
+    display: flex;
+}
+
+.label_textArea{
+   display: inline;
+    margin-left: 0%;
+}
+
+.textArea_heading{
+    display: inline;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

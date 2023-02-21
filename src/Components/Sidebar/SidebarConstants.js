@@ -1,25 +1,28 @@
 export const controlTypes = ["Basic", "Advanced"];
 export const controls = {
 	Basic: [
+		"Attachment",
+		"Button",
 		"Text Field",
 		"Text Area",
 		"Number",
 		"Password",
 		"Checkbox",
-		"Dropdown",
+		"Email",
+		"Section Header",
 		"Radio",
-		"Button",
+		"Dropdown",
 	],
 	Advanced: [
-		"Email",
-		"URL",
-		"Phone Number",
-		"Tags",
 		"Address",
 		"Date/Time",
 		"Day",
-		"Time",
+		"Email",
+		"Phone Number",
 		"Survey",
-		"Layout"
+		"Layout",
+		"Tags",
+		"Time",
+		"URL",
 	],
 };

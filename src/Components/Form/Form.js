@@ -1,10 +1,15 @@
 import "./Form.css";
 import React, { useState } from "react";
-// import TextField from "../Controls/TextField/TextField";
 import { Droppable } from "../DroppableComponent/Droppable";
-import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
-import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
+import ButtonComponent from "../Controls/ButtonComponent/ButtonComponent";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
+import DropdownComponent from "../Controls/DropdownComponent/DropdownComponent";
+import RadioButton from "../Controls/RadioButton/RadioButton";
+import SectionHeader from "../Controls/SectionHeader/SectionHeader";
+import CheckBoxComponent from "../Controls/CheckBoxComponent/CheckBoxComponent";
+import AttachmentComponent from "../Controls/AttachmentComponent/AttachmentComponent";
+import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
+import { v4 as uuidv4 } from "uuid";
 
 export const Form = () => {
   const [inputFields, setInputFields] = useState([]);
@@ -26,50 +31,54 @@ export const Form = () => {
 
   const switchInput = (inputType) => {
     switch (inputType) {
-      case "Text Field":
-        return <TextFieldContainer type={"text"} />;
+     
+		case "Text Field":
+        	return <TextFieldContainer type={"text"}  uid={uuidv4()} setInputFields={setInputFields} />;
 
 			case "Text Area":
-				return <TextAreaComponent />;
+				return <TextAreaContainer type={"textarea"} uid={uuidv4()} setInputFields={setInputFields}/>;
 
 			case "Number":
-				return <TextFieldContainer type={"number"} />;
+				return <TextFieldContainer type={"number"} uid={uuidv4()} setInputFields={setInputFields}/>;
 
 			case "Password":
-				return <TextFieldContainer type={"password"} />;
+				return <TextFieldContainer type={"password"} uid={uuidv4()} setInputFields={setInputFields}/>;
 
 			case "Button":
-				return <ButtonComponent />;
+				return <ButtonComponent type={"button"} uid={uuidv4()} setInputFields={setInputFields}/>;
 
 			case "Email":
-				return <TextFieldContainer type={"email"} />;
+				return <TextFieldContainer type={"email"} uid={uuidv4()} setInputFields={setInputFields}/>;
 
 			case "URL":
-				return <TextFieldContainer type={"url"} />;
+				return <TextFieldContainer type={"url"} uid={uuidv4()} setInputFields={setInputFields}/>;
 
 			case "Phone Number":
-				return <TextFieldContainer type={"tel"} />;
-
+				return <TextFieldContainer type={"tel"} uid={uuidv4()} setInputFields={setInputFields}/>;
 			case "Date/Time":
-				return <TextFieldContainer type={"datetime-local"} />;
+				return <TextFieldContainer type={"datetime-local"} uid={uuidv4()} setInputFields={setInputFields}/>;
+			case "Dropdown":
+				return <DropdownComponent type={"dropdown"} uid={uuidv4()} setInputFields={setInputFields}/>;
+			case "Radio" :
+				return <RadioButton type={"radio"} uid={uuidv4()} setInputFields={setInputFields}/>;
+			case "Section Header":
+				return <SectionHeader type={"sectionHeaderText"} uid={uuidv4()} setInputFields={setInputFields}/>
+			case "Checkbox":
+				return <CheckBoxComponent type={"checkbox"} uid={uuidv4()} setInputFields={setInputFields}/>
+			case "Attachment":
+				return <AttachmentComponent type={"file"} uid={uuidv4()} setInputFields={setInputFields}/>
 
 		case "Layout":
 			return <Droppable
 			setIsToggle={setIsToggle}
 			Toggle={isToggle}
+			uid={uuidv4()} 
+			setInputFields={setInputFields}
 			/>;
       default:
         break;
     }
   };
-//   const SwitchInput=(inputType)=>{
-// 	switch(inputType){
-// 		case "Layout":
-// 			return <Droppable/>;
-// 		default:
-// 			break;
-// 	}
-//   }
 
   return (
     <div className="highlight">
