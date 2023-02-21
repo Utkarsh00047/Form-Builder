@@ -2,12 +2,12 @@ import "./Form.css";
 import React, { useState } from "react";
 import ButtonComponent from "../Controls/ButtonComponent/ButtonComponent";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
-import DropdownComponent from "../Controls/DropdownComponent/DropdownComponent";
 import RadioButton from "../Controls/RadioButton/RadioButton";
 import SectionHeader from "../Controls/SectionHeader/SectionHeader";
 import CheckBoxComponent from "../Controls/CheckBoxComponent/CheckBoxComponent";
 import AttachmentComponent from "../Controls/AttachmentComponent/AttachmentComponent";
 import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
+import DropdownContainer from "../Controls/DropdownComponent/DropdownContainer";
 
 export const Form = () => {
 	const [inputFields, setInputFields] = useState([]);
@@ -51,7 +51,7 @@ export const Form = () => {
 			case "Date/Time":
 				return <TextFieldContainer type={"datetime-local"} />;
 			case "Dropdown":
-				return <DropdownComponent type={"dropdown"} />;
+				return <DropdownContainer type={"dropdown"} />;
 			case "Radio" :
 				return <RadioButton type={"radio"} />;
 			case "Section Header":

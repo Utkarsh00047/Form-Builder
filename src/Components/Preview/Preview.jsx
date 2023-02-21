@@ -1,9 +1,7 @@
 import React from "react";
-import { useEffect } from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
 import "./Preview.css";
-import { useState } from "react";
 
 const Preveiw = (props) => {
     const store = useStore();
@@ -11,58 +9,6 @@ const Preveiw = (props) => {
     console.log(store.getState());
 
     const config = store.getState();
-    //console.log(config.configList[0].type);
-
-    const switchPreview = () => {
-        console.log("fdgdfg");
-        config.configList.map((prev, i) => {
-            console.log(config.configList[i]);
-            switch (config.configList[i].type) {
-                case "text":
-                    return (
-                        <>
-                            <label>{config.configList[i].label}</label>
-                            <input
-                                placeholder={config.configList[i].placeholder}
-                            />
-                        </>
-                    );
-                case "textarea":
-                    return (
-                        <>
-                            <label>{config.configList[i].label}</label>
-                            <textarea
-                                placeholder={config.configList[i].placeholder}
-                            />
-                        </>
-                    );
-                default:
-                    break;
-            }
-        });
-    };
-    //for (var i; i <= config.configList.length; i++)
-    //     {
-    //         console.log(config.configList[i].type);
-    //         switch (config.configList[i].type) {
-    //             case "text":
-    //                 return (
-    //                     <>
-    //                         <label>{config.configList[i].label}</label>
-    //                         <input
-    //                             placeholder={config.configList[i].placeholder}
-    //                         />
-    //                     </>
-    //                 );
-    //             default:
-    //                 break;
-    //         }
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     switchPreview();
-    // }, [config]);
 
     return (
         <div className="preveiwbox">
@@ -77,7 +23,7 @@ const Preveiw = (props) => {
                 </button>
             </div>
 
-            <form>
+            <form className="previewpage">
                 {config.configList.map((prev, i) => {
                     console.log(config.configList[i]);
                     switch (config.configList[i].type) {
@@ -92,6 +38,9 @@ const Preveiw = (props) => {
                                         readOnly={
                                             config.configList[i].isReadOnly
                                         }
+                                        required={
+                                            config.configList[i].isrequired
+                                        }
                                     />
                                 </>
                             );
@@ -104,6 +53,24 @@ const Preveiw = (props) => {
                                             config.configList[i].placeholder
                                         }
                                     />
+                                </>
+                            );
+                        case "dropdown":
+                            return (
+                                <>
+                                    <label>{config.configList[i].label}</label>
+                                    <select>
+                                        {config.configList[
+                                            i
+                                        ].listOfDropdown.map((opt) => {
+                                            console.log(opt);
+                                            return (
+                                                <option value="">
+                                                    {opt.value}
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
                                 </>
                             );
                         default:
