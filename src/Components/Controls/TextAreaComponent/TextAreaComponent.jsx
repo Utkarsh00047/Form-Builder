@@ -7,12 +7,18 @@ import ModalBox from "../../ModalBox/ModalBox";
 import { v4 as uuidv4 } from "uuid";
 import question from "../../../assests/question.png";
 import "./TextAreaComponent.css";
+import { deleteConfig } from "../CommonFunctions";
 
-const TextAreaComponent = ({ type, insertConfig, updateConfig }) => {
-    const [showTextField, setshowTextField] = useState(true);
+const TextAreaComponent = ({
+    type,
+    uid,
+    setInputFields,
+    insertConfig,
+    updateConfig,
+}) => {
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
-        id: uuidv4(),
+        id: uid,
         helptext: "",
         label: `Enter text`,
         type: type,
@@ -33,7 +39,7 @@ const TextAreaComponent = ({ type, insertConfig, updateConfig }) => {
         updateConfig(configurationState);
     }, [configurationState]);
 
-    return showTextField ? (
+    return (
         <>
             <div className="textArea_heading">
                 <label htmlFor="textArea" className="label_textArea">
@@ -68,14 +74,16 @@ const TextAreaComponent = ({ type, insertConfig, updateConfig }) => {
                     alt=""
                     onClick={() => setModalBox(setOpenModalBox)}
                     src={edit}
-                    className="configuration_button"
+                    className="editicon"
                 />
                 <img
                     src={del}
                     alt=""
                     className="delicon"
                     id="del"
-                    onClick={() => handleDelete(setshowTextField)}
+                    onClick={() =>
+                        deleteConfig(setInputFields, configurationState)
+                    }
                 />
             </div>
             {openModalBox && (
@@ -86,7 +94,7 @@ const TextAreaComponent = ({ type, insertConfig, updateConfig }) => {
                 />
             )}
         </>
-    ) : null;
+    );
 };
 
 export default TextAreaComponent;

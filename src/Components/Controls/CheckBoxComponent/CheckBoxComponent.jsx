@@ -4,18 +4,20 @@ import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
 import { setModalBox } from "../commonControlFunctions";
-import { handleDelete } from "../commonControlFunctions";
 
-function CheckBoxComponent({ type }) {
-  const [showTextField, setshowTextField] = useState(true);
+import { deleteConfig } from "../CommonFunctions";
+function CheckBoxComponent({ type, uid,
+  setInputFields}) {
+  
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
+    id: uid,
     label: `Select :`,
     type: type,
     listOfDropdown: [],
   });
   console.log(configurationState.type);
-  return showTextField ? (
+  return (
     <form action="/action_page.php">
       <label>{configurationState.label}</label>
       <div>
@@ -36,14 +38,14 @@ function CheckBoxComponent({ type }) {
           alt=""
           onClick={() => setModalBox(setOpenModalBox)}
           src={edit}
-          className="configuration_button"
+          className="editicon"
         />
         <img
           src={del}
           alt=""
           className="delicon"
           id="del"
-          onClick={() => handleDelete(setshowTextField)}
+          onClick={() => deleteConfig(setInputFields, configurationState)}
         />
       </div>
       {openModalBox && (
@@ -55,7 +57,7 @@ function CheckBoxComponent({ type }) {
         />
       )}
     </form>
-  ) : null;
+  ) 
 }
 
 export default CheckBoxComponent;

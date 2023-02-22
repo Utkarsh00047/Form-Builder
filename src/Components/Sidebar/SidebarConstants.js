@@ -20,6 +20,7 @@ export const controls = {
 		"Email",
 		"Phone Number",
 		"Survey",
+		"Layout",
 		"Tags",
 		"Time",
 		"URL",

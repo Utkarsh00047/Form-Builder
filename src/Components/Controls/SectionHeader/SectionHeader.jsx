@@ -4,12 +4,14 @@ import ModalBox from "../../ModalBox/ModalBox";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import { setModalBox } from "../commonControlFunctions";
-import { handleDelete } from "../commonControlFunctions";
+import { deleteConfig } from "../CommonFunctions";
 
-function SectionHeader({ type }) {
-  const [showTextField, setshowTextField] = useState(true);
+function SectionHeader({ type ,uid,
+  setInputFields}) {
+
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
+    id: uid,
     label: `Enter heading...`,
     heading: "",
     paragraph: "",
@@ -18,21 +20,21 @@ function SectionHeader({ type }) {
   });
 
   console.log(configurationState.type);
-  return showTextField ? (
+  return  (
     <div>
       <div className="configuration_button">
         <img
           alt=""
           onClick={() => setModalBox(setOpenModalBox)}
           src={edit}
-          className="configuration_button"
+          className="editicon"
         />
         <img
           src={del}
           alt=""
           className="delicon"
           id="del"
-          onClick={() => handleDelete(setshowTextField)}
+          onClick={() => deleteConfig(setInputFields, configurationState)}
         />
       </div>
       {configurationState.heading ? (
@@ -69,7 +71,7 @@ function SectionHeader({ type }) {
         />
       )}
     </div>
-  ) : null;
+  )
 }
 
 export default SectionHeader;

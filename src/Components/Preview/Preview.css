@@ -47,9 +47,9 @@
     align-items: center;
     justify-content: center;
 }
-.previewpage {
+/* .previewpage {
     display: flex;
     flex-direction: column;
 	overflow-y: scroll;
     margin: 0 7vw;
-}
+} */

@@ -21,7 +21,8 @@
 
 } */
 .heads {
-	margin-left: 5.5rem;
+	/* margin-left:auto; */
+	margin-left: 10%;
 	display: flex;
 	justify-content: left;
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
+import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
+import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
 import "./Preview.css";
 
 const Preveiw = (props) => {
@@ -28,6 +30,43 @@ const Preveiw = (props) => {
                     console.log(config.configList[i]);
                     switch (config.configList[i].type) {
                         case "text":
+                            return (
+                                <>
+                                    <TextFieldContainer
+                                        openPreview={props.openPreview}
+                                    />
+                                    {/* <label>{config.configList[i].label}</label>
+                                    <input
+                                        placeholder={
+                                            config.configList[i].placeholder
+                                        }
+                                        readOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                        required={
+                                            config.configList[i].isrequired
+                                        }
+                                    /> */}
+                                </>
+                            );
+                        case "number":
+                            return (
+                                <>
+                                    <label>{config.configList[i].label}</label>
+                                    <input
+                                        placeholder={
+                                            config.configList[i].placeholder
+                                        }
+                                        readOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                        required={
+                                            config.configList[i].isrequired
+                                        }
+                                    />
+                                </>
+                            );
+                        case "password":
                             return (
                                 <>
                                     <label>{config.configList[i].label}</label>
@@ -73,6 +112,8 @@ const Preveiw = (props) => {
                                     </select>
                                 </>
                             );
+                        case "layout":
+                            return <DroppableContainer />;
                         default:
                             break;
                     }

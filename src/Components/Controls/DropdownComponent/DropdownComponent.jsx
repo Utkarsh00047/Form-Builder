@@ -4,18 +4,26 @@ import { handleDelete } from "../commonControlFunctions";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
-import { v4 as uuidv4 } from "uuid";
-
-const DropdownComponent = ({ type, insertConfig, updateConfig }) => {
-    const [showTextField, setshowTextField] = useState(true);
+import { deleteConfig } from "../CommonFunctions";
+const DropdownComponent = ({
+    type,
+    uid,
+    setInputFields,
+    insertConfig,
+    updateConfig,
+}) => {
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
-        id: uuidv4(),
+        id: uid,
         label: `Select :`,
         type: type,
         listOfDropdown: [],
         defaultValue: "---Select---",
     });
+
+    console.log(configurationState.type.type);
+    console.log(configurationState.listOfDropdown);
+    console.log(configurationState.type);
 
     useEffect(() => {
         insertConfig(configurationState);
@@ -25,10 +33,7 @@ const DropdownComponent = ({ type, insertConfig, updateConfig }) => {
         updateConfig(configurationState);
     }, [configurationState]);
 
-    console.log(configurationState.type.type);
-    console.log(configurationState.listOfDropdown);
-    console.log(configurationState.type);
-    return showTextField ? (
+    return (
         <form action="">
             <label>{configurationState.label}</label>
             <select>
@@ -42,14 +47,16 @@ const DropdownComponent = ({ type, insertConfig, updateConfig }) => {
                     alt=""
                     onClick={() => setModalBox(setOpenModalBox)}
                     src={edit}
-                    className="configuration_button"
+                    className="editicon"
                 />
                 <img
                     src={del}
                     alt=""
                     className="delicon"
                     id="del"
-                    onClick={() => handleDelete(setshowTextField)}
+                    onClick={() =>
+                        deleteConfig(setInputFields, configurationState)
+                    }
                 />
             </div>
             {openModalBox && (
@@ -61,7 +68,7 @@ const DropdownComponent = ({ type, insertConfig, updateConfig }) => {
                 />
             )}
         </form>
-    ) : null;
+    );
 };
 
 export default DropdownComponent;
