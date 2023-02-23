@@ -8,6 +8,7 @@ import RadioButton from "../Controls/RadioButton/RadioButton";
 import SectionHeader from "../Controls/SectionHeader/SectionHeader";
 import CheckBoxComponent from "../Controls/CheckBoxComponent/CheckBoxComponent";
 import AttachmentComponent from "../Controls/AttachmentComponent/AttachmentComponent";
+import ReviewComponent from "../Controls/ReviewComponent/ReviewComponent";
 
 export const Form = () => {
 	const [inputFields, setInputFields] = useState([]);
@@ -53,6 +54,7 @@ export const Form = () => {
 				return <TextFieldContainer type={"tel"} />;
 			case "Date/Time":
 				return <TextFieldContainer type={"datetime-local"} />;
+				
 			case "Dropdown":
 				return <DropdownComponent type={"dropdown"} />;
 			case "Radio" :
@@ -63,6 +65,8 @@ export const Form = () => {
 				return <CheckBoxComponent type={"checkbox"} />
 			case "Attachment":
 				return <AttachmentComponent type={"file"} />
+			case "Review":
+				return <ReviewComponent />
 
 			default:
 				break;
