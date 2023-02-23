@@ -1,7 +1,11 @@
 import React from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
+import ButtonContainer from "../Controls/ButtonComponent/ButtonContainer";
+import DropdownContainer from "../Controls/DropdownComponent/DropdownContainer";
 import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
+import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
+import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
 import "./Preview.css";
 
@@ -34,33 +38,40 @@ const Preveiw = (props) => {
                                 <>
                                     <TextFieldContainer
                                         openPreview={props.openPreview}
-                                    />
-                                    {/* <label>{config.configList[i].label}</label>
-                                    <input
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
                                         placeholder={
                                             config.configList[i].placeholder
                                         }
-                                        readOnly={
+                                        isReadOnly={
                                             config.configList[i].isReadOnly
                                         }
-                                        required={
+                                        isrequired={
                                             config.configList[i].isrequired
                                         }
-                                    /> */}
+                                    />
                                 </>
                             );
                         case "number":
                             return (
                                 <>
-                                    <label>{config.configList[i].label}</label>
-                                    <input
+                                    <TextFieldContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
                                         placeholder={
                                             config.configList[i].placeholder
                                         }
-                                        readOnly={
+                                        isReadOnly={
                                             config.configList[i].isReadOnly
                                         }
-                                        required={
+                                        isrequired={
                                             config.configList[i].isrequired
                                         }
                                     />
@@ -69,15 +80,108 @@ const Preveiw = (props) => {
                         case "password":
                             return (
                                 <>
-                                    <label>{config.configList[i].label}</label>
-                                    <input
+                                    <TextFieldContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
                                         placeholder={
                                             config.configList[i].placeholder
                                         }
-                                        readOnly={
+                                        isReadOnly={
                                             config.configList[i].isReadOnly
                                         }
-                                        required={
+                                        isrequired={
+                                            config.configList[i].isrequired
+                                        }
+                                    />
+                                </>
+                            );
+                        case "email":
+                            return (
+                                <>
+                                    <TextFieldContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
+                                        placeholder={
+                                            config.configList[i].placeholder
+                                        }
+                                        isReadOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                        isrequired={
+                                            config.configList[i].isrequired
+                                        }
+                                    />
+                                </>
+                            );
+                        case "url":
+                            return (
+                                <>
+                                    <TextFieldContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
+                                        placeholder={
+                                            config.configList[i].placeholder
+                                        }
+                                        isReadOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                        isrequired={
+                                            config.configList[i].isrequired
+                                        }
+                                    />
+                                </>
+                            );
+                        case "tel":
+                            return (
+                                <>
+                                    <TextFieldContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
+                                        placeholder={
+                                            config.configList[i].placeholder
+                                        }
+                                        isReadOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                        isrequired={
+                                            config.configList[i].isrequired
+                                        }
+                                    />
+                                </>
+                            );
+                        case "datetime-local":
+                            return (
+                                <>
+                                    <TextFieldContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
+                                        placeholder={
+                                            config.configList[i].placeholder
+                                        }
+                                        isReadOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                        isrequired={
                                             config.configList[i].isrequired
                                         }
                                     />
@@ -86,34 +190,62 @@ const Preveiw = (props) => {
                         case "textarea":
                             return (
                                 <>
-                                    <label>{config.configList[i].label}</label>
-                                    <textarea
+                                    <TextAreaContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        helptext={config.configList[i].helptext}
+                                        defaultValue={
+                                            config.configList[i].defaultValue
+                                        }
                                         placeholder={
                                             config.configList[i].placeholder
                                         }
+                                        isReadOnly={
+                                            config.configList[i].isReadOnly
+                                        }
+                                        isrequired={
+                                            config.configList[i].isrequired
+                                        }
+                                        rows={config.configList[i].rows}
                                     />
                                 </>
                             );
                         case "dropdown":
                             return (
                                 <>
-                                    <label>{config.configList[i].label}</label>
-                                    <select>
-                                        {config.configList[
-                                            i
-                                        ].listOfDropdown.map((opt) => {
-                                            console.log(opt);
-                                            return (
-                                                <option value="">
-                                                    {opt.value}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
+                                    <DropdownContainer
+                                        openPreview={props.openPreview}
+                                        label={config.configList[i].label}
+                                        listOfDropdown={
+                                            config.configList[i].listOfDropdown
+                                        }
+                                    />
                                 </>
                             );
                         case "layout":
-                            return <DroppableContainer />;
+                            return (
+                                <DroppableContainer
+                                    openPreview={props.openPreview}
+                                />
+                            );
+                        case "button":
+                            return (
+                                <ButtonContainer
+                                    openPreview={props.openPreview}
+                                    label={config.configList[i].label}
+                                    type={config.configList[i].type}
+                                />
+                            );
+                        case "radio":
+                            return (
+                                <RadioButtonContainer
+                                    openPreview={props.openPreview}
+                                    label={config.configList[i].label}
+                                    listOfDropdown={
+                                        config.configList[i].listOfDropdown
+                                    }
+                                />
+                            );
                         default:
                             break;
                     }

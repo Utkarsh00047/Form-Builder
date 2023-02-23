@@ -6,6 +6,9 @@ import ModalBox from "../../ModalBox/ModalBox";
 import { setModalBox } from "../commonControlFunctions";
 import { deleteConfig } from "../CommonFunctions";
 function RadioButton({
+    label,
+    listOfDropdown,
+    openPreview,
     type,
     uid,
     setInputFields,
@@ -38,61 +41,73 @@ function RadioButton({
 
     return (
         <form action="/action_page.php">
-            <label>{configurationState.label}</label>
-            <div>
-                {/* {configurationState.defaultListOfDropdown.map((opt) => {
-          console.log(opt);
-          return (
-            <div>
-              <label defaultValue={"Hiii"}>
-                {configurationState.defaultListOfDropdown}
-                <input type="radio" name="readAnswer"></input>
-                {opt.value}
-              </label>
-            </div>
-          );
-        })} */}
-
-                {configurationState.listOfDropdown.map((opt) => {
-                    console.log(opt);
-                    return (
-                        <div>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="readAnswer"
-                                    value={opt.value}
-                                ></input>
-                                {opt.value}
-                            </label>
-                        </div>
-                    );
-                })}
-            </div>
-            <div className="configuration_button">
-                <img
-                    alt=""
-                    onClick={() => setModalBox(setOpenModalBox)}
-                    src={edit}
-                    className="editicon"
-                />
-                <img
-                    src={del}
-                    alt=""
-                    className="delicon"
-                    id="del"
-                    onClick={() =>
-                        deleteConfig(setInputFields, configurationState)
-                    }
-                />
-            </div>
-            {openModalBox && (
-                <ModalBox
-                    setOpenModalBox={setOpenModalBox}
-                    configurationState={configurationState}
-                    setConfigurationState={setConfigurationState}
-                    type={type}
-                />
+            {openPreview ? (
+                <>
+                    <label>{label}</label>
+                    <div>
+                        {listOfDropdown.map((opt) => {
+                            console.log(opt);
+                            return (
+                                <div>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="readAnswer"
+                                            value={opt.value}
+                                        ></input>
+                                        {opt.value}
+                                    </label>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </>
+            ) : (
+                <>
+                    <label>{configurationState.label}</label>
+                    <div>
+                        {configurationState.listOfDropdown.map((opt) => {
+                            console.log(opt);
+                            return (
+                                <div>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="readAnswer"
+                                            value={opt.value}
+                                        ></input>
+                                        {opt.value}
+                                    </label>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className="configuration_button">
+                        <img
+                            alt=""
+                            onClick={() => setModalBox(setOpenModalBox)}
+                            src={edit}
+                            className="editicon"
+                        />
+                        <img
+                            src={del}
+                            alt=""
+                            className="delicon"
+                            id="del"
+                            onClick={() =>
+                                deleteConfig(setInputFields, configurationState)
+                            }
+                        />
+                    </div>
+                    {openModalBox && (
+                        <ModalBox
+                            setOpenModalBox={setOpenModalBox}
+                            configurationState={configurationState}
+                            setConfigurationState={setConfigurationState}
+                            type={type}
+                        />
+                    )}
+                </>
             )}
         </form>
     );

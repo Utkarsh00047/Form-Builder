@@ -1,7 +1,6 @@
 import "./Form.css";
 import React, { useState } from "react";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
-import SectionHeader from "../Controls/SectionHeader/SectionHeader";
 import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
 import DropdownContainer from "../Controls/DropdownComponent/DropdownContainer";
 import { v4 as uuidv4 } from "uuid";
@@ -10,6 +9,7 @@ import AttachmentContainer from "../Controls/AttachmentComponent/AttachmentConta
 import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
 import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
 import ButtonContainer from "../Controls/ButtonComponent/ButtonContainer";
+import SectionHeaderContainer from "../Controls/SectionHeader/SectionHeaderContainer";
 
 export const Form = () => {
   const [inputFields, setInputFields] = useState([]);
@@ -62,7 +62,7 @@ export const Form = () => {
 			case "Radio" :
 				return <RadioButtonContainer type={"radio"} uid={uuidv4()} setInputFields={setInputFields}/>;
 			case "Section Header":
-				return <SectionHeader type={"sectionHeaderText"} uid={uuidv4()} setInputFields={setInputFields}/>
+				return <SectionHeaderContainer type={"sectionHeaderText"} uid={uuidv4()} setInputFields={setInputFields}/>
 			case "Checkbox":
 				return <CheckBoxContainer type={"checkbox"} uid={uuidv4()} setInputFields={setInputFields}/>
 			case "Attachment":

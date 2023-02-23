@@ -12,6 +12,7 @@ import AttachmentComponent from "../AttachmentComponent/AttachmentComponent";
 import { v4 as uuidv4 } from "uuid";
 import TextAreaContainer from "../TextAreaComponent/TextAreaContainer";
 export const Droppable = ({
+    openPreview,
     type,
     uid,
     setInputFields,
@@ -200,31 +201,56 @@ export const Droppable = ({
 
     return (
         <div className="Drop">
-            <div
-                id="GridSection"
-                className="DroppableSection"
-                onDragOver={(e) => allowDragEvent(e)}
-                onDrop={(e) => handleDrop(e)}
-                onDragEnter={() => handleDragEnter()}
-                onDragLeave={() => handleDragLeave()}
-            >
-                {/* <h2>columns</h2> */}
-                {/* {inputFields.map((elem) => elem)} */}
-                <div className="DropArea">
-                    {layoutInput.map((layoutInput, i) => (
-                        <div className="DropElement" key={i}>
-                            {layoutInput}
-                        </div>
-                    ))}
+            {openPreview ? (
+                <div
+                    id="GridSection"
+                    className="DroppableSection"
+                    onDragOver={(e) => allowDragEvent(e)}
+                    onDrop={(e) => handleDrop(e)}
+                    onDragEnter={() => handleDragEnter()}
+                    onDragLeave={() => handleDragLeave()}
+                >
+                    {/* <h2>columns</h2> */}
+                    {/* {inputFields.map((elem) => elem)} */}
+                    <div className="DropArea">
+                        {layoutInput.map((layoutInput, i) => (
+                            <div className="DropElement" key={i}>
+                                {layoutInput}
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-            <img
-                src={del}
-                alt=""
-                className="delicon"
-                id="del"
-                onClick={() => deleteConfig(setInputFields, configurationState)}
-            />
+            ) : (
+                <>
+                    <div
+                        id="GridSection"
+                        className="DroppableSection"
+                        onDragOver={(e) => allowDragEvent(e)}
+                        onDrop={(e) => handleDrop(e)}
+                        onDragEnter={() => handleDragEnter()}
+                        onDragLeave={() => handleDragLeave()}
+                    >
+                        {/* <h2>columns</h2> */}
+                        {/* {inputFields.map((elem) => elem)} */}
+                        <div className="DropArea">
+                            {layoutInput.map((layoutInput, i) => (
+                                <div className="DropElement" key={i}>
+                                    {layoutInput}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <img
+                        src={del}
+                        alt=""
+                        className="delicon"
+                        id="del"
+                        onClick={() =>
+                            deleteConfig(setInputFields, configurationState)
+                        }
+                    />
+                </>
+            )}
         </div>
     );
 };

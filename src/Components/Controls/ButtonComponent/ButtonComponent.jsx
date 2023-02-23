@@ -6,6 +6,8 @@ import ModalBox from "../../ModalBox/ModalBox";
 import { deleteConfig } from "../CommonFunctions";
 
 const ButtonComponent = ({
+    label,
+    openPreview,
     type,
     uid,
     setInputFields,
@@ -31,33 +33,39 @@ const ButtonComponent = ({
 
     return (
         <div>
-            <button type={configurationState.type}>
-                {configurationState.label}
-            </button>
-            <div className="configuration_button">
-                <img
-                    alt=""
-                    onClick={() => setModalBox(setOpenModalBox)}
-                    src={edit}
-                    className="editicon"
-                />
-                <img
-                    src={del}
-                    alt=""
-                    className="delicon"
-                    id="del"
-                    onClick={() =>
-                        deleteConfig(setInputFields, configurationState)
-                    }
-                />
-            </div>
-            {openModalBox && (
-                <ModalBox
-                    setOpenModalBox={setOpenModalBox}
-                    configurationState={configurationState}
-                    setConfigurationState={setConfigurationState}
-                    type={type}
-                />
+            {openPreview ? (
+                <button type={type}>{label}</button>
+            ) : (
+                <>
+                    <button type={configurationState.type}>
+                        {configurationState.label}
+                    </button>
+                    <div className="configuration_button">
+                        <img
+                            alt=""
+                            onClick={() => setModalBox(setOpenModalBox)}
+                            src={edit}
+                            className="editicon"
+                        />
+                        <img
+                            src={del}
+                            alt=""
+                            className="delicon"
+                            id="del"
+                            onClick={() =>
+                                deleteConfig(setInputFields, configurationState)
+                            }
+                        />
+                    </div>
+                    {openModalBox && (
+                        <ModalBox
+                            setOpenModalBox={setOpenModalBox}
+                            configurationState={configurationState}
+                            setConfigurationState={setConfigurationState}
+                            type={type}
+                        />
+                    )}
+                </>
             )}
         </div>
     );

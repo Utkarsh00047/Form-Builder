@@ -10,6 +10,14 @@ import "./TextAreaComponent.css";
 import { deleteConfig } from "../CommonFunctions";
 
 const TextAreaComponent = ({
+    label,
+    helptext,
+    defaultValue,
+    placeholder,
+    isReadOnly,
+    isRequired,
+    rows,
+    openPreview,
     type,
     uid,
     setInputFields,
@@ -41,57 +49,87 @@ const TextAreaComponent = ({
 
     return (
         <>
-            <div className="textArea_heading">
-                <label htmlFor="textArea" className="label_textArea">
-                    {configurationState.label}
-                </label>
-                {configurationState.helptext && (
-                    <div className="tooltip">
-                        <img
-                            onMouseEnter={configurationState.helptext}
-                            src={question}
-                            alt=""
-                            className="help_text"
-                            id="helpText"
-                            // onClick={() => handleDelete(setshowTextField)}
+            {openPreview ? (
+                <div className="textArea_heading">
+                    <label htmlFor="textArea" className="label_textArea">
+                        {label}
+                    </label>
+                    {helptext && (
+                        <div className="tooltip">
+                            <img
+                                onMouseEnter={helptext}
+                                src={question}
+                                alt=""
+                                className="help_text"
+                                id="helpText"
+                                // onClick={() => handleDelete(setshowTextField)}
+                            />
+                            <span className="tooltiptext">{helptext}</span>
+                        </div>
+                    )}
+                    <textarea
+                        className="textArea"
+                        id="textArea"
+                        name="textArea"
+                        rows={rows}
+                        cols={50}
+                    />
+                </div>
+            ) : (
+                <>
+                    <div className="textArea_heading">
+                        <label htmlFor="textArea" className="label_textArea">
+                            {configurationState.label}
+                        </label>
+                        {configurationState.helptext && (
+                            <div className="tooltip">
+                                <img
+                                    onMouseEnter={configurationState.helptext}
+                                    src={question}
+                                    alt=""
+                                    className="help_text"
+                                    id="helpText"
+                                    // onClick={() => handleDelete(setshowTextField)}
+                                />
+                                <span className="tooltiptext">
+                                    {configurationState.helptext}
+                                </span>
+                            </div>
+                        )}
+                        <textarea
+                            className="textArea"
+                            id="textArea"
+                            name="textArea"
+                            rows={configurationState.rows}
+                            cols={50}
                         />
-                        <span className="tooltiptext">
-                            {configurationState.helptext}
-                        </span>
                     </div>
-                )}
-                <textarea
-                    className="textArea"
-                    id="textArea"
-                    name="textArea"
-                    rows={configurationState.rows}
-                    cols={50}
-                />
-            </div>
 
-            <div className="configuration_button">
-                <img
-                    alt=""
-                    onClick={() => setModalBox(setOpenModalBox)}
-                    src={edit}
-                    className="editicon"
-                />
-                <img
-                    src={del}
-                    alt=""
-                    className="delicon"
-                    id="del"
-                    onClick={() =>
-                        deleteConfig(setInputFields, configurationState)
-                    }
-                />
-            </div>
-            {openModalBox && (
-                <ModalBox
-                    setOpenModalBox={setOpenModalBox}
-                    configurationState={configurationState}
-                    setConfigurationState={setConfigurationState}
-                />
+                    <div className="configuration_button">
+                        <img
+                            alt=""
+                            onClick={() => setModalBox(setOpenModalBox)}
+                            src={edit}
+                            className="editicon"
+                        />
+                        <img
+                            src={del}
+                            alt=""
+                            className="delicon"
+                            id="del"
+                            onClick={() =>
+                                deleteConfig(setInputFields, configurationState)
+                            }
+                        />
+                    </div>
+                    {openModalBox && (
+                        <ModalBox
+                            setOpenModalBox={setOpenModalBox}
+                            configurationState={configurationState}
+                            setConfigurationState={setConfigurationState}
+                        />
+                    )}
+                </>
             )}
         </>
     );

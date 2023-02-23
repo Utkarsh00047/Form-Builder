@@ -8,6 +8,12 @@ import question from "../../../assests/question.png";
 import { deleteConfig } from "../CommonFunctions";
 
 const TextField = ({
+    label,
+    helptext,
+    defaultValue,
+    placeholder,
+    isReadOnly,
+    isRequired,
     openPreview,
     type,
     insertConfig,
@@ -64,30 +70,28 @@ const TextField = ({
             {openPreview ? (
                 <>
                     <label htmlFor="textField" className="heads">
-                        {configurationState.label}
+                        {label}
                     </label>
-                    {configurationState.helptext && (
+                    {helptext && (
                         <div className="tooltip">
                             <img
-                                onMouseEnter={configurationState.helptext}
+                                onMouseEnter={helptext}
                                 src={question}
                                 alt=""
                                 className="help_text"
                                 id="helpText"
                                 // onClick={() => handleDelete(setshowTextField)}
                             />
-                            <span className="tooltiptext">
-                                {configurationState.helptext}
-                            </span>
+                            <span className="tooltiptext">{helptext}</span>
                         </div>
                     )}
                     <input
-                        defaultValue={configurationState.defaultValue}
+                        defaultValue={defaultValue}
                         id={"textField"}
-                        type={configurationState.type}
-                        placeholder={configurationState.placeholder}
-                        readonly={configurationState.isReadOnly}
-                        required={configurationState.isRequired}
+                        type={type}
+                        placeholder={placeholder}
+                        readonly={isReadOnly}
+                        required={isRequired}
                         className="input_field"
                     />
                 </>
