@@ -68,6 +68,7 @@ const TextAreaComponent = ({
                         </div>
                     )}
                     <textarea
+                        placeholder={placeholder}
                         className="textArea"
                         id="textArea"
                         name="textArea"
@@ -97,6 +98,7 @@ const TextAreaComponent = ({
                             </div>
                         )}
                         <textarea
+                            placeholder={configurationState.placeholder}
                             className="textArea"
                             id="textArea"
                             name="textArea"

@@ -8,8 +8,8 @@ import CheckBoxContainer from "../Controls/CheckBoxComponent/CheckBoxContainer";
 import AttachmentContainer from "../Controls/AttachmentComponent/AttachmentContainer";
 import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
 import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
-import ButtonContainer from "../Controls/ButtonComponent/ButtonContainer";
 import SectionHeaderContainer from "../Controls/SectionHeader/SectionHeaderContainer";
+import ButtonContainer from "../Controls/ButtonComponent.jsx/ButtonContainer";
 
 export const Form = () => {
   const [inputFields, setInputFields] = useState([]);
@@ -52,6 +52,9 @@ export const Form = () => {
 
 			case "URL":
 				return <TextFieldContainer type={"url"} uid={uuidv4()} setInputFields={setInputFields}/>;
+
+			case "Time":
+				return <TextFieldContainer type={"time"} />;
 
 			case "Phone Number":
 				return <TextFieldContainer type={"tel"} uid={uuidv4()} setInputFields={setInputFields}/>;

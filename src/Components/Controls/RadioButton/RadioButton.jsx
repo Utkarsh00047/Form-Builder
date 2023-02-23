@@ -5,9 +5,12 @@ import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
 import { setModalBox } from "../commonControlFunctions";
 import { deleteConfig } from "../CommonFunctions";
+import question from "../../../assests/question.png";
+
 function RadioButton({
     label,
     listOfDropdown,
+    helptext,
     openPreview,
     type,
     uid,
@@ -16,16 +19,13 @@ function RadioButton({
     updateConfig,
 }) {
     const [openModalBox, setOpenModalBox] = useState(false);
-    const options = [
-        { defaultOptions: "Option 1" },
-        { defaultOptions: "Option 2" },
-    ];
+
     const [configurationState, setConfigurationState] = useState({
         id: uid,
         label: `Select :`,
         type: type,
-        listOfDropdown: [],
-        defaultListOfDropdown: [options],
+        helptext: "",
+        listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
     });
 
     console.log(configurationState.type);
@@ -44,6 +44,19 @@ function RadioButton({
             {openPreview ? (
                 <>
                     <label>{label}</label>
+                    {helptext && (
+                        <div className="tooltip">
+                            <img
+                                onMouseEnter={helptext}
+                                src={question}
+                                alt=""
+                                className="help_text"
+                                id="helpText"
+                                // onClick={() => handleDelete(setshowTextField)}
+                            />
+                            <span className="tooltiptext">{helptext}</span>
+                        </div>
+                    )}
                     <div>
                         {listOfDropdown.map((opt) => {
                             console.log(opt);
@@ -65,6 +78,21 @@ function RadioButton({
             ) : (
                 <>
                     <label>{configurationState.label}</label>
+                    {configurationState.helptext && (
+                        <div className="tooltip">
+                            <img
+                                onMouseEnter={configurationState.helptext}
+                                src={question}
+                                alt=""
+                                className="help_text"
+                                id="helpText"
+                                // onClick={() => handleDelete(setshowTextField)}
+                            />
+                            <span className="tooltiptext">
+                                {configurationState.helptext}
+                            </span>
+                        </div>
+                    )}
                     <div>
                         {configurationState.listOfDropdown.map((opt) => {
                             console.log(opt);

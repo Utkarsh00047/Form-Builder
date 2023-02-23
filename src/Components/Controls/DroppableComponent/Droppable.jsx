@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Droppable.css";
 import del from "../../../assets/delete.png";
 import TextFieldContainer from "../TextField/TextFieldContainer";
-import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import { deleteConfig } from "../CommonFunctions";
-import DropdownComponent from "../DropdownComponent/DropdownComponent";
-import RadioButton from "../RadioButton/RadioButton";
-import SectionHeader from "../SectionHeader/SectionHeader";
-import CheckBoxComponent from "../CheckBoxComponent/CheckBoxComponent";
-import AttachmentComponent from "../AttachmentComponent/AttachmentComponent";
 import { v4 as uuidv4 } from "uuid";
 import TextAreaContainer from "../TextAreaComponent/TextAreaContainer";
+import ButtonContainer from "../ButtonComponent.jsx/ButtonContainer";
+import DropdownContainer from "../DropdownComponent/DropdownContainer";
+import RadioButtonContainer from "../RadioButton/RadioButtonContainer";
+import SectionHeaderContainer from "../SectionHeader/SectionHeaderContainer";
+import CheckBoxContainer from "../CheckBoxComponent/CheckBoxContainer";
+import AttachmentContainer from "../AttachmentComponent/AttachmentContainer";
 export const Droppable = ({
     openPreview,
     type,
@@ -98,7 +98,7 @@ export const Droppable = ({
 
             case "Button":
                 return (
-                    <ButtonComponent
+                    <ButtonContainer
                         type={"button"}
                         uid={uuidv4()}
                         setInputFields={setLayoutInput}
@@ -143,7 +143,7 @@ export const Droppable = ({
 
             case "Dropdown":
                 return (
-                    <DropdownComponent
+                    <DropdownContainer
                         type={"dropdown"}
                         uid={uuidv4()}
                         setInputFields={setLayoutInput}
@@ -152,7 +152,7 @@ export const Droppable = ({
 
             case "Radio":
                 return (
-                    <RadioButton
+                    <RadioButtonContainer
                         type={"radio"}
                         uid={uuidv4()}
                         setInputFields={setLayoutInput}
@@ -161,7 +161,7 @@ export const Droppable = ({
 
             case "Section Header":
                 return (
-                    <SectionHeader
+                    <SectionHeaderContainer
                         type={"sectionHeaderText"}
                         uid={uuidv4()}
                         setInputFields={setLayoutInput}
@@ -170,7 +170,7 @@ export const Droppable = ({
 
             case "Checkbox":
                 return (
-                    <CheckBoxComponent
+                    <CheckBoxContainer
                         type={"checkbox"}
                         uid={uuidv4()}
                         setInputFields={setLayoutInput}
@@ -179,7 +179,7 @@ export const Droppable = ({
 
             case "Attachment":
                 return (
-                    <AttachmentComponent
+                    <AttachmentContainer
                         type={"file"}
                         uid={uuidv4()}
                         setInputFields={setLayoutInput}

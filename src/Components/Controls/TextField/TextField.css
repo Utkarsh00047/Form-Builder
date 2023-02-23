@@ -15,4 +15,7 @@
     margin-left: auto;
     margin-right: 11%;
 }
-
+.subtext{
+  display: flex;
+  flex-direction: column;
+}

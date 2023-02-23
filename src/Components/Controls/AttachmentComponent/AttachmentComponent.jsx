@@ -20,6 +20,7 @@ const AttachmentComponent = ({
         label: `Enter ${type} : `,
         type: type,
         isRequired: false,
+        paragraph: "",
     });
     console.log(configurationState.type);
 
@@ -39,6 +40,9 @@ const AttachmentComponent = ({
                 type={configurationState.type}
                 required={configurationState.isRequired}
             />
+            <p className="paragraph_help_text">
+                {configurationState.paragraph}
+            </p>
             <div className="configuration_button">
                 <img
                     alt=""

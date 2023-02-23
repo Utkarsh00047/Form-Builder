@@ -21,8 +21,9 @@ function SectionHeader({
         paragraph: "",
         type: type,
         defaultParagraph: "Enter subtext for the heading...",
+        headingFont: "h3",
     });
-
+    const headingTag = configurationState.headingFont;
     console.log(configurationState.type);
 
     useEffect(() => {
@@ -35,6 +36,26 @@ function SectionHeader({
 
     return (
         <div>
+            {configurationState.heading ? (
+                <>
+                    <configurationState.headingFont>
+                        {configurationState.heading}
+                    </configurationState.headingFont>
+                </>
+            ) : (
+                <>
+                    <h2>{configurationState.label}</h2>
+                </>
+            )}
+            {configurationState.paragraph ? (
+                <>
+                    <p>{configurationState.paragraph}</p>
+                </>
+            ) : (
+                <>
+                    <p>{configurationState.defaultParagraph}</p>
+                </>
+            )}
             <div className="configuration_button">
                 <img
                     alt=""
@@ -52,24 +73,6 @@ function SectionHeader({
                     }
                 />
             </div>
-            {configurationState.heading ? (
-                <>
-                    <h2>{configurationState.heading}</h2>
-                </>
-            ) : (
-                <>
-                    <h2>{configurationState.label}</h2>
-                </>
-            )}
-            {configurationState.paragraph ? (
-                <>
-                    <p>{configurationState.paragraph}</p>
-                </>
-            ) : (
-                <>
-                    <p>{configurationState.defaultParagraph}</p>
-                </>
-            )}
             {/* <section className="sectionHeader">
         <div>
           <h2>{configurationState.heading}</h2>

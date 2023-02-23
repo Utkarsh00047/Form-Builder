@@ -14,7 +14,7 @@ function CheckBoxComponent({ type, uid,
     id: uid,
     label: `Select :`,
     type: type,
-    listOfDropdown: [],
+    listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
   });
   console.log(configurationState.type);
   return (
@@ -28,9 +28,7 @@ function CheckBoxComponent({ type, uid,
               <input type="checkbox" value={opt.value}></input>
               {opt.value}
             </label>
-            //{opt.value}
           );
-          //return <input value="">{opt.value}</input>;
         })}
       </div>
       <div className="configuration_button">

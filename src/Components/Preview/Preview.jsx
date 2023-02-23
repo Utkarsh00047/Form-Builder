@@ -1,7 +1,7 @@
 import React from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
-import ButtonContainer from "../Controls/ButtonComponent/ButtonContainer";
+import ButtonContainer from "../Controls/ButtonComponent.jsx/ButtonContainer";
 import DropdownContainer from "../Controls/DropdownComponent/DropdownContainer";
 import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
 import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
