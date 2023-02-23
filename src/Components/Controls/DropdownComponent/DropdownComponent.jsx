@@ -11,7 +11,7 @@ const DropdownComponent = ({ type }) => {
   const [configurationState, setConfigurationState] = useState({
     label: `Select :`,
     type: type,
-    listOfDropdown: [],
+    listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
     defaultValue: "---Select---",
   });
 

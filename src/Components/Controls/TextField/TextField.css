@@ -43,3 +43,7 @@ img:hover{
     margin-left: 446px;
     margin-right: 8px;
 }
+.subtext{
+  display: flex;
+  flex-direction: column;
+}

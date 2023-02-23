@@ -12,7 +12,7 @@ function CheckBoxComponent({ type }) {
   const [configurationState, setConfigurationState] = useState({
     label: `Select :`,
     type: type,
-    listOfDropdown: [],
+    listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
   });
   console.log(configurationState.type);
   return showTextField ? (
@@ -26,9 +26,7 @@ function CheckBoxComponent({ type }) {
               <input type="checkbox" value={opt.value}></input>
               {opt.value}
             </label>
-            //{opt.value}
           );
-          //return <input value="">{opt.value}</input>;
         })}
       </div>
       <div className="configuration_button">

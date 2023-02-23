@@ -1,5 +1,5 @@
 .help_text{
-    display: inline-flex;
+    display: inline;
     height: 15px;
     width: 15px;
     /* margin-top: 3px;
@@ -12,11 +12,16 @@
 }
 
 .label_textArea{
-   display: inline;
+   display: flex;
     margin-left: 0%;
 }
 
 .textArea_heading{
+    display: flex;
+    flex-direction: column;
+}
+
+.tooltip{
     display: inline;
 }
 

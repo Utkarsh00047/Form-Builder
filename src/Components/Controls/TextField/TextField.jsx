@@ -23,6 +23,7 @@ const TextField = ({ type, insertConfig, updateConfig }) => {
     isRequired: false,
     isReadOnly: false,
     defaultValue: "",
+    paragraph: "",
   });
   console.log(configurationState.type);
 
@@ -76,6 +77,7 @@ const TextField = ({ type, insertConfig, updateConfig }) => {
         required={configurationState.isRequired}
         className="input_field"
       />
+      <p className="subtext">{configurationState.paragraph}</p>
       <div className="configuration_button">
         <img
           alt=""

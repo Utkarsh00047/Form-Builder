@@ -23,25 +23,30 @@ const TextAreaComponent = ({ type }) => {
 
   console.log(configurationState.type);
   return showTextField ? (
-    <>
+    <div>
       <div className="textArea_heading">
-        <label htmlFor="textArea" className="label_textArea">
-          {configurationState.label}
-        </label>
-        {configurationState.helptext && (
-          <div className="tooltip">
-            <img
-              onMouseEnter={configurationState.helptext}
-              src={question}
-              alt=""
-              className="help_text"
-              id="helpText"
-              // onClick={() => handleDelete(setshowTextField)}
-            />
-            <span className="tooltiptext">{configurationState.helptext}</span>
-          </div>
-        )}
+        <div>
+          <label htmlFor="textArea" className="label_textArea">
+            {configurationState.label}
+          </label>
+        </div>
+        <div>
+          {configurationState.helptext && (
+            <div className="tooltip">
+              <img
+                onMouseEnter={configurationState.helptext}
+                src={question}
+                alt=""
+                className="help_text"
+                id="helpText"
+                // onClick={() => handleDelete(setshowTextField)}
+              />
+              <span className="tooltiptext">{configurationState.helptext}</span>
+            </div>
+          )}
+        </div>
         <textarea
+          placeholder={configurationState.placeholder}
           className="textArea"
           id="textArea"
           name="textArea"
@@ -70,9 +75,10 @@ const TextAreaComponent = ({ type }) => {
           setOpenModalBox={setOpenModalBox}
           configurationState={configurationState}
           setConfigurationState={setConfigurationState}
+          type={type}
         />
       )}
-    </>
+    </div>
   ) : null;
 };
 

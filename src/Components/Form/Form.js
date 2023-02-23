@@ -1,8 +1,7 @@
 import "./Form.css";
 import React, { useState } from "react";
-// import TextField from "../Controls/TextField/TextField";
 import TextAreaComponent from "../Controls/TextAreaComponent/TextAreaComponent";
-import ButtonComponent from "../Controls/ButtonComponent/ButtonComponent";
+import ButtonComponent from "../Controls/ButtonComponent.jsx/ButtonComponent";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
 import DropdownComponent from "../Controls/DropdownComponent/DropdownComponent";
 import RadioButton from "../Controls/RadioButton/RadioButton";
@@ -46,6 +45,9 @@ export const Form = () => {
 
 			case "URL":
 				return <TextFieldContainer type={"url"} />;
+
+			case "Time":
+				return <TextFieldContainer type={"time"} />;
 
 			case "Phone Number":
 				return <TextFieldContainer type={"tel"} />;

@@ -15,29 +15,19 @@ function SectionHeader({ type }) {
     paragraph: "",
     type: type,
     defaultParagraph: "Enter subtext for the heading...",
+    headingFont: "h3",
   });
-
+  console.log(configurationState.headingFont);
   console.log(configurationState.type);
+  const headingTag = configurationState.headingFont;
+  console.log(headingTag);
   return showTextField ? (
     <div>
-      <div className="configuration_button">
-        <img
-          alt=""
-          onClick={() => setModalBox(setOpenModalBox)}
-          src={edit}
-          className="configuration_button"
-        />
-        <img
-          src={del}
-          alt=""
-          className="delicon"
-          id="del"
-          onClick={() => handleDelete(setshowTextField)}
-        />
-      </div>
       {configurationState.heading ? (
         <>
-          <h2>{configurationState.heading}</h2>
+          <configurationState.headingFont>
+            {configurationState.heading}
+          </configurationState.headingFont>
         </>
       ) : (
         <>
@@ -53,13 +43,21 @@ function SectionHeader({ type }) {
           <p>{configurationState.defaultParagraph}</p>
         </>
       )}
-      {/* <section className="sectionHeader">
-        <div>
-          <h2>{configurationState.heading}</h2>
-        </div>
-        : {<h2>{configurationState.label}</h2>}}
-        <p>{configurationState.paragraph}</p>
-      </section> */}
+      <div className="configuration_button">
+        <img
+          alt=""
+          onClick={() => setModalBox(setOpenModalBox)}
+          src={edit}
+          className="configuration_button"
+        />
+        <img
+          src={del}
+          alt=""
+          className="delicon"
+          id="del"
+          onClick={() => handleDelete(setshowTextField)}
+        />
+      </div>
       {openModalBox && (
         <ModalBox
           setOpenModalBox={setOpenModalBox}
