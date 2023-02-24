@@ -19,28 +19,16 @@ const AttachmentComponent = ({ type , uid,
   console.log(configurationState.type);
 
   return (
+    <>
     <div className="attachmentForFile">
-      <label className="">{configurationState.label}</label>
+      <label className="LabelforFile">{configurationState.label}</label>
       <input
         id={"textField"}
         type={configurationState.type}
         required={configurationState.isRequired}
+        className="InputforFile"
       />
-      <div className="configuration_button">
-        <img
-          alt=""
-          onClick={() => setModalBox(setOpenModalBox)}
-          src={edit}
-          className="editicon"
-        />
-        <img
-          src={del}
-          alt=""
-          className="delicon"
-          id="del"
-          onClick={() => deleteConfig(setInputFields, configurationState)}
-        />
-      </div>
+    
       {openModalBox && (
         <ModalBox
           setOpenModalBox={setOpenModalBox}
@@ -50,6 +38,22 @@ const AttachmentComponent = ({ type , uid,
         />
       )}
     </div>
+      <div className="configuration_button">
+      <img
+        alt=""
+        onClick={() => setModalBox(setOpenModalBox)}
+        src={edit}
+        className="editicon"
+      />
+      <img
+        src={del}
+        alt=""
+        className="delicon"
+        id="del"
+        onClick={() => deleteConfig(setInputFields, configurationState)}
+      />
+    </div>
+    </>
   )
 };
 

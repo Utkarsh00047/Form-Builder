@@ -4,7 +4,7 @@ import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
 import { setModalBox } from "../commonControlFunctions";
-
+import './CheckBoxComponent.css'
 import { deleteConfig } from "../CommonFunctions";
 function CheckBoxComponent({ type, uid,
   setInputFields}) {
@@ -25,7 +25,7 @@ function CheckBoxComponent({ type, uid,
           console.log(opt);
           return (
             <label>
-              <input type="checkbox" value={opt.value}></input>
+              <input type="checkbox" value={opt.value} className="checkboxinput"></input>
               {opt.value}
             </label>
             //{opt.value}

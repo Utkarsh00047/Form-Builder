@@ -108,9 +108,6 @@ const TextField = ({
           type={type}
         />
       )}
-      {/* <div className="delicon"> */}
-
-      {/* </div> */}
     </>
   );
 };

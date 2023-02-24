@@ -4,6 +4,7 @@ import del from "../../../assets/delete.png";
 import { setModalBox } from "../commonControlFunctions";
 import ModalBox from "../../ModalBox/ModalBox";
 import { deleteConfig } from "../CommonFunctions";
+import "./ButtonComponent.css"
 
 const ButtonComponent = ({type, uid,
   setInputFields}) => {
@@ -16,8 +17,8 @@ const ButtonComponent = ({type, uid,
 
   console.log(configurationState.type);
   return (
-    <div>
-      <button type={configurationState.type}>{configurationState.label}</button>
+    <div className="btn">
+      <button type={configurationState.type} className="btn1">{configurationState.label}</button>
       <div className="configuration_button">
         <img
           alt=""

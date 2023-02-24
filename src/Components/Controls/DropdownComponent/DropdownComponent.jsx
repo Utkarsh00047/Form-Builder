@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { setModalBox } from "../commonControlFunctions";
-import { handleDelete } from "../commonControlFunctions";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
 import { deleteConfig } from "../CommonFunctions";
+import './DropdownComponent.css';
 const DropdownComponent = ({ type, uid,
   setInputFields}) => {
 
@@ -23,7 +23,7 @@ const DropdownComponent = ({ type, uid,
   return (
     <form action="">
       <label>{configurationState.label}</label>
-      <select>
+      <select className="dropdownInput">
         {configurationState.listOfDropdown.map((opt) => {
           console.log(opt);
           return <option value="">{opt.value}</option>;

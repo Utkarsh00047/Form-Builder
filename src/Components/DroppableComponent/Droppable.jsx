@@ -16,6 +16,7 @@ import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
 export const Droppable = ({type,uid,setInputFields,setIsToggle,Toggle}) => {
 
   const [layoutInput, setLayoutInput] = useState([]);
+  const uuid=uuidv4();
    const [configurationState, setConfigurationState] = useState({
     id: uid,
     helptext: "",
@@ -55,46 +56,46 @@ export const Droppable = ({type,uid,setInputFields,setIsToggle,Toggle}) => {
   const SwitchInput = (inputType) => {
     switch (inputType) {
       case "Text Field":
-        return <TextFieldContainer type={"text"}  uid={uuidv4()} setInputFields={setLayoutInput} />;
+        return <TextFieldContainer type={"text"}  key={uuid} uid={uuid} setInputFields={setLayoutInput} />;
 
 			case "Text Area":
-				return <TextAreaContainer type={"textarea"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <TextAreaContainer type={"textarea"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
 			case "Number":
-				return <TextFieldContainer type={"number"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <TextFieldContainer type={"number"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
 			case "Password":
-				return <TextFieldContainer type={"password"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <TextFieldContainer type={"password"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
 			case "Button":
-				return <ButtonComponent type={"button"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <ButtonComponent type={"button"} key={uuid} uid={uuid}setInputFields={setLayoutInput}/>;
 
 			case "Email":
-				return <TextFieldContainer type={"email"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <TextFieldContainer type={"email"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
 			case "URL":
-				return <TextFieldContainer type={"url"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <TextFieldContainer type={"url"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
 			case "Phone Number":
-				return <TextFieldContainer type={"tel"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <TextFieldContainer type={"tel"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
       case "Date/Time":
-				return <TextFieldContainer type={"datetime-local"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <TextFieldContainer type={"datetime-local"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
       case "Dropdown":
-				return <DropdownComponent type={"dropdown"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <DropdownComponent type={"dropdown"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
       case "Radio" :
-				return <RadioButton type={"radio"} uid={uuidv4()} setInputFields={setLayoutInput}/>;
+				return <RadioButton type={"radio"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>;
 
       case "Section Header":
-				return <SectionHeader type={"sectionHeaderText"} uid={uuidv4()} setInputFields={setLayoutInput}/>
+				return <SectionHeader type={"sectionHeaderText"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>
 
       case "Checkbox":
-				return <CheckBoxComponent type={"checkbox"} uid={uuidv4()} setInputFields={setLayoutInput}/>
+				return <CheckBoxComponent type={"checkbox"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>
 
       case "Attachment":
-				return <AttachmentComponent type={"file"} uid={uuidv4()} setInputFields={setLayoutInput}/>
+				return <AttachmentComponent type={"file"} key={uuid} uid={uuid} setInputFields={setLayoutInput}/>
        
       default:
         break;
