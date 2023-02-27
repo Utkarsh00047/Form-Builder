@@ -1,0 +1,15 @@
+.btn1{
+background-color: rgb(187, 207, 245);
+padding: 0.5rem 2rem;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.btn1:hover{
+    background-color: rgb(122, 147, 194);
+}
+.btn1:active {
+    box-shadow:7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    transform: translateY(2px);
+    /* Moving button 4px to y-axis */
+}

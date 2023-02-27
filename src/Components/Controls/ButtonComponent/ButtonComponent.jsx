@@ -1,36 +1,24 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
-import ModalBox from "../../ModalBox/ModalBox";
 import { setModalBox } from "../commonControlFunctions";
-import './CheckBoxComponent.css'
+import ModalBox from "../../ModalBox/ModalBox";
 import { deleteConfig } from "../CommonFunctions";
-function CheckBoxComponent({ type, uid,
-  setInputFields}) {
-  
+import "./ButtonComponent.css"
+
+const ButtonComponent = ({type, uid,
+  setInputFields}) => {
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
     id: uid,
-    label: `Select :`,
-    type: type,
-    listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
+    label: `Button`,
+    type: type ? type : "",
   });
+
   console.log(configurationState.type);
   return (
-    <form action="/action_page.php">
-      <label>{configurationState.label}</label>
-      <div>
-        {configurationState.listOfDropdown.map((opt) => {
-          console.log(opt);
-          return (
-            <label>
-              <input type="checkbox" value={opt.value} className="checkboxinput"></input>
-              {opt.value}
-            </label>
-          );
-        })}
-      </div>
+    <div className="btn">
+      <button type={configurationState.type} className="btn1">{configurationState.label}</button>
       <div className="configuration_button">
         <img
           alt=""
@@ -54,8 +42,8 @@ function CheckBoxComponent({ type, uid,
           type={type}
         />
       )}
-    </form>
+    </div>
   ) 
-}
+};
 
-export default CheckBoxComponent;
+export default ButtonComponent;

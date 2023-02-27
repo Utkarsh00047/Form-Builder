@@ -18,6 +18,7 @@ export const Form = () => {
   const allowDragEvent = (e) => {
     e.preventDefault();
   };
+  const uid=uuidv4();
   const handleDrop = (e) => {
     e.preventDefault();
 	if(!isToggle){
@@ -34,22 +35,22 @@ export const Form = () => {
     switch (inputType) {
      
 		case "Text Field":
-        	return <TextFieldContainer type={"text"}  uid={uuidv4()} setInputFields={setInputFields} />;
+        	return <TextFieldContainer type={"text"} key={uid} uid={uid} setInputFields={setInputFields} />;
 
 			case "Text Area":
-				return <TextAreaContainer type={"textarea"} uid={uuidv4()} setInputFields={setInputFields}/>;
+				return <TextAreaContainer type={"textarea"} key={uid} uid={uid} setInputFields={setInputFields}/>;
 
 			case "Number":
-				return <TextFieldContainer type={"number"} uid={uuidv4()} setInputFields={setInputFields}/>;
+				return <TextFieldContainer type={"number"} key={uid} uid={uid} setInputFields={setInputFields}/>;
 
 			case "Password":
-				return <TextFieldContainer type={"password"} uid={uuidv4()} setInputFields={setInputFields}/>;
+				return <TextFieldContainer type={"password"} key={uid} uid={uid}setInputFields={setInputFields}/>;
 
 			case "Button":
 				return <ButtonContainer type={"button"} uid={uuidv4()} setInputFields={setInputFields}/>;
 
 			case "Email":
-				return <TextFieldContainer type={"email"} uid={uuidv4()} setInputFields={setInputFields}/>;
+				return <TextFieldContainer type={"email"} key={uid} uid={uid} setInputFields={setInputFields}/>;
 
 			case "URL":
 				return <TextFieldContainer type={"url"} uid={uuidv4()} setInputFields={setInputFields}/>;
@@ -58,9 +59,9 @@ export const Form = () => {
 				return <TextFieldContainer type={"time"} />;
 
 			case "Phone Number":
-				return <TextFieldContainer type={"tel"} uid={uuidv4()} setInputFields={setInputFields}/>;
+				return <TextFieldContainer type={"tel"} key={uid} uid={uid} setInputFields={setInputFields}/>;
 			case "Date/Time":
-				return <TextFieldContainer type={"datetime-local"} uid={uuidv4()} setInputFields={setInputFields}/>;
+				return <TextFieldContainer type={"datetime-local"} key={uid} uid={uid} setInputFields={setInputFields}/>;
 			case "Dropdown":
 				return <DropdownContainer type={"dropdown"} uid={uuidv4()} setInputFields={setInputFields}/>;
 			case "Radio" :
@@ -78,7 +79,7 @@ export const Form = () => {
 			type={"layout"}
 			setIsToggle={setIsToggle}
 			Toggle={isToggle}
-			uid={uuidv4()} 
+			key={uid} uid={uid}
 			setInputFields={setInputFields}
 			/>;
       default:

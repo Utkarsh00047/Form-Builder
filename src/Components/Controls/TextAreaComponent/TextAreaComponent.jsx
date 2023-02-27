@@ -48,25 +48,27 @@ const TextAreaComponent = ({
   }, [configurationState]);
 
   return (
-    <div>
+    <>
       {openPreview ? (
         <div className="textArea_heading">
-          <label htmlFor="textArea" className="label_textArea">
-            {label}
-          </label>
-          {helptext && (
-            <div className="tooltip">
-              <img
-                onMouseEnter={helptext}
-                src={question}
-                alt=""
-                className="help_text"
-                id="helpText"
-                // onClick={() => handleDelete(setshowTextField)}
-              />
-              <span className="tooltiptext">{helptext}</span>
-            </div>
-          )}
+          <div className="TeaxtAreaHeadings">
+            <label htmlFor="textArea" className="label_textArea">
+              {label}
+            </label>
+            {helptext && (
+              <div className="tooltip">
+                <img
+                  onMouseEnter={helptext}
+                  src={question}
+                  alt=""
+                  className="help_text"
+                  id="helpText"
+                  // onClick={() => handleDelete(setshowTextField)}
+                />
+                <span className="tooltiptext">{helptext}</span>
+              </div>
+            )}
+          </div>
           <textarea
             placeholder={placeholder}
             className="textArea"
@@ -77,26 +79,28 @@ const TextAreaComponent = ({
           />
         </div>
       ) : (
-        <div>
+        <>
           <div className="textArea_heading">
-            <label htmlFor="textArea" className="label_textArea">
-              {configurationState.label}
-            </label>
-            {configurationState.helptext && (
-              <div className="tooltip">
-                <img
-                  onMouseEnter={configurationState.helptext}
-                  src={question}
-                  alt=""
-                  className="help_text"
-                  id="helpText"
-                  // onClick={() => handleDelete(setshowTextField)}
-                />
-                <span className="tooltiptext">
-                  {configurationState.helptext}
-                </span>
-              </div>
-            )}
+            <div className="TeaxtAreaHeadings">
+              <label htmlFor="textArea" className="label_textArea">
+                {configurationState.label}
+              </label>
+              {configurationState.helptext && (
+                <div className="tooltip">
+                  <img
+                    onMouseEnter={configurationState.helptext}
+                    src={question}
+                    alt=""
+                    className="help_text"
+                    id="helpText"
+                    // onClick={() => handleDelete(setshowTextField)}
+                  />
+                  <span className="tooltiptext">
+                    {configurationState.helptext}
+                  </span>
+                </div>
+              )}
+            </div>
             <textarea
               placeholder={configurationState.placeholder}
               className="textArea"
@@ -124,15 +128,15 @@ const TextAreaComponent = ({
           </div>
           {openModalBox && (
             <ModalBox
+              type={type}
               setOpenModalBox={setOpenModalBox}
               configurationState={configurationState}
               setConfigurationState={setConfigurationState}
-              type={type}
             />
           )}
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };
 
