@@ -27,6 +27,7 @@ const TextAreaComponent = ({ type , uid,
   return (
     <>
       <div className="textArea_heading">
+        <div className="TeaxtAreaHeadings">
         <label htmlFor="textArea" className="label_textArea">
           {configurationState.label}
         </label>
@@ -40,9 +41,11 @@ const TextAreaComponent = ({ type , uid,
               id="helpText"
               // onClick={() => handleDelete(setshowTextField)}
             />
+            
             <span className="tooltiptext">{configurationState.helptext}</span>
           </div>
         )}
+        </div>
         <textarea
           className="textArea"
           id="textArea"
@@ -69,6 +72,7 @@ const TextAreaComponent = ({ type , uid,
       </div>
       {openModalBox && (
         <ModalBox
+          type={type}
           setOpenModalBox={setOpenModalBox}
           configurationState={configurationState}
           setConfigurationState={setConfigurationState}
