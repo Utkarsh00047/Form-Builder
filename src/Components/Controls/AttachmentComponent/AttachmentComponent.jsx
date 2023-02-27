@@ -34,11 +34,12 @@ const AttachmentComponent = ({
 
     return (
         <div className="attachmentForFile">
-            <label className="">{configurationState.label}</label>
+            <label className="LabelforFile">{configurationState.label}</label>
             <input
                 id={"textField"}
                 type={configurationState.type}
                 required={configurationState.isRequired}
+                className="InputforFile"
             />
             <p className="paragraph_help_text">
                 {configurationState.paragraph}

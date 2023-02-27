@@ -1,0 +1,7 @@
+.dropdownInput{
+    border-radius: 5px;
+    padding: 10px 30px;
+    /* border: none; */
+    background-color: rgb(253, 251, 251);
+    margin-left: 1rem;
+}
