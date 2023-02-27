@@ -1,57 +1,90 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { setModalBox } from "../commonControlFunctions";
 import { handleDelete } from "../commonControlFunctions";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
+import { deleteConfig } from "../CommonFunctions";
+const DropdownComponent = ({
+    label,
+    listOfDropdown,
+    openPreview,
+    type,
+    uid,
+    setInputFields,
+    insertConfig,
+    updateConfig,
+}) => {
+    const [openModalBox, setOpenModalBox] = useState(false);
+    const [configurationState, setConfigurationState] = useState({
+        id: uid,
+        label: `Select :`,
+        type: type,
+        listOfDropdown: [],
+        defaultValue: "---Select---",
+    });
 
-const DropdownComponent = ({ type }) => {
-  const [showTextField, setshowTextField] = useState(true);
-  const [openModalBox, setOpenModalBox] = useState(false);
-  const [configurationState, setConfigurationState] = useState({
-    label: `Select :`,
-    type: type,
-    listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
-    defaultValue: "---Select---",
-  });
+    console.log(configurationState.listOfDropdown);
+    console.log(configurationState.type);
 
-  console.log(configurationState.type.type);
-  console.log(configurationState.listOfDropdown);
-  console.log(configurationState.type);
-  return showTextField ? (
-    <form action="">
-      <label>{configurationState.label}</label>
-      <select>
-        {configurationState.listOfDropdown.map((opt) => {
-          console.log(opt);
-          return <option value="">{opt.value}</option>;
-        })}
-      </select>
-      <div className="configuration_button">
-        <img
-          alt=""
-          onClick={() => setModalBox(setOpenModalBox)}
-          src={edit}
-          className="configuration_button"
-        />
-        <img
-          src={del}
-          alt=""
-          className="delicon"
-          id="del"
-          onClick={() => handleDelete(setshowTextField)}
-        />
-      </div>
-      {openModalBox && (
-        <ModalBox
-          setOpenModalBox={setOpenModalBox}
-          configurationState={configurationState}
-          setConfigurationState={setConfigurationState}
-          type={type}
-        />
-      )}
-    </form>
-  ) : null;
+    useEffect(() => {
+        insertConfig(configurationState);
+    }, []);
+
+    useEffect(() => {
+        updateConfig(configurationState);
+    }, [configurationState]);
+
+    return (
+        <form action="">
+            {openPreview ? (
+                <>
+                    <label>{label}</label>
+                    <select>
+                        {listOfDropdown.map((opt) => {
+                            console.log(opt);
+                            return <option value="">{opt.value}</option>;
+                        })}
+                    </select>
+                </>
+            ) : (
+                <>
+                    <label>{configurationState.label}</label>
+                    <select>
+                        {configurationState.listOfDropdown.map((opt) => {
+                            console.log(opt);
+                            return <option value="">{opt.value}</option>;
+                        })}
+                    </select>
+                    <div className="configuration_button">
+                        <img
+                            alt=""
+                            onClick={() => setModalBox(setOpenModalBox)}
+                            src={edit}
+                            className="editicon"
+                        />
+                        <img
+                            src={del}
+                            alt=""
+                            className="delicon"
+                            id="del"
+                            onClick={() =>
+                                deleteConfig(setInputFields, configurationState)
+                            }
+                        />
+                    </div>
+                    {openModalBox && (
+                        <ModalBox
+                            setOpenModalBox={setOpenModalBox}
+                            configurationState={configurationState}
+                            setConfigurationState={setConfigurationState}
+                            type={type}
+                        />
+                    )}
+                </>
+            )}
+        </form>
+    );
 };
 
 export default DropdownComponent;

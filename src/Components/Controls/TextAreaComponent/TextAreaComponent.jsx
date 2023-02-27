@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { setModalBox } from "../commonControlFunctions";
 import { handleDelete } from "../commonControlFunctions";
 import edit from "../../../assests/edit.png";
 import del from "../../../assets/delete.png";
 import ModalBox from "../../ModalBox/ModalBox";
+import { v4 as uuidv4 } from "uuid";
 import question from "../../../assests/question.png";
 import "./TextAreaComponent.css";
+import { deleteConfig } from "../CommonFunctions";
 
-const TextAreaComponent = ({ type }) => {
-  const [showTextField, setshowTextField] = useState(true);
+const TextAreaComponent = ({
+  label,
+  helptext,
+  defaultValue,
+  placeholder,
+  isReadOnly,
+  isRequired,
+  rows,
+  openPreview,
+  type,
+  uid,
+  setInputFields,
+  insertConfig,
+  updateConfig,
+}) => {
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
+    id: uid,
     helptext: "",
-    label: `Enter text`,
+    label: `Enter ${type}`,
     type: type,
     placeholder: "",
     isRequired: false,
@@ -22,64 +38,102 @@ const TextAreaComponent = ({ type }) => {
   });
 
   console.log(configurationState.type);
-  return showTextField ? (
+
+  useEffect(() => {
+    insertConfig(configurationState);
+  }, []);
+
+  useEffect(() => {
+    updateConfig(configurationState);
+  }, [configurationState]);
+
+  return (
     <div>
-      <div className="textArea_heading">
-        <div>
+      {openPreview ? (
+        <div className="textArea_heading">
           <label htmlFor="textArea" className="label_textArea">
-            {configurationState.label}
+            {label}
           </label>
-        </div>
-        <div>
-          {configurationState.helptext && (
+          {helptext && (
             <div className="tooltip">
               <img
-                onMouseEnter={configurationState.helptext}
+                onMouseEnter={helptext}
                 src={question}
                 alt=""
                 className="help_text"
                 id="helpText"
                 // onClick={() => handleDelete(setshowTextField)}
               />
-              <span className="tooltiptext">{configurationState.helptext}</span>
+              <span className="tooltiptext">{helptext}</span>
             </div>
           )}
+          <textarea
+            placeholder={placeholder}
+            className="textArea"
+            id="textArea"
+            name="textArea"
+            rows={rows}
+            cols={50}
+          />
         </div>
-        <textarea
-          placeholder={configurationState.placeholder}
-          className="textArea"
-          id="textArea"
-          name="textArea"
-          rows={configurationState.rows}
-          cols={50}
-        />
-      </div>
+      ) : (
+        <div>
+          <div className="textArea_heading">
+            <label htmlFor="textArea" className="label_textArea">
+              {configurationState.label}
+            </label>
+            {configurationState.helptext && (
+              <div className="tooltip">
+                <img
+                  onMouseEnter={configurationState.helptext}
+                  src={question}
+                  alt=""
+                  className="help_text"
+                  id="helpText"
+                  // onClick={() => handleDelete(setshowTextField)}
+                />
+                <span className="tooltiptext">
+                  {configurationState.helptext}
+                </span>
+              </div>
+            )}
+            <textarea
+              placeholder={configurationState.placeholder}
+              className="textArea"
+              id="textArea"
+              name="textArea"
+              rows={configurationState.rows}
+              cols={50}
+            />
+          </div>
 
-      <div className="configuration_button">
-        <img
-          alt=""
-          onClick={() => setModalBox(setOpenModalBox)}
-          src={edit}
-          className="configuration_button"
-        />
-        <img
-          src={del}
-          alt=""
-          className="delicon"
-          id="del"
-          onClick={() => handleDelete(setshowTextField)}
-        />
-      </div>
-      {openModalBox && (
-        <ModalBox
-          setOpenModalBox={setOpenModalBox}
-          configurationState={configurationState}
-          setConfigurationState={setConfigurationState}
-          type={type}
-        />
+          <div className="configuration_button">
+            <img
+              alt=""
+              onClick={() => setModalBox(setOpenModalBox)}
+              src={edit}
+              className="editicon"
+            />
+            <img
+              src={del}
+              alt=""
+              className="delicon"
+              id="del"
+              onClick={() => deleteConfig(setInputFields, configurationState)}
+            />
+          </div>
+          {openModalBox && (
+            <ModalBox
+              setOpenModalBox={setOpenModalBox}
+              configurationState={configurationState}
+              setConfigurationState={setConfigurationState}
+              type={type}
+            />
+          )}
+        </div>
       )}
     </div>
-  ) : null;
+  );
 };
 
 export default TextAreaComponent;

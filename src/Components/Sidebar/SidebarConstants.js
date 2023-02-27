@@ -15,10 +15,9 @@ export const controls = {
 	],
 	Advanced: [
 		"Date/Time",
-		// "Day",
 		"Phone Number",
 		"Review",
-		"Survey",
+		"Layout",
 		"Time",
 		"URL",
 	],

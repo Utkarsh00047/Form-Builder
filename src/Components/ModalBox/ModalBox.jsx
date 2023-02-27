@@ -48,11 +48,11 @@ const ModalBox = (props) => {
     });
   };
 
-  console.log(saveUpdate.defaultValue);
-  console.log(arr);
+  // console.log(saveUpdate.defaultValue);
+  // console.log(arr);
   console.log(props.type);
-  console.log(saveUpdate.headingFont);
-  console.log(saveUpdate.heading);
+  // console.log(saveUpdate.headingFont);
+  // console.log(saveUpdate.heading);
 
   return (
     <div className="formdiv">
@@ -87,10 +87,41 @@ const ModalBox = (props) => {
             />
           </div>
 
+          {props.type === "datetime-local" ? (
+            <div>
+              <label htmlFor="" className="label_text_field">
+                Select time format:{" "}
+              </label>
+              <div class="switch-field">
+                <input
+                  type="radio"
+                  id="radio-one"
+                  name="switch-one"
+                  value="yes"
+                  checked
+                />
+                <label for="radio-one">12 hours</label>
+                <input
+                  type="radio"
+                  id="radio-two"
+                  name="switch-one"
+                  value="no"
+                />
+                <label for="radio-two">24 hours</label>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+
           {props.type === "text" ||
           props.type === "textarea" ||
           props.type === "number" ||
-          props.type === "email" ? (
+          props.type === "email" ||
+          props.type === "datetime-local" ||
+          props.type === "time" ||
+          props.type === "url" ||
+          props.type === "tel" ? (
             <div>
               <label className="label_text_field" for="placeholder">
                 Placeholder:
@@ -257,18 +288,16 @@ const ModalBox = (props) => {
 
           {props.type === "textarea" || props.type === "button" ? (
             <div>
-              <div>
-                <label className="label_field" for="required">
-                  Help Text
-                </label>
-                <input
-                  className="input_box"
-                  value={saveUpdate.helptext}
-                  onChange={(e) =>
-                    settingSaveUpdateData("helptext", e.target.value)
-                  }
-                />
-              </div>
+              <label className="label_field" for="required">
+                Help Text
+              </label>
+              <input
+                className="input_box"
+                value={saveUpdate.helptext}
+                onChange={(e) =>
+                  settingSaveUpdateData("helptext", e.target.value)
+                }
+              />
             </div>
           ) : (
             ""

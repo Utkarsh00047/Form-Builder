@@ -1,11 +1,25 @@
 import React from "react";
+import edit from "../../../assests/edit.png";
+import del from "../../../assets/delete.png";
+import ModalBox from "../../ModalBox/ModalBox";
+import { useState } from "react";
+import { setModalBox } from "../commonControlFunctions";
+import { deleteConfig } from "../CommonFunctions";
 import "./ReviewComponent.css";
 
-function ReviewComponent() {
+function ReviewComponent(type, uid, setInputFields) {
+  const [openModalBox, setOpenModalBox] = useState(false);
+  const [configurationState, setConfigurationState] = useState({
+    id: uid,
+    label: `Enter heading...`,
+    heading: "",
+    paragraph: "",
+    type: type,
+    defaultParagraph: "Enter subtext for the heading...",
+    headingFont: "h3",
+  });
   return (
     <div className="review">
-      <title>Star rating using pure CSS</title>
-
       <div class="rate">
         <input type="radio" id="star5" name="rate" value="5" />
         <label for="star5" title="text">
@@ -27,6 +41,21 @@ function ReviewComponent() {
         <label for="star1" title="text">
           1 star
         </label>
+      </div>
+      <div className="configuration_button">
+        <img
+          alt=""
+          onClick={() => setModalBox(setOpenModalBox)}
+          src={edit}
+          className="editicon"
+        />
+        <img
+          src={del}
+          alt=""
+          className="delicon"
+          id="del"
+          onClick={() => deleteConfig(setInputFields, configurationState)}
+        />
       </div>
     </div>
   );

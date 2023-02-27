@@ -2,110 +2,159 @@ import React, { useEffect, useState } from "react";
 import edit from "../../../assests/edit.png";
 import "./TextField.css";
 import ModalBox from "../../ModalBox/ModalBox";
-import "./TextField.css";
 import del from "../../../assets/delete.png";
-import { v4 as uuidv4 } from "uuid";
 import { setModalBox } from "../commonControlFunctions";
-import { handleDelete } from "../commonControlFunctions";
 import question from "../../../assests/question.png";
+import { deleteConfig } from "../CommonFunctions";
 
-const TextField = ({ type, insertConfig, updateConfig }) => {
-  const [showTextField, setshowTextField] = useState(true);
-  const [openModalBox, setOpenModalBox] = useState(false);
-  //   const setModalBox = () => {
-  //   	setOpenModalBox(!openModalBox);
-  //   };
-  const [configurationState, setConfigurationState] = useState({
-    id: uuidv4(),
-    label: `Enter ${type}`,
-    type: type,
-    placeholder: "",
-    isRequired: false,
-    isReadOnly: false,
-    defaultValue: "",
-    paragraph: "",
-  });
-  console.log(configurationState.type);
+const TextField = ({
+    label,
+    helptext,
+    defaultValue,
+    placeholder,
+    isReadOnly,
+    isRequired,
+    openPreview,
+    type,
+    insertConfig,
+    updateConfig,
+    uid,
+    setInputFields,
+}) => {
+    //   const [showTextField, setshowTextField] = useState(true);
+    const [openModalBox, setOpenModalBox] = useState(false);
+    //   const setModalBox = () => {
+    //   	setOpenModalBox(!openModalBox);
+    //   };
+    const [configurationState, setConfigurationState] = useState({
+        id: uid,
+        label: `Enter ${type}`,
+        type: type,
+        placeholder: "",
+        isRequired: false,
+        isReadOnly: false,
+        defaultValue: "",
+    });
+    console.log(configurationState.type);
 
-  useEffect(() => {
-    insertConfig(configurationState);
-  }, []);
+    useEffect(() => {
+        insertConfig(configurationState);
+    }, []);
 
-  useEffect(() => {
-    updateConfig(configurationState);
-  }, [configurationState]);
-  //   const handleDelete = () => {
-  //     if (window.confirm("Are you sure you want to delete this Field?")) {
-  //       setshowTextField(false);
-  //     }
-  //   };
-  //   useEffect(()=>{
-  // 	const storedShowTextField =localStorage.getItem("showTextField");
-  // 	if (storedShowTextField){
-  // 		setshowTextField(JSON.parse(storedShowTextField));
-  // 	}
-  //   },[]);
+    useEffect(() => {
+        updateConfig(configurationState);
+    }, [configurationState]);
 
-  //   useEffect(()=>{
-  // 	localStorage.setItem("showTextField",JSON.stringify (showTextField));
-  //   },[showTextField]);
-  //
-  return showTextField ? (
-    <>
-      <label htmlFor="textField" className="heads">
-        {configurationState.label}
-      </label>
-      {configurationState.helptext && (
-        <div className="tooltip">
-          <img
-            onMouseEnter={configurationState.helptext}
-            src={question}
-            alt=""
-            className="help_text"
-            id="helpText"
-            // onClick={() => handleDelete(setshowTextField)}
-          />
-          <span className="tooltiptext">{configurationState.helptext}</span>
-        </div>
-      )}
-      <input
-        defaultValue={configurationState.defaultValue}
-        id={"textField"}
-        type={configurationState.type}
-        placeholder={configurationState.placeholder}
-        readonly={configurationState.isReadOnly}
-        required={configurationState.isRequired}
-        className="input_field"
-      />
-      <p className="subtext">{configurationState.paragraph}</p>
-      <div className="configuration_button">
-        <img
-          alt=""
-          onClick={() => setModalBox(setOpenModalBox)}
-          src={edit}
-          className="configuration_button"
-        />
-        <img
-          src={del}
-          alt=""
-          className="delicon"
-          id="del"
-          onClick={() => handleDelete(setshowTextField)}
-        />
-      </div>
-      {openModalBox && (
-        <ModalBox
-          setOpenModalBox={setOpenModalBox}
-          configurationState={configurationState}
-          setConfigurationState={setConfigurationState}
-          type={type}
-        />
-      )}
-      {/* <div className="delicon"> */}
+    //   const handleDelete = () => {
+    //     if (window.confirm("Are you sure you want to delete this Field?")) {
+    //       setInputFields((prev) =>
+    //         prev.filter((inputField) => {
+    //           return inputField.props.uid !== configurationState.id;
+    //         })
+    //       );
+    //     }
+    //   };
+    //   useEffect(()=>{
+    // 	const storedShowTextField =localStorage.getItem("showTextField");
+    // 	if (storedShowTextField){
+    // 		setshowTextField(JSON.parse(storedShowTextField));
+    // 	}
+    //   },[]);
 
-      {/* </div> */}
-    </>
-  ) : null;
+    //   useEffect(()=>{
+    // 	localStorage.setItem("showTextField",JSON.stringify (showTextField));
+    //   },[showTextField]);
+    //
+    return (
+        <>
+            {openPreview ? (
+                <>
+                    <label htmlFor="textField" className="heads">
+                        {label}
+                    </label>
+                    {helptext && (
+                        <div className="tooltip">
+                            <img
+                                onMouseEnter={helptext}
+                                src={question}
+                                alt=""
+                                className="help_text"
+                                id="helpText"
+                                // onClick={() => handleDelete(setshowTextField)}
+                            />
+                            <span className="tooltiptext">{helptext}</span>
+                        </div>
+                    )}
+                    <input
+                        defaultValue={defaultValue}
+                        id={"textField"}
+                        type={type}
+                        placeholder={placeholder}
+                        readonly={isReadOnly}
+                        required={isRequired}
+                        className="input_field"
+                    />
+                </>
+            ) : (
+                <>
+                    <label htmlFor="textField" className="heads">
+                        {configurationState.label}
+                    </label>
+                    {configurationState.helptext && (
+                        <div className="tooltip">
+                            <img
+                                onMouseEnter={configurationState.helptext}
+                                src={question}
+                                alt=""
+                                className="help_text"
+                                id="helpText"
+                                // onClick={() => handleDelete(setshowTextField)}
+                            />
+                            <span className="tooltiptext">
+                                {configurationState.helptext}
+                            </span>
+                        </div>
+                    )}
+                    <input
+                        defaultValue={configurationState.defaultValue}
+                        id={"textField"}
+                        type={configurationState.type}
+                        placeholder={configurationState.placeholder}
+                        readonly={configurationState.isReadOnly}
+                        required={configurationState.isRequired}
+                        className="input_field"
+                    />
+                    <div className="configuration_button">
+                        <img
+                            alt=""
+                            onClick={() => setModalBox(setOpenModalBox)}
+                            src={edit}
+                            className="editicon"
+                        />
+                        <img
+                            src={del}
+                            alt=""
+                            className="delicon"
+                            id="del"
+                            onClick={() =>
+                                deleteConfig(setInputFields, configurationState)
+                            }
+                        />
+                    </div>
+                    {openModalBox && (
+                        <ModalBox
+                            setOpenModalBox={setOpenModalBox}
+                            configurationState={configurationState}
+                            setConfigurationState={setConfigurationState}
+                            type={type}
+                        />
+                    )}
+                    {/* <div className="delicon"> */}
+                    {/* </div> */}
+                </>
+            )}
+        </>
+    );
 };
 
 export default TextField;

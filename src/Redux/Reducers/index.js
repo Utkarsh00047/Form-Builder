@@ -18,8 +18,13 @@ const configReducer = (state = initialState, action) => {
 					state.configList[i]=action.payload
 				}
 			}
-
 			return state;
+		
+		case types.DELETE_FIELD:
+			return {
+				...state,
+				configList: state.configList.filter(config => {return config.id !== action.payload.id})
+			};
 			
 		default:
 			return state;
