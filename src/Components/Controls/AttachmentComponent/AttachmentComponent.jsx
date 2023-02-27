@@ -19,7 +19,7 @@ const AttachmentComponent = ({ type , uid,
   console.log(configurationState.type);
 
   return (
-    <>
+    <div className="FieldBody">
     <div className="attachmentForFile">
       <label className="LabelforFile">{configurationState.label}</label>
       <input
@@ -53,7 +53,7 @@ const AttachmentComponent = ({ type , uid,
         onClick={() => deleteConfig(setInputFields, configurationState)}
       />
     </div>
-    </>
+    </div>
   )
 };
 

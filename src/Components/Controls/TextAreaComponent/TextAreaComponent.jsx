@@ -25,7 +25,7 @@ const TextAreaComponent = ({ type , uid,
 
   console.log(configurationState.type);
   return (
-    <>
+<div className="FieldBody">
       <div className="textArea_heading">
         <div className="TeaxtAreaHeadings">
         <label htmlFor="textArea" className="label_textArea">
@@ -78,7 +78,7 @@ const TextAreaComponent = ({ type , uid,
           setConfigurationState={setConfigurationState}
         />
       )}
-    </>
+    </div>
   )
 };
 

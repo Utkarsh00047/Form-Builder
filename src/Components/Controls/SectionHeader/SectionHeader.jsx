@@ -21,7 +21,7 @@ function SectionHeader({ type ,uid,
 
   console.log(configurationState.type);
   return  (
-    <div>
+    <div className="FieldBody">
       <div className="configuration_button">
         <img
           alt=""

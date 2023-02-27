@@ -1,4 +1,12 @@
- 
+.FieldBody{
+background-color: rgb(218, 218, 221);
+margin-left: 1rem;
+margin-top: 0.5rem;
+height: fit-content;
+padding-bottom: 10px;
+padding-top: 10px;
+ }
+
 .input_field {
     padding: .7rem;
     border-radius: .7rem;

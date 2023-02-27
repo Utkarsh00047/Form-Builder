@@ -21,6 +21,7 @@ const DropdownComponent = ({ type, uid,
   console.log(configurationState.listOfDropdown);
   console.log(configurationState.type);
   return (
+    <div className="FieldBody">
     <form action="">
       <label>{configurationState.label}</label>
       <select className="dropdownInput">
@@ -53,6 +54,7 @@ const DropdownComponent = ({ type, uid,
         />
       )}
     </form>
+    </div>
   ) 
 };
 

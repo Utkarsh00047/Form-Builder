@@ -59,7 +59,7 @@ const TextField = ({
   //   },[showTextField]);
   //
   return (
-    <>
+    <div className="FieldBody">
       <label htmlFor="textField" className="heads">
         {configurationState.label}
       </label>
@@ -108,7 +108,7 @@ const TextField = ({
           type={type}
         />
       )}
-    </>
+    </div>
   );
 };
 

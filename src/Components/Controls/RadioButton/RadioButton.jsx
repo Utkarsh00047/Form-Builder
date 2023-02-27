@@ -24,6 +24,7 @@ function RadioButton({ type , uid,
   console.log(configurationState.type);
   console.log(configurationState.defaultListOfDropdown);
   return (
+    <div className="FieldBody">
     <form action="/action_page.php">
       <label>{configurationState.label}</label>
       <div>
@@ -76,6 +77,7 @@ function RadioButton({ type , uid,
         />
       )}
     </form>
+    </div>
   ) 
 }
 

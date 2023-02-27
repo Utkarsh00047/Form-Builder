@@ -17,6 +17,7 @@ const ButtonComponent = ({type, uid,
 
   console.log(configurationState.type);
   return (
+    <div className="FieldBody">
     <div className="btn">
       <button type={configurationState.type} className="btn1">{configurationState.label}</button>
       <div className="configuration_button">
@@ -42,6 +43,7 @@ const ButtonComponent = ({type, uid,
           type={type}
         />
       )}
+    </div>
     </div>
   ) 
 };

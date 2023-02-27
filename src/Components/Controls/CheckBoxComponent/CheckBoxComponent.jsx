@@ -18,6 +18,7 @@ function CheckBoxComponent({ type, uid,
   });
   console.log(configurationState.type);
   return (
+    <div className="FieldBody">
     <form action="/action_page.php">
       <label>{configurationState.label}</label>
       <div>
@@ -57,6 +58,7 @@ function CheckBoxComponent({ type, uid,
         />
       )}
     </form>
+    </div>
   ) 
 }
 
