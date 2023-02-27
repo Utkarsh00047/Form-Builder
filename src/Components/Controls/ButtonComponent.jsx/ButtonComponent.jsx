@@ -7,6 +7,7 @@ import { deleteConfig } from "../CommonFunctions";
 
 const ButtonComponent = ({
     label,
+    types,
     openPreview,
     type,
     uid,
@@ -34,7 +35,7 @@ const ButtonComponent = ({
     return (
         <div>
             {openPreview ? (
-                <button type={type}>{label}</button>
+                <button type={types}>{label}</button>
             ) : (
                 <>
                     <button type={configurationState.type}>

@@ -5,6 +5,7 @@ import ButtonContainer from "../Controls/ButtonComponent.jsx/ButtonContainer";
 import DropdownContainer from "../Controls/DropdownComponent/DropdownContainer";
 import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
 import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
+import SectionHeaderContainer from "../Controls/SectionHeader/SectionHeaderContainer";
 import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
 import "./Preview.css";
@@ -15,6 +16,8 @@ const Preveiw = (props) => {
     console.log(store.getState());
 
     const config = store.getState();
+
+    console.log(props.headingFont);
 
     return (
         <div className="preveiwbox">
@@ -233,7 +236,7 @@ const Preveiw = (props) => {
                                 <ButtonContainer
                                     openPreview={props.openPreview}
                                     label={config.configList[i].label}
-                                    type={config.configList[i].type}
+                                    types={config.configList[i].type}
                                 />
                             );
                         case "radio":
@@ -243,6 +246,21 @@ const Preveiw = (props) => {
                                     label={config.configList[i].label}
                                     listOfDropdown={
                                         config.configList[i].listOfDropdown
+                                    }
+                                />
+                            );
+                        case "sectionHeaderText":
+                            return (
+                                <SectionHeaderContainer
+                                    openPreview={props.openPreview}
+                                    label={config.configList[i].label}
+                                    headingfonts={
+                                        config.configList[i].headingFont
+                                    }
+                                    heading={config.configList[i].heading}
+                                    paragraph={config.configList[i].paragraph}
+                                    defaultParagraph={
+                                        config.configList[i].defaultParagraph
                                     }
                                 />
                             );

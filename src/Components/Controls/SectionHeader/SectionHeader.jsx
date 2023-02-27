@@ -7,6 +7,12 @@ import { setModalBox } from "../commonControlFunctions";
 import { deleteConfig } from "../CommonFunctions";
 
 function SectionHeader({
+    heading,
+    headingfonts,
+    label,
+    paragraph,
+    defaultParagraph,
+    openPreview,
     type,
     uid,
     setInputFields,
@@ -36,57 +42,82 @@ function SectionHeader({
 
     return (
         <div>
-            {configurationState.heading ? (
+            {openPreview ? (
                 <>
-                    <configurationState.headingFont>
-                        {configurationState.heading}
-                    </configurationState.headingFont>
+                    {heading ? (
+                        <>
+                            <headingfonts>{heading}</headingfonts>
+                        </>
+                    ) : (
+                        <>
+                            <h2>{label}</h2>
+                        </>
+                    )}
+                    {paragraph ? (
+                        <>
+                            <p>{paragraph}</p>
+                        </>
+                    ) : (
+                        <>
+                            <p>{defaultParagraph}</p>
+                        </>
+                    )}
                 </>
             ) : (
                 <>
-                    <h2>{configurationState.label}</h2>
-                </>
-            )}
-            {configurationState.paragraph ? (
-                <>
-                    <p>{configurationState.paragraph}</p>
-                </>
-            ) : (
-                <>
-                    <p>{configurationState.defaultParagraph}</p>
-                </>
-            )}
-            <div className="configuration_button">
-                <img
-                    alt=""
-                    onClick={() => setModalBox(setOpenModalBox)}
-                    src={edit}
-                    className="editicon"
-                />
-                <img
-                    src={del}
-                    alt=""
-                    className="delicon"
-                    id="del"
-                    onClick={() =>
-                        deleteConfig(setInputFields, configurationState)
-                    }
-                />
-            </div>
-            {/* <section className="sectionHeader">
+                    {configurationState.heading ? (
+                        <>
+                            <configurationState.headingFont>
+                                {configurationState.heading}
+                            </configurationState.headingFont>
+                        </>
+                    ) : (
+                        <>
+                            <h2>{configurationState.label}</h2>
+                        </>
+                    )}
+                    {configurationState.paragraph ? (
+                        <>
+                            <p>{configurationState.paragraph}</p>
+                        </>
+                    ) : (
+                        <>
+                            <p>{configurationState.defaultParagraph}</p>
+                        </>
+                    )}
+                    <div className="configuration_button">
+                        <img
+                            alt=""
+                            onClick={() => setModalBox(setOpenModalBox)}
+                            src={edit}
+                            className="editicon"
+                        />
+                        <img
+                            src={del}
+                            alt=""
+                            className="delicon"
+                            id="del"
+                            onClick={() =>
+                                deleteConfig(setInputFields, configurationState)
+                            }
+                        />
+                    </div>
+                    {/* <section className="sectionHeader">
         <div>
           <h2>{configurationState.heading}</h2>
         </div>
         : {<h2>{configurationState.label}</h2>}}
         <p>{configurationState.paragraph}</p>
       </section> */}
-            {openModalBox && (
-                <ModalBox
-                    setOpenModalBox={setOpenModalBox}
-                    configurationState={configurationState}
-                    setConfigurationState={setConfigurationState}
-                    type={type}
-                />
+                    {openModalBox && (
+                        <ModalBox
+                            setOpenModalBox={setOpenModalBox}
+                            configurationState={configurationState}
+                            setConfigurationState={setConfigurationState}
+                            type={type}
+                        />
+                    )}
+                </>
             )}
         </div>
     );
