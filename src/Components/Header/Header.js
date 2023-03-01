@@ -30,6 +30,7 @@ export const Header = () => {
       {openPreview && (
         <PreviewContainer
         setPreview={setPreview}
+        openPreview={openPreview}
       />)}
   </div>
   )

@@ -27,6 +27,11 @@
 }
 
 .textArea_heading{
+    display: flex;
+    flex-direction: column;
+}
+
+.tooltip{
     display: inline;
 }
 

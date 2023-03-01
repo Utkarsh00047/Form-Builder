@@ -1,117 +1,201 @@
 import React from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
+import ButtonContainer from "../Controls/ButtonComponent/ButtonContainer";
+import DropdownContainer from "../Controls/DropdownComponent/DropdownContainer";
+import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
+import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
+import SectionHeaderContainer from "../Controls/SectionHeader/SectionHeaderContainer";
+import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
+import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
+
 import "./Preview.css";
 
-
 const Preveiw = (props) => {
-    const store = useStore();
+  const store = useStore();
 
-    console.log(store.getState());
+  console.log(store.getState());
 
-    const config = store.getState();
-    //console.log(config.configList[0].type);
+  const config = store.getState();
 
-    const switchPreview = () => {
-        console.log("fdgdfg");
-        config.configList.map((prev, i) => {
-            console.log(config.configList[i]);
-            switch (config.configList[i].type) {
-                case "text":
-                    return (
-                        <>
-                            <label>{config.configList[i].label}</label>
-                            <input
-                                placeholder={config.configList[i].placeholder}
-                            />
-                        </>
-                    );
-                case "textarea":
-                    return (
-                        <>
-                            <label>{config.configList[i].label}</label>
-                            <textarea
-                                placeholder={config.configList[i].placeholder}
-                            />
-                        </>
-                    );
-                default:
-                    break;
-            }
-        });
-    };
-    //for (var i; i <= config.configList.length; i++)
-    //     {
-    //         console.log(config.configList[i].type);
-    //         switch (config.configList[i].type) {
-    //             case "text":
-    //                 return (
-    //                     <>
-    //                         <label>{config.configList[i].label}</label>
-    //                         <input
-    //                             placeholder={config.configList[i].placeholder}
-    //                         />
-    //                     </>
-    //                 );
-    //             default:
-    //                 break;
-    //         }
-    //     }
-    // };
+  console.log(props.headingFont);
 
-    // useEffect(() => {
-    //     switchPreview();
-    // }, [config]);
+  return (
+    <div className="preveiwbox">
+      <div className="heading">
+        <p>Preview </p>
+        <button
+          type="button"
+          className="remove_bton"
+          onClick={props.setPreview}
+        >
+          <img alt="" src={x} />
+        </button>
+      </div>
 
-    return (
-        <div className="preveiwbox">
-            <div className="heading">
-                <p>Preview </p>
-                <button
-                    type="button"
-                    className="remove_bton"
-                    onClick={props.setPreview}
-                >
-                    <img alt="" src={x} />
-                </button>
-            </div>
-
-            <form>
-                {config.configList.map((prev, i) => {
-                    console.log(config.configList[i]);
-                    switch (config.configList[i].type) {
-                        case "text":
-                            return (
-                                <>
-                                    <label>{config.configList[i].label}</label>
-                                    <input
-                                        placeholder={
-                                            config.configList[i].placeholder
-                                        }
-                                        readOnly={
-                                            config.configList[i].isReadOnly
-                                        }
-                                    />
-                                </>
-                            );
-                        case "textarea":
-                            return (
-                                <>
-                                    <label>{config.configList[i].label}</label>
-                                    <textarea
-                                        placeholder={
-                                            config.configList[i].placeholder
-                                        }
-                                    />
-                                </>
-                            );
-                        default:
-                            break;
-                    }
-                })}
-            </form>
-        </div>
-    );
+      <form className="previewpage">
+        {config.configList.map((prev, i) => {
+          console.log(config.configList[i]);
+          switch (config.configList[i].type) {
+            case "text":
+              return (
+                <>
+                  <TextFieldContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                  />
+                </>
+              );
+            case "number":
+              return (
+                <>
+                  <TextFieldContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                  />
+                </>
+              );
+            case "password":
+              return (
+                <>
+                  <TextFieldContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                  />
+                </>
+              );
+            case "email":
+              return (
+                <>
+                  <TextFieldContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                  />
+                </>
+              );
+            case "url":
+              return (
+                <>
+                  <TextFieldContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                  />
+                </>
+              );
+            case "tel":
+              return (
+                <>
+                  <TextFieldContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                  />
+                </>
+              );
+            case "datetime-local":
+              return (
+                <>
+                  <TextFieldContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                  />
+                </>
+              );
+            case "textarea":
+              return (
+                <>
+                  <TextAreaContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    helptext={config.configList[i].helptext}
+                    defaultValue={config.configList[i].defaultValue}
+                    placeholder={config.configList[i].placeholder}
+                    isReadOnly={config.configList[i].isReadOnly}
+                    isrequired={config.configList[i].isrequired}
+                    rows={config.configList[i].rows}
+                  />
+                </>
+              );
+            case "dropdown":
+              return (
+                <>
+                  <DropdownContainer
+                    openPreview={props.openPreview}
+                    label={config.configList[i].label}
+                    listOfDropdown={config.configList[i].listOfDropdown}
+                  />
+                </>
+              );
+            case "layout":
+              return <DroppableContainer openPreview={props.openPreview} />;
+            case "button":
+              return (
+                <ButtonContainer
+                  openPreview={props.openPreview}
+                  label={config.configList[i].label}
+                  types={config.configList[i].type}
+                />
+              );
+            case "radio":
+              return (
+                <RadioButtonContainer
+                  openPreview={props.openPreview}
+                  label={config.configList[i].label}
+                  listOfDropdown={config.configList[i].listOfDropdown}
+                />
+              );
+            case "sectionHeaderText":
+              return (
+                <SectionHeaderContainer
+                  openPreview={props.openPreview}
+                  label={config.configList[i].label}
+                  headingfonts={config.configList[i].headingFont}
+                  heading={config.configList[i].heading}
+                  paragraph={config.configList[i].paragraph}
+                  defaultParagraph={config.configList[i].defaultParagraph}
+                />
+              );
+            default:
+              break;
+          }
+        })}
+      </form>
+    </div>
+  );
 };
 
 export default Preveiw;

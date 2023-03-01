@@ -9,10 +9,12 @@ header {
   }
 .head1{
   margin-right: 0.8rem;
-  width: 277px;
+  width: 20.7%;
+  width: 20.2vw;
 }
 .head2{
-  width: 965px;
+  /* width: 72%; */
+  width: 70.4vw;
 }
 .head3{
   cursor: pointer;

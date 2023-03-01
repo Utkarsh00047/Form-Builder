@@ -1,4 +1,19 @@
-.checkboxinput{
-    margin-top: 0.7rem;
-    margin-left: 2rem;
+.CheckboxLabel{
+    display: flex;
+    align-items: center;
+    margin-left: 42.5%;
+    padding-left: 35px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.CheckboxLabel input{
+    left: 30%;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
 }

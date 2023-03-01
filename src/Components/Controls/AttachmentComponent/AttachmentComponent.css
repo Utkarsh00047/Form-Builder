@@ -5,10 +5,15 @@
     margin-left: 5.4rem;
     border-style: groove;
     margin-top: 1rem;
+    padding-bottom: 5px;
 }
 .LabelforFile{
 margin-left: 5rem;
 }
+
 .InputforFile{
-    height: 3rem;
+background-color: rgb(187, 207, 245);
+padding: 0.5rem 2rem;
+border-radius: 10px;
+cursor: pointer;
 }

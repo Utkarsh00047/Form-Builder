@@ -12,9 +12,9 @@ function CheckBoxComponent({ type, uid,
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
     id: uid,
-    label: `Select :`,
+    label: `Checkbox : `,
     type: type,
-    listOfDropdown: [],
+    listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
   });
   console.log(configurationState.type);
   return (
@@ -25,13 +25,11 @@ function CheckBoxComponent({ type, uid,
         {configurationState.listOfDropdown.map((opt) => {
           console.log(opt);
           return (
-            <label>
+            <label className="CheckboxLabel">
               <input type="checkbox" value={opt.value} className="checkboxinput"></input>
               {opt.value}
             </label>
-            //{opt.value}
           );
-          //return <input value="">{opt.value}</input>;
         })}
       </div>
       <div className="configuration_button">
