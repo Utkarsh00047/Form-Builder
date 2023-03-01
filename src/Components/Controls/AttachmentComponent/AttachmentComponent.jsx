@@ -7,6 +7,11 @@ import "./AttachmentComponent.css";
 import { deleteConfig } from "../CommonFunctions";
 
 const AttachmentComponent = ({
+    label,
+    types,
+    isRequired,
+    paragraph,
+    openPreview,
     type,
     uid,
     setInputFields,
@@ -35,40 +40,57 @@ const AttachmentComponent = ({
     return (
       <div className="FieldBody">
         <div className="attachmentForFile">
-            <label className="LabelforFile">{configurationState.label}</label>
-            <input
-                id={"textField"}
-                type={configurationState.type}
-                required={configurationState.isRequired}
-                className="InputforFile"
-            />
-            <p className="paragraph_help_text">
-                {configurationState.paragraph}
-            </p>
-            <div className="configuration_button">
-                <img
-                    alt=""
-                    onClick={() => setModalBox(setOpenModalBox)}
-                    src={edit}
-                    className="editicon"
-                />
-                <img
-                    src={del}
-                    alt=""
-                    className="delicon"
-                    id="del"
-                    onClick={() =>
-                        deleteConfig(setInputFields, configurationState)
-                    }
-                />
-            </div>
-            {openModalBox && (
-                <ModalBox
-                    setOpenModalBox={setOpenModalBox}
-                    configurationState={configurationState}
-                    setConfigurationState={setConfigurationState}
-                    type={type}
-                />
+            {openPreview ? (
+                <>
+                    <label className="LabelforFile">{label}</label>
+                    <input
+                        id={"textField"}
+                        type={types}
+                        required={isRequired}
+                        className="InputforFile"
+                    />
+                    <p className="paragraph_help_text">{paragraph}</p>
+                </>
+            ) : (
+                <>
+                    <label className="LabelforFile">
+                        {configurationState.label}
+                    </label>
+                    <input
+                        id={"textField"}
+                        type={configurationState.type}
+                        required={configurationState.isRequired}
+                        className="InputforFile"
+                    />
+                    <p className="paragraph_help_text">
+                        {configurationState.paragraph}
+                    </p>
+                    <div className="configuration_button">
+                        <img
+                            alt=""
+                            onClick={() => setModalBox(setOpenModalBox)}
+                            src={edit}
+                            className="editicon"
+                        />
+                        <img
+                            src={del}
+                            alt=""
+                            className="delicon"
+                            id="del"
+                            onClick={() =>
+                                deleteConfig(setInputFields, configurationState)
+                            }
+                        />
+                    </div>
+                    {openModalBox && (
+                        <ModalBox
+                            setOpenModalBox={setOpenModalBox}
+                            configurationState={configurationState}
+                            setConfigurationState={setConfigurationState}
+                            type={type}
+                        />
+                    )}
+                </>
             )}
         </div>
         </div>
