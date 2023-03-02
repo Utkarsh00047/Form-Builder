@@ -2,17 +2,34 @@
     background-color: rgb(243, 231, 239);
     height: auto;
     width: 58%;
-    position:absolute;
+    position:fixed;
+    z-index: 999;
     top: 1.7%;
     left: 21%;
     display: flex;
     flex-direction: column;
-    /* box-sizing: border-box; */
     border-radius: 4px;
     font-weight: 400;
+    overflow: hidden;
+    pointer-events: auto;
+    filter: blur(0rem);
+}
+
+.outer_div{
+    /* filter: blur(100rem); */
+    top: 0;
+    left:0;
+    opacity: 1;
+    position: fixed ;
+    height: 100vh !important;
+    width: 100vw !important;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 
+#popdiv{
+    position: fixed;
+}
 .headingFont{
     display: flex;
 }
