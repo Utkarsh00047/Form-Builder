@@ -1,7 +1,9 @@
 import React from "react";
 import { useStore } from "react-redux";
 import x from "../../assests/x.png";
+import AttachmentContainer from "../Controls/AttachmentComponent/AttachmentContainer";
 import ButtonContainer from "../Controls/ButtonComponent.jsx/ButtonContainer";
+import CheckBoxContainer from "../Controls/CheckBoxComponent/CheckBoxContainer";
 import DropdownContainer from "../Controls/DropdownComponent/DropdownContainer";
 import DroppableContainer from "../Controls/DroppableComponent/DroppableContainer";
 import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
@@ -261,6 +263,26 @@ const Preveiw = (props) => {
                                     paragraph={config.configList[i].paragraph}
                                     defaultParagraph={
                                         config.configList[i].defaultParagraph
+                                    }
+                                />
+                            );
+                        case "file":
+                            return (
+                                <AttachmentContainer
+                                    openPreview={props.openPreview}
+                                    label={config.configList[i].label}
+                                    types={config.configList[i].type}
+                                    paragraph={config.configList[i].paragraph}
+                                    isrequired={config.configList[i].isrequired}
+                                />
+                            );
+                        case "checkbox":
+                            return (
+                                <CheckBoxContainer
+                                    openPreview={props.openPreview}
+                                    label={config.configList[i].label}
+                                    listOfDropdown={
+                                        config.configList[i].listOfDropdown
                                     }
                                 />
                             );
