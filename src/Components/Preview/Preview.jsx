@@ -19,8 +19,6 @@ const Preveiw = (props) => {
 
     const config = store.getState();
 
-    console.log(props.headingFont);
-
     return (
         <div className="preveiwbox">
             <div className="heading">

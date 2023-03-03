@@ -40,7 +40,7 @@ const DropdownComponent = ({
             {openPreview ? (
                 <>
                     <label>{label}</label>
-                    <select>
+                    <select className="dropdownInput">
                         {listOfDropdown.map((opt) => {
                             console.log(opt);
                             return <option value="">{opt.value}</option>;
@@ -50,7 +50,7 @@ const DropdownComponent = ({
             ) : (
                 <>
                     <label>{configurationState.label}</label>
-                    <select>
+                    <select className="dropdownInput">
                         {configurationState.listOfDropdown.map((opt) => {
                             console.log(opt);
                             return <option value="">{opt.value}</option>;
