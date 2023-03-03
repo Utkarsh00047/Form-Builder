@@ -27,6 +27,8 @@ const TextField = ({
     //   	setOpenModalBox(!openModalBox);
     //   };
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
         label: `Enter ${type}`,
         type: type,

@@ -6,12 +6,10 @@ export const getApi = async (baseURL) => {
   return response;
 };
 
-
 export const putApi = async (apiURL,data) => {
   const response = await axios.put(apiURL,data);
   return response;
 };
-
 
 export const delApi = async (apiURL) => {
   const response = await axios.delete(apiURL);

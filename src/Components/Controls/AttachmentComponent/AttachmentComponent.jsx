@@ -65,7 +65,7 @@ const AttachmentComponent = ({
                     <p className="paragraph_help_text">
                         {configurationState.paragraph}
                     </p>
-                    <div className="configuration_button">
+                    <div className="configuration_buttons">
                         <img
                             alt=""
                             onClick={() => setModalBox(setOpenModalBox)}
