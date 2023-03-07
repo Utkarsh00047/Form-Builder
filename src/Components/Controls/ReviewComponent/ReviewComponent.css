@@ -1,6 +1,7 @@
 .review{
     display: flex;
     margin-top: 2%;
+    margin-left: 6rem;
     align-items: center;
     justify-content: center;
 }

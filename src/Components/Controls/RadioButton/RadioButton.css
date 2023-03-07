@@ -1,0 +1,22 @@
+.RadioLabel{
+    display: flex;
+    align-items: center;
+    margin-left: 42.5%;
+    padding-left: 35px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.RadioLabel input{ 
+    /* position: absolute; */
+    top: 5px;
+    left: 30px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}

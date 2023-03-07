@@ -6,6 +6,7 @@ import ModalBox from "../../ModalBox/ModalBox";
 import { setModalBox } from "../commonControlFunctions";
 import { deleteConfig } from "../CommonFunctions";
 import question from "../../../assests/question.png";
+import './RadioButton.css'
 
 function RadioButton({
     label,
@@ -22,7 +23,7 @@ function RadioButton({
 
     const [configurationState, setConfigurationState] = useState({
         id: uid,
-        label: `Select :`,
+        label: `Radio Button  :`,
         type: type,
         helptext: "",
         listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
@@ -40,6 +41,7 @@ function RadioButton({
     }, [configurationState]);
 
     return (
+      <div className="FieldBody">
         <form action="/action_page.php">
             {openPreview ? (
                 <>
@@ -62,11 +64,12 @@ function RadioButton({
                             console.log(opt);
                             return (
                                 <div>
-                                    <label>
+                                    <label className="RadioLabel">
                                         <input
                                             type="radio"
                                             name="readAnswer"
                                             value={opt.value}
+                                            className="RadioInput"
                                         ></input>
                                         {opt.value}
                                     </label>
@@ -98,11 +101,12 @@ function RadioButton({
                             console.log(opt);
                             return (
                                 <div>
-                                    <label>
+                                    <label className="RadioLabel">
                                         <input
                                             type="radio"
                                             name="readAnswer"
                                             value={opt.value}
+                                            className="RadioInput"
                                         ></input>
                                         {opt.value}
                                     </label>
@@ -138,6 +142,7 @@ function RadioButton({
                 </>
             )}
         </form>
+        </div>
     );
 }
 

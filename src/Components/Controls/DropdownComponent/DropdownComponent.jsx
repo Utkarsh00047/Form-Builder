@@ -18,7 +18,7 @@ const DropdownComponent = ({
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
         id: uid,
-        label: `Select :`,
+        label: `DropDown : `,
         type: type,
         listOfDropdown: [],
         defaultValue: "---Select---",
@@ -36,6 +36,7 @@ const DropdownComponent = ({
     }, [configurationState]);
 
     return (
+      <div className="FieldBody">
         <form action="">
             {openPreview ? (
                 <>
@@ -84,6 +85,7 @@ const DropdownComponent = ({
                 </>
             )}
         </form>
+        </div>
     );
 };
 

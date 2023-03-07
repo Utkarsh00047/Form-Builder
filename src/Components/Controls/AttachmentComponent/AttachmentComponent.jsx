@@ -38,6 +38,7 @@ const AttachmentComponent = ({
     }, [configurationState]);
 
     return (
+      <div className="FieldBody">
         <div className="attachmentForFile">
             {openPreview ? (
                 <>
@@ -64,7 +65,7 @@ const AttachmentComponent = ({
                     <p className="paragraph_help_text">
                         {configurationState.paragraph}
                     </p>
-                    <div className="configuration_button">
+                    <div className="configuration_buttons">
                         <img
                             alt=""
                             onClick={() => setModalBox(setOpenModalBox)}
@@ -91,6 +92,7 @@ const AttachmentComponent = ({
                     )}
                 </>
             )}
+        </div>
         </div>
     );
 };

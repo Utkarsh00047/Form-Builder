@@ -17,3 +17,8 @@ export const openPreview = (payload) =>({
 	type: types.OPEN_PREVIEW,
 	payload: payload
 })
+
+export const handleChange=payload => ({
+	type:types.HANDLECHANGE,
+	payload
+  });

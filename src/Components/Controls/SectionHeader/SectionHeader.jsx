@@ -64,7 +64,7 @@ function SectionHeader({
                     )}
                 </>
             ) : (
-                <>
+              <div className="FieldBody">
                     {configurationState.heading ? (
                         <>
                             <configurationState.headingFont>
@@ -117,7 +117,7 @@ function SectionHeader({
                             type={type}
                         />
                     )}
-                </>
+                </div>
             )}
         </div>
     );

@@ -19,7 +19,7 @@ function CheckBoxComponent({
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
         id: uid,
-        label: `Select :`,
+        label: `Checkbox : `,
         type: type,
         listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
     });
@@ -34,6 +34,7 @@ function CheckBoxComponent({
     }, [configurationState]);
 
     return (
+    <div className="FieldBody">
         <form action="/action_page.php">
             {openPreview ? (
                 <>
@@ -61,7 +62,7 @@ function CheckBoxComponent({
                         {configurationState.listOfDropdown.map((opt) => {
                             console.log(opt);
                             return (
-                                <label>
+                                <label className="CheckboxLabel">
                                     <input
                                         type="checkbox"
                                         value={opt.value}
@@ -100,6 +101,7 @@ function CheckBoxComponent({
                 </>
             )}
         </form>
+    </div>
     );
 }
 

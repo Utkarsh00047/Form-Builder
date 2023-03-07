@@ -18,6 +18,7 @@ function ReviewComponent(type, uid, setInputFields) {
     defaultParagraph: "Enter subtext for the heading...",
     headingFont: "h3",
   });
+  console.log(type);
   return (
     <div className="review">
       <div class="rate">

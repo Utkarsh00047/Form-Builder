@@ -27,6 +27,8 @@ const TextField = ({
     //   	setOpenModalBox(!openModalBox);
     //   };
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
         label: `Enter ${type}`,
         type: type,
@@ -68,7 +70,7 @@ const TextField = ({
     return (
         <>
             {openPreview ? (
-                <>
+                <div className="FieldBody">
                     <label htmlFor="textField" className="heads">
                         {label}
                     </label>
@@ -94,9 +96,9 @@ const TextField = ({
                         required={isRequired}
                         className="input_field"
                     />
-                </>
+                </div>
             ) : (
-                <>
+              <div className="FieldBody">
                     <label htmlFor="textField" className="heads">
                         {configurationState.label}
                     </label>
@@ -151,7 +153,7 @@ const TextField = ({
                     )}
                     {/* <div className="delicon"> */}
                     {/* </div> */}
-                </>
+                </div>
             )}
         </>
     );

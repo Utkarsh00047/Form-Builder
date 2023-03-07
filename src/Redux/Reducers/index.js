@@ -2,6 +2,7 @@ import * as types from "../Constants/ActionTypes";
 
 const initialState = {
 	configList: [],
+	modal: ''
 };
 
 const configReducer = (state = initialState, action) => {
@@ -25,6 +26,9 @@ const configReducer = (state = initialState, action) => {
 				...state,
 				configList: state.configList.filter(config => {return config.id !== action.payload.id})
 			};
+
+		case types.HANDLECHANGE:
+      		return {...state, modal:action.payload}	
 			
 		default:
 			return state;

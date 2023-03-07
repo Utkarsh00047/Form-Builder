@@ -50,6 +50,7 @@ const TextAreaComponent = ({
   return (
     <>
       {openPreview ? (
+        <div className="FieldBody">
         <div className="textArea_heading">
           <div className="TeaxtAreaHeadings">
             <label htmlFor="textArea" className="label_textArea">
@@ -78,8 +79,9 @@ const TextAreaComponent = ({
             cols={50}
           />
         </div>
+        </div>
       ) : (
-        <>
+        <div className="FieldBody">
           <div className="textArea_heading">
             <div className="TeaxtAreaHeadings">
               <label htmlFor="textArea" className="label_textArea">
@@ -134,7 +136,7 @@ const TextAreaComponent = ({
               setConfigurationState={setConfigurationState}
             />
           )}
-        </>
+        </div>
       )}
     </>
   );

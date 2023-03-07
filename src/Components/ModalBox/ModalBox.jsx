@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./ModalBox.css";
 import x from "../../assests/x_white.png";
 import { setModalBox } from "../Controls/commonControlFunctions";
+import axios from 'axios';
+import { postWidget } from "../../Services/Configuration/ConfigurationService";
 
 const ModalBox = (props) => {
   const [saveUpdate, setSaveUpdate] = useState(props.configurationState);
@@ -14,6 +16,14 @@ const ModalBox = (props) => {
   ];
   console.log(saveUpdate);
   const [arr, setArr] = useState(inputArr);
+
+  const Post_Widget = async ()=>{
+    const posturl= axios.post(`https://localhost:7084/api/Widget`,saveUpdate).then(res=>{
+      console.log('resssss',res);
+      alert('Modigication done successfully!!');
+    });
+    return posturl
+  };
 
   const addInput = (e) => {
     setArr((s) => {
@@ -68,10 +78,11 @@ const ModalBox = (props) => {
       </div>
 
       <form
-        onSubmit={(e) => {
+        onSubmit={() => {
           props.setConfigurationState(saveUpdate);
           setModalBox(props.setOpenModalBox);
         }}
+       
       >
         <div className="modal_content">
           <div className="label_name">
@@ -312,6 +323,7 @@ const ModalBox = (props) => {
                 onClick={(e) => {
                   props.setConfigurationState(saveUpdate);
                   setModalBox(props.setOpenModalBox);
+                  Post_Widget();
                 }}
                 type="button"
               >
