@@ -10,6 +10,8 @@ import "./ReviewComponent.css";
 function ReviewComponent(type, uid, setInputFields) {
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
+    pageId:1,
+    rows:0,
     id: uid,
     label: `Enter heading...`,
     heading: "",
@@ -17,6 +19,13 @@ function ReviewComponent(type, uid, setInputFields) {
     type: type,
     defaultParagraph: "Enter subtext for the heading...",
     headingFont: "h3",
+    listOfDropdown: [],
+    isRequired: false,
+    isReadOnly: false,
+    helptext:"",
+    placeholder:"",
+    defaultValue:"",
+    subtext:"",
   });
   console.log(type);
   return (

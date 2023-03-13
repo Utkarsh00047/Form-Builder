@@ -11,6 +11,7 @@ import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
 import SectionHeaderContainer from "../Controls/SectionHeader/SectionHeaderContainer";
 import ButtonContainer from "../Controls/ButtonComponent/ButtonContainer";
 import ReviewComponent from "../Controls/ReviewComponent/ReviewComponent";
+import axios from 'axios';
 
 export const Form = () => {
   const [inputFields, setInputFields] = useState([]);
@@ -30,7 +31,13 @@ export const Form = () => {
     }
     setIsToggle(false);
   };
-
+  const Post_Widget = async ()=>{
+    const posturl= axios.post(`https://localhost:7084/api/Widget`,inputFields).then(res=>{
+      console.log('resssss',res);
+      alert('Modification done successfully!!');
+    });
+    return posturl
+  };
   const switchInput = (inputType) => {
     switch (inputType) {
       case "Text Field":

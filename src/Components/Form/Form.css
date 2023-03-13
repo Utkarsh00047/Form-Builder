@@ -45,3 +45,18 @@
 .form_padding {
 	padding-top: 0.7rem;
 }
+
+.SaveForm{
+	margin-top: 1rem;
+	margin-left: 13px;
+	color: #010113;
+	background-color: #9aa9b8;
+    font-size: 20px;
+    border: 2px;
+    border-color: brown;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 30px;
+    width: 90px;
+    font-size: 15px;
+}

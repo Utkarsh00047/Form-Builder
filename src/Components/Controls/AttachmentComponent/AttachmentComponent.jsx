@@ -20,12 +20,20 @@ const AttachmentComponent = ({
 }) => {
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
+        isReadOnly: false,
+        placeholder:"",
+        subtext:"",
+        heading:"",
+        defaultValue:"",
         // id: uuidv4(),
         label: `Enter ${type} : `,
         type: type,
         isRequired: false,
         paragraph: "",
+        listOfDropdown: [],
     });
     console.log(configurationState.type);
 

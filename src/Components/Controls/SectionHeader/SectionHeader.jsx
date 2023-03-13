@@ -21,13 +21,20 @@ function SectionHeader({
 }) {
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
         label: `Enter heading...`,
         heading: "",
         paragraph: "",
         type: type,
+        isRequired: false,
+        isReadOnly: false,
+        listOfDropdown: [],
         defaultParagraph: "Enter subtext for the heading...",
         headingFont: "h3",
+        subtext: "",
+        helptext: "",
     });
     const headingTag = configurationState.headingFont;
     console.log(configurationState.type);

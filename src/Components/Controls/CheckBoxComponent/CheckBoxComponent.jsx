@@ -18,8 +18,17 @@ function CheckBoxComponent({
 }) {
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
+        isRequired: false,
+        isReadOnly: false,
+        helptext:"",
+        defaultValue:"",
+        subtext:"",
+        heading:"",
         label: `Checkbox : `,
+        placeholder:"",
         type: type,
         listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
     });
