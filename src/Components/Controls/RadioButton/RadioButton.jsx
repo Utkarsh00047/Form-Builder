@@ -6,152 +6,150 @@ import ModalBox from "../../ModalBox/ModalBox";
 import { setModalBox } from "../commonControlFunctions";
 import { deleteConfig } from "../CommonFunctions";
 import question from "../../../assests/question.png";
-import './RadioButton.css'
+import "./RadioButton.css";
 
 function RadioButton({
-    label,
-    listOfDropdown,
-    helptext,
-    openPreview,
-    type,
-    uid,
-    setInputFields,
-    insertConfig,
-    updateConfig,
+  label,
+  listOfDropdown,
+  helptext,
+  openPreview,
+  type,
+  uid,
+  setInputFields,
+  insertConfig,
+  updateConfig,
 }) {
-    const [openModalBox, setOpenModalBox] = useState(false);
+  const [openModalBox, setOpenModalBox] = useState(false);
 
-    const [configurationState, setConfigurationState] = useState({
-        pageId:1,
-        rows:0,
-        id: uid,
-        label: `Radio Button  :`,
-        type: type,
-        placeholder:"",
-        subtext:"",
-        heading:"",
-        defaultValue:"",
-        helptext: "",
-        isRequired: false,
-        isReadOnly: false,
-        listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
-    });
+  const [configurationState, setConfigurationState] = useState({
+    pageId: 1,
+    rows: 0,
+    id: uid,
+    label: `Radio Button  :`,
+    type: type,
+    placeholder: "",
+    subtext: "",
+    heading: "",
+    defaultValue: "",
+    helptext: "",
+    isRequired: false,
+    isReadOnly: false,
+    listOfDropdown: [{type:"", id:"", optionNo:"", value: "Value1" }],
+  });
 
-    console.log(configurationState.type);
-    console.log(configurationState.defaultListOfDropdown);
+  console.log(configurationState.type);
+  console.log(configurationState.defaultListOfDropdown);
 
-    useEffect(() => {
-        insertConfig(configurationState);
-    }, []);
+  useEffect(() => {
+    insertConfig(configurationState);
+  }, []);
 
-    useEffect(() => {
-        updateConfig(configurationState);
-    }, [configurationState]);
+  useEffect(() => {
+    updateConfig(configurationState);
+  }, [configurationState]);
 
-    return (
-      <div className="FieldBody">
-        <form action="/action_page.php">
-            {openPreview ? (
-                <>
-                    <label>{label}</label>
-                    {helptext && (
-                        <div className="tooltip">
-                            <img
-                                onMouseEnter={helptext}
-                                src={question}
-                                alt=""
-                                className="help_text"
-                                id="helpText"
-                                // onClick={() => handleDelete(setshowTextField)}
-                            />
-                            <span className="tooltiptext">{helptext}</span>
-                        </div>
-                    )}
-                    <div>
-                        {listOfDropdown.map((opt) => {
-                            console.log(opt);
-                            return (
-                                <div>
-                                    <label className="RadioLabel">
-                                        <input
-                                            type="radio"
-                                            name="readAnswer"
-                                            value={opt.value}
-                                            className="RadioInput"
-                                        ></input>
-                                        {opt.value}
-                                    </label>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </>
-            ) : (
-                <>
-                    <label>{configurationState.label}</label>
-                    {configurationState.helptext && (
-                        <div className="tooltip">
-                            <img
-                                onMouseEnter={configurationState.helptext}
-                                src={question}
-                                alt=""
-                                className="help_text"
-                                id="helpText"
-                                // onClick={() => handleDelete(setshowTextField)}
-                            />
-                            <span className="tooltiptext">
-                                {configurationState.helptext}
-                            </span>
-                        </div>
-                    )}
-                    <div>
-                        {configurationState.listOfDropdown.map((opt) => {
-                            console.log(opt);
-                            return (
-                                <div>
-                                    <label className="RadioLabel">
-                                        <input
-                                            type="radio"
-                                            name="readAnswer"
-                                            value={opt.value}
-                                            className="RadioInput"
-                                        ></input>
-                                        {opt.value}
-                                    </label>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div className="configuration_button">
-                        <img
-                            alt=""
-                            onClick={() => setModalBox(setOpenModalBox)}
-                            src={edit}
-                            className="editicon"
-                        />
-                        <img
-                            src={del}
-                            alt=""
-                            className="delicon"
-                            id="del"
-                            onClick={() =>
-                                deleteConfig(setInputFields, configurationState)
-                            }
-                        />
-                    </div>
-                    {openModalBox && (
-                        <ModalBox
-                            setOpenModalBox={setOpenModalBox}
-                            configurationState={configurationState}
-                            setConfigurationState={setConfigurationState}
-                            type={type}
-                        />
-                    )}
-                </>
+  return (
+    <div className="FieldBody">
+      <form action="/action_page.php">
+        {openPreview ? (
+          <>
+            <label>{label}</label>
+            {helptext && (
+              <div className="tooltip">
+                <img
+                  onMouseEnter={helptext}
+                  src={question}
+                  alt=""
+                  className="help_text"
+                  id="helpText"
+                  // onClick={() => handleDelete(setshowTextField)}
+                />
+                <span className="tooltiptext">{helptext}</span>
+              </div>
             )}
-        </form>
-        </div>
-    );
+            <div>
+              {listOfDropdown.map((opt) => {
+                console.log(opt);
+                return (
+                  <div>
+                    <label className="RadioLabel">
+                      <input
+                        type="radio"
+                        name="readAnswer"
+                        value={opt.value}
+                        className="RadioInput"
+                      ></input>
+                      {opt.value}
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <>
+            <label>{configurationState.label}</label>
+            {configurationState.helptext && (
+              <div className="tooltip">
+                <img
+                  onMouseEnter={configurationState.helptext}
+                  src={question}
+                  alt=""
+                  className="help_text"
+                  id="helpText"
+                  // onClick={() => handleDelete(setshowTextField)}
+                />
+                <span className="tooltiptext">
+                  {configurationState.helptext}
+                </span>
+              </div>
+            )}
+            <div>
+              {configurationState.listOfDropdown.map((opt) => {
+                console.log(opt);
+                return (
+                  <div>
+                    <label className="RadioLabel">
+                      <input
+                        type="radio"
+                        name="readAnswer"
+                        value={opt.value}
+                        className="RadioInput"
+                      ></input>
+                      {opt.value}
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="configuration_button">
+              <img
+                alt=""
+                onClick={() => setModalBox(setOpenModalBox)}
+                src={edit}
+                className="editicon"
+              />
+              <img
+                src={del}
+                alt=""
+                className="delicon"
+                id="del"
+                onClick={() => deleteConfig(setInputFields, configurationState)}
+              />
+            </div>
+            {openModalBox && (
+              <ModalBox
+                setOpenModalBox={setOpenModalBox}
+                configurationState={configurationState}
+                setConfigurationState={setConfigurationState}
+                type={type}
+              />
+            )}
+          </>
+        )}
+      </form>
+    </div>
+  );
 }
 
 export default RadioButton;

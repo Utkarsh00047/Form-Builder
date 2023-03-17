@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ModalBox.css";
 import x from "../../assests/x_white.png";
 import { setModalBox } from "../Controls/commonControlFunctions";
+import { current } from "@reduxjs/toolkit";
 
 // import { postWidget } from "../../Services/Configuration/ConfigurationService";
 
@@ -10,8 +11,9 @@ const ModalBox = (props) => {
   const inputArr = [
     {
       type: "text",
-      id: 1,
       value: "",
+      id: 1,
+      optionNo: 1,
     },
   ];
   console.log(saveUpdate);
@@ -24,16 +26,22 @@ const ModalBox = (props) => {
   //   });
   //   return posturl
   // };
+  let currentId = 1;
+  let currentOptionNo = 1;
 
   const addInput = (e) => {
     setArr((s) => {
       e.preventDefault();
+      console.log(e);
+      currentId++;
+      currentOptionNo++;
       return [
         ...s,
         {
-          type: "",
-          id: e.target.id,
+          type: "text",
           value: "",
+          id: currentId,
+          optionNo: currentOptionNo,
         },
       ];
     });
@@ -60,7 +68,7 @@ const ModalBox = (props) => {
 
   // console.log(saveUpdate.defaultValue);
   // console.log(arr);
-  console.log(props.type);
+  // console.log(props.type);
   // console.log(saveUpdate.headingFont);
   // console.log(saveUpdate.heading);
 
@@ -82,7 +90,6 @@ const ModalBox = (props) => {
           props.setConfigurationState(saveUpdate);
           setModalBox(props.setOpenModalBox);
         }}
-       
       >
         <div className="modal_content">
           <div className="label_name">
@@ -214,6 +221,7 @@ const ModalBox = (props) => {
                       value={item.value}
                       id={i}
                       type={item.type}
+                      optionNo={item.optionNo}
                       size="40"
                     />
                     <button
