@@ -1,6 +1,6 @@
 .preveiwbox{
     background-color: rgb(243, 231, 239);
-    height: 80vh;
+    height: 95vh;
     width: 65vw;
     position:absolute;
     top: 5%;
@@ -12,6 +12,17 @@
     border-radius: 6px;
     font-weight: 500;
 }
+
+.outer_div {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    height: 100vh !important;
+    width: 100vw !important;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 .remove_bton {
     background-color: rgb(187, 201, 241);
     /* margin-right: 10px; */

@@ -2,6 +2,7 @@ import * as types from "../Constants/ActionTypes";
 
 const initialState = {
 	configList: [],
+	layoutInput: []
 };
 
 const configReducer = (state = initialState, action) => {
@@ -26,6 +27,12 @@ const configReducer = (state = initialState, action) => {
 				configList: state.configList.filter(config => {return config.id !== action.payload.id})
 			};
 			
+		case types.LAYOUT_INPUT:
+			return {
+				...state,
+				layoutInput: (prev) => [...prev, action.payload]
+			};
+		
 		default:
 			return state;
 	}

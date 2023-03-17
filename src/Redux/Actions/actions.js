@@ -13,7 +13,12 @@ export const DeleteField =(payload)=>({
 	type: types.DELETE_FIELD,
 	payload: payload,
 });
-export const openPreview = (payload) =>({
+export const openPreview = (payload) => ({
 	type: types.OPEN_PREVIEW,
 	payload: payload
+});
+
+export const setLayoutInputField =(payload)=>({
+	type: types.LAYOUT_INPUT,
+	payload: payload,
 })
