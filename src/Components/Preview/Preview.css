@@ -1,6 +1,7 @@
 .preveiwbox{
     background-color: rgb(243, 231, 239);
-    height: 80vh;
+    height: fit-content;
+    min-height: 85%;
     width: 65vw;
     position:absolute;
     top: 5%;
@@ -11,6 +12,8 @@
     /* box-sizing: border-box; */
     border-radius: 6px;
     font-weight: 500;
+    padding-bottom: 3rem;
+    padding-top: 0%;
 }
 .remove_bton {
     background-color: rgb(187, 201, 241);
@@ -31,7 +34,7 @@
 
 .heading {
     background-color: rgb(187, 201, 241);
-    margin-bottom: 90px;
+    margin-bottom: 30px;
     font-size: 25px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
@@ -47,9 +50,8 @@
     align-items: center;
     justify-content: center;
 }
-/* .previewpage {
-    display: flex;
-    flex-direction: column;
-	overflow-y: scroll;
-    margin: 0 7vw;
-} */
+.previewpage {
+    background-color: rgb(218, 218, 221);
+    margin: 0 2vw;
+    padding-bottom: 2rem;
+}

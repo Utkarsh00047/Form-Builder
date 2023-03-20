@@ -2,7 +2,7 @@ import * as types from "../Constants/ActionTypes";
 
 const initialState = {
 	configList: [],
-	modal: ''
+	// modal: ''
 };
 
 const configReducer = (state = initialState, action) => {

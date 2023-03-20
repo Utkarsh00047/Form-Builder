@@ -22,10 +22,18 @@ function RadioButton({
     const [openModalBox, setOpenModalBox] = useState(false);
 
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
         label: `Radio Button  :`,
         type: type,
+        placeholder:"",
+        subtext:"",
+        heading:"",
+        defaultValue:"",
         helptext: "",
+        isRequired: false,
+        isReadOnly: false,
         listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
     });
 

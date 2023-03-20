@@ -17,9 +17,17 @@ const DropdownComponent = ({
 }) => {
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
         label: `DropDown : `,
         type: type,
+        isRequired: false,
+        isReadOnly: false,
+        placeholder:"",
+        heading:"",
+        subtext:"",
+        helptext:"",
         listOfDropdown: [],
         defaultValue: "---Select---",
     });

@@ -26,6 +26,7 @@ const TextAreaComponent = ({
 }) => {
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
+    pageId:1,
     id: uid,
     helptext: "",
     label: `Enter ${type}`,
@@ -34,7 +35,10 @@ const TextAreaComponent = ({
     isRequired: false,
     isReadOnly: false,
     defaultValue: "",
+    listOfDropdown: [],
     rows: 3,
+    heading: "",
+    subtext: "",
   });
 
   console.log(configurationState.type);

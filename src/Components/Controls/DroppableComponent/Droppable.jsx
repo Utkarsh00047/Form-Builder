@@ -23,6 +23,7 @@ export const Droppable = ({
 }) => {
   const [layoutInput, setLayoutInput] = useState([]);
   const [configurationState, setConfigurationState] = useState({
+    pageId:1,
     id: uid,
     helptext: "",
     label: `Enter text`,
@@ -32,6 +33,9 @@ export const Droppable = ({
     isReadOnly: false,
     defaultValue: "",
     rows: 3,
+    subtext:"",
+    heading:"",
+    listOfDropdown: [],
   });
   const uuid = uuidv4();
   const allowDragEvent = (e) => {

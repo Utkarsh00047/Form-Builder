@@ -10,7 +10,7 @@ import RadioButtonContainer from "../Controls/RadioButton/RadioButtonContainer";
 import SectionHeaderContainer from "../Controls/SectionHeader/SectionHeaderContainer";
 import TextAreaContainer from "../Controls/TextAreaComponent/TextAreaContainer";
 import TextFieldContainer from "../Controls/TextField/TextFieldContainer";
-
+import axios from "axios";
 import "./Preview.css";
 
 const Preveiw = (props) => {
@@ -20,6 +20,18 @@ const Preveiw = (props) => {
 
     const config = store.getState();
 
+    console.log(props.headingFont);
+
+    const Post_Widget = async () => {
+        console.log(config);
+        const posturl = axios
+            .post(`https://localhost:7084/api/Config/Post`, config.configList)
+            .then((res) => {
+                console.log("resssss", res);
+                alert("Form Saved Successfully!!");
+            });
+        return posturl;
+    };
     return (
         <div className="preveiwbox">
             <div className="heading">
@@ -228,9 +240,11 @@ const Preveiw = (props) => {
                             );
                         case "layout":
                             return (
-                                <DroppableContainer
-                                    openPreview={props.openPreview}
-                                />
+                                <>
+                                    <DroppableContainer
+                                        openPreview={props.openPreview}
+                                    />
+                                </>
                             );
                         case "button":
                             return (
@@ -290,6 +304,11 @@ const Preveiw = (props) => {
                     }
                 })}
             </form>
+            <footer>
+                <button className="SaveForm" onClick={() => Post_Widget()}>
+                    Save Form
+                </button>
+            </footer>
         </div>
     );
 };

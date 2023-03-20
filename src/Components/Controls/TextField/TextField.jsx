@@ -36,6 +36,10 @@ const TextField = ({
         isRequired: false,
         isReadOnly: false,
         defaultValue: "",
+        listOfDropdown: [],
+        heading: "",
+        subtext: "",
+        helptext: "",
     });
     console.log(configurationState.type);
 

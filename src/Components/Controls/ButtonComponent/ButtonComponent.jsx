@@ -18,9 +18,19 @@ const ButtonComponent = ({
 }) => {
     const [openModalBox, setOpenModalBox] = useState(false);
     const [configurationState, setConfigurationState] = useState({
+        pageId:1,
+        rows:0,
         id: uid,
         label: `Button`,
+        isRequired: false,
+        isReadOnly: false,
+        helptext:"",
+        placeholder:"",
+        subtext:"",
+        heading:"",
+        defaultValue:"",
         type: type ? type : "",
+        listOfDropdown: [],
     });
 
     console.log(configurationState.type);
