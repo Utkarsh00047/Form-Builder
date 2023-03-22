@@ -20,11 +20,13 @@ export const Droppable = ({
   Toggle,
   insertConfig,
   updateConfig,
+  // layoutInput,
+  inputLayoutFields,
 }) => {
   const [layoutInput, setLayoutInput] = useState([]);
   const [configurationState, setConfigurationState] = useState({
     pageId:1,
-    id: uid,
+    widgetId: uid,
     helptext: "",
     label: `Enter text`,
     type: type,

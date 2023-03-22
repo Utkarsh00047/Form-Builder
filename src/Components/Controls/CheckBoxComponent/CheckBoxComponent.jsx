@@ -20,7 +20,7 @@ function CheckBoxComponent({
     const [configurationState, setConfigurationState] = useState({
         pageId:1,
         rows:0,
-        id: uid,
+        widgetId: uid,
         isRequired: false,
         isReadOnly: false,
         helptext:"",
@@ -30,12 +30,12 @@ function CheckBoxComponent({
         label: `Checkbox : `,
         placeholder:"",
         type: type,
-        listOfDropdown: [{ type: "", id: "", value: "Value 1" }],
+        listOfDropdown: [{ type: "", widgetId: "", value: "Value 1" }],
     });
     console.log(configurationState.type);
 
     useEffect(() => {
-        insertConfig(configurationState);
+        !openPreview && insertConfig(configurationState);
     }, []);
 
     useEffect(() => {

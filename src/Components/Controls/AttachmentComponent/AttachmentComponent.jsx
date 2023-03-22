@@ -22,7 +22,7 @@ const AttachmentComponent = ({
     const [configurationState, setConfigurationState] = useState({
         pageId:1,
         rows:0,
-        id: uid,
+        widgetId: uid,
         isReadOnly: false,
         placeholder:"",
         subtext:"",
@@ -38,7 +38,7 @@ const AttachmentComponent = ({
     console.log(configurationState.type);
 
     useEffect(() => {
-        insertConfig(configurationState);
+        !openPreview && insertConfig(configurationState);
     }, []);
 
     useEffect(() => {

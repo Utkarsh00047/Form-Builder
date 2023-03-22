@@ -12,7 +12,7 @@ function ReviewComponent(type, uid, setInputFields) {
   const [configurationState, setConfigurationState] = useState({
     pageId:1,
     rows:0,
-    id: uid,
+    WidgetId: uid,
     label: `Enter heading...`,
     heading: "",
     paragraph: "",

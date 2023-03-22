@@ -29,7 +29,7 @@ const TextField = ({
     const [configurationState, setConfigurationState] = useState({
         pageId:1,
         rows:0,
-        id: uid,
+        widgetId: uid,
         label: `Enter ${type}`,
         type: type,
         placeholder: "",
@@ -44,8 +44,8 @@ const TextField = ({
     console.log(configurationState.type);
 
     useEffect(() => {
-        insertConfig(configurationState);
-    }, []);
+        !openPreview && insertConfig(configurationState);
+    },[]);
 
     useEffect(() => {
         updateConfig(configurationState);
@@ -153,6 +153,7 @@ const TextField = ({
                             configurationState={configurationState}
                             setConfigurationState={setConfigurationState}
                             type={type}
+                            widgetId={uid}
                         />
                     )}
                     {/* <div className="delicon"> */}

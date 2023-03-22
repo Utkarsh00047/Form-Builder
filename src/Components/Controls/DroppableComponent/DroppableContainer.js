@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
-import { insertConfig, updateConfig } from "../../../Redux/Actions/actions";
+import { insertConfig, setLayoutInputField, updateConfig } from "../../../Redux/Actions/actions";
 import { Droppable } from "./Droppable";
 
 const mapStateToProps = (state) => ({
 	configList: state.configList,
+	layoutInput: state.layoutInput
 });
 
 const mapDispatchToProps = (dispatch) => ({ 
@@ -12,6 +13,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	updateConfig: (config) => {
 		dispatch(updateConfig(config));
+	},
+	inputLayoutFields: (inputTag) => {
+		dispatch(setLayoutInputField(inputTag))
 	}
 });
 

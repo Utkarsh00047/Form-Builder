@@ -1,7 +1,6 @@
 .preveiwbox{
     background-color: rgb(243, 231, 239);
     height: fit-content;
-    min-height: 85%;
     width: 65vw;
     position:absolute;
     top: 5%;
@@ -12,9 +11,18 @@
     /* box-sizing: border-box; */
     border-radius: 6px;
     font-weight: 500;
-    padding-bottom: 3rem;
-    padding-top: 0%;
 }
+
+.outer_div {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    height: 100vh !important;
+    width: 100vw !important;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 .remove_bton {
     background-color: rgb(187, 201, 241);
     /* margin-right: 10px; */
@@ -55,4 +63,20 @@
     margin: 0 2vw;
     /* padding-bottom: 2rem; */
     
+}
+
+.SaveForm{
+	margin-top: 1rem;
+    margin-bottom: 1rem;
+	margin-left: 13px;
+	color: #010113;
+	background-color: #9aa9b8;
+    font-size: 20px;
+    border: 2px;
+    border-color: brown;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 30px;
+    width: 90px;
+    font-size: 15px;
 }

@@ -24,7 +24,7 @@ function RadioButton({
   const [configurationState, setConfigurationState] = useState({
     pageId: 1,
     rows: 0,
-    id: uid,
+    widgetId: uid,
     label: `Radio Button  :`,
     type: type,
     placeholder: "",
@@ -34,14 +34,14 @@ function RadioButton({
     helptext: "",
     isRequired: false,
     isReadOnly: false,
-    listOfDropdown: [{type:"", id:"", optionNo:"", value: "Value1" }],
+    listOfDropdown: [{ type: "", widgetId: "", value: "Value 1" }],
   });
 
   console.log(configurationState.type);
   console.log(configurationState.defaultListOfDropdown);
 
   useEffect(() => {
-    insertConfig(configurationState);
+    !openPreview && insertConfig(configurationState);
   }, []);
 
   useEffect(() => {
@@ -77,6 +77,7 @@ function RadioButton({
                         type="radio"
                         name="readAnswer"
                         value={opt.value}
+                        widgetId={opt.widgetId}
                         className="RadioInput"
                       ></input>
                       {opt.value}
@@ -114,6 +115,7 @@ function RadioButton({
                         type="radio"
                         name="readAnswer"
                         value={opt.value}
+                        widgetId={opt.widgetId}
                         className="RadioInput"
                       ></input>
                       {opt.value}
@@ -143,6 +145,7 @@ function RadioButton({
                 configurationState={configurationState}
                 setConfigurationState={setConfigurationState}
                 type={type}
+                widgetId={uid}
               />
             )}
           </>

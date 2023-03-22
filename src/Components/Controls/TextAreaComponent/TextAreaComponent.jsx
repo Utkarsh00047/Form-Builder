@@ -27,7 +27,7 @@ const TextAreaComponent = ({
   const [openModalBox, setOpenModalBox] = useState(false);
   const [configurationState, setConfigurationState] = useState({
     pageId:1,
-    id: uid,
+    widgetId: uid,
     helptext: "",
     label: `Enter ${type}`,
     type: type,
@@ -44,7 +44,7 @@ const TextAreaComponent = ({
   console.log(configurationState.type);
 
   useEffect(() => {
-    insertConfig(configurationState);
+    !openPreview && insertConfig(configurationState);
   }, []);
 
   useEffect(() => {

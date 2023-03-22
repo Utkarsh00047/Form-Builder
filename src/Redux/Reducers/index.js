@@ -2,7 +2,7 @@ import * as types from "../Constants/ActionTypes";
 
 const initialState = {
 	configList: [],
-	// modal: ''
+	layoutInput: []
 };
 
 const configReducer = (state = initialState, action) => {
@@ -12,10 +12,11 @@ const configReducer = (state = initialState, action) => {
 				...state,
 				configList: [...state.configList, action.payload],
 			};
+			
 		case types.UPDATE_CONFIG:
 			for(var i=0;i<state.configList.length;i++)
 			{
-				if(state.configList[i].id===action.payload.id){
+				if(state.configList[i].widgetId===action.payload.widgetId){
 					state.configList[i]=action.payload
 				}
 			}
@@ -24,9 +25,15 @@ const configReducer = (state = initialState, action) => {
 		case types.DELETE_FIELD:
 			return {
 				...state,
-				configList: state.configList.filter(config => {return config.id !== action.payload.id})
+				configList: state.configList.filter(config => {return config.widgetId !== action.payload.widgetId})
 			};
 
+		case types.LAYOUT_INPUT:
+			return {
+				...state,
+				layoutInput: (prev) => [...prev, action.payload]
+			};
+		
 		case types.HANDLECHANGE:
       		return {...state, modal:action.payload}	
 			

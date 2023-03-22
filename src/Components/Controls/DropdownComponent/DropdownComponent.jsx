@@ -19,7 +19,7 @@ const DropdownComponent = ({
     const [configurationState, setConfigurationState] = useState({
         pageId:1,
         rows:0,
-        id: uid,
+        widgetId: uid,
         label: `DropDown : `,
         type: type,
         isRequired: false,
@@ -36,7 +36,7 @@ const DropdownComponent = ({
     console.log(configurationState.type);
 
     useEffect(() => {
-        insertConfig(configurationState);
+        !openPreview && insertConfig(configurationState);
     }, []);
 
     useEffect(() => {

@@ -20,7 +20,7 @@ const ButtonComponent = ({
     const [configurationState, setConfigurationState] = useState({
         pageId:1,
         rows:0,
-        id: uid,
+        widgetId: uid,
         label: `Button`,
         isRequired: false,
         isReadOnly: false,
@@ -36,7 +36,7 @@ const ButtonComponent = ({
     console.log(configurationState.type);
 
     useEffect(() => {
-        insertConfig(configurationState);
+        !openPreview && insertConfig(configurationState);
     }, []);
 
     useEffect(() => {
